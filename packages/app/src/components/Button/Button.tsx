@@ -48,26 +48,29 @@ const Button = styled.button<any>`
 		filter: ${props => (!props.disabled && props.styling === "link") && `drop-shadow(2px 2px 3px ${theme.color.purple[600]})`};
 	}
 
-	&::after {
-		background-image: linear-gradient(to bottom, #aa6cd6 -100%, ${theme.color.purple[600]});
-		border-radius: 8px;
-		color: ${theme.color.white};
-	    content: attr(aria-label);
-	    font-family: ${theme.font.inter};
-		font-size: 0.4em;
-		left: 50%;
-	    opacity: 0;
-		position: absolute;
-		bottom: 100%;
-		padding: .2em .3em;
-		transition: opacity .4s ease-in;
-		transform: translateY(-.2em) translateX(-50%);
-		z-index: 1;
+	&[aria-label]:not([aria-label=""]) {
+		&::after {
+			background-image: linear-gradient(to bottom, #aa6cd6 -100%, ${theme.color.purple[600]});
+			border-radius: 8px;
+			color: ${theme.color.white};
+			content: attr(aria-label);
+			font-family: ${theme.font.inter};
+			font-size: 0.4em;
+			left: 50%;
+			opacity: 0;
+			position: absolute;
+			bottom: 100%;
+			padding: .2em .3em;
+			transition: opacity .4s ease-in;
+			transform: translateY(-.2em) translateX(-50%);
+			z-index: 1;
+		}
+
+		&:hover::after {
+			animation: 2s ${showAndHide} ease-out;
+		}
 	}
 
-	&:hover::after {
-		animation: 2s ${showAndHide} ease-out;
-	}
 
 	${({disabled}) => disabled && `
 		pointer-events: none;
