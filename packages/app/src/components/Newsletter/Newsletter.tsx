@@ -20,7 +20,6 @@ const Newsletter: React.FC<any> = () => {
 		const lambdaApiFunction = api.lambdaApi.functions.subsNewsletter;
 
 		const req = await fetch(`${lambdaApiEndpoint+lambdaApiFunction}?email=${email}`);
-		console.log(req);
 
 		if (req.status === 202) {
 			setSignUpState({
@@ -35,6 +34,8 @@ const Newsletter: React.FC<any> = () => {
 				message: 'Something went wrong. Please try again.'
 			});
 		}
+		// reset input
+		setEmail('');
 	}
 
 	return (
