@@ -11,7 +11,8 @@ const handler = async (event) => {
 		method: "PUT",
 		url: "/v3/marketing/contacts",
 		body: {
-			contacts: [{ email: email }],
+			list_ids: [process.env.SENDGRID_PPMN_CONTACTS_LIST_ID],
+			contacts: [{ email }],
 		},
 	};
 
@@ -19,11 +20,20 @@ const handler = async (event) => {
 		const [req] = await client.request(request);
 
 		return {
-			statusCode: parseInt(req.statusCode),
-			body: JSON.stringify({ message: `You are now subscribed to the pepemon newsletter` })
+			statusCode: req.statusCode,
+			body: JSON.stringify({
+				title: 'Sign up succeeded',
+				message: 'You are now subscribed to the pepemon newsletter.'
+			})
 		}
 	} catch (error) {
-		return { statusCode: error.code, body: error.message }
+		return {
+			statusCode: error.code,
+			body: JSON.stringify({
+				title: 'Sign up failed',
+				message: 'Something went wrong. Please try again.'
+			})
+		}
 	}
 }
 
