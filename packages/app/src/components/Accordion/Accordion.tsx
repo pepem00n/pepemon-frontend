@@ -52,7 +52,7 @@ export const AccordionHeader = styled.div<{isOpen: boolean}>`
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
-	padding: 1.25em 2em;
+	padding: clamp(1.125em,3.75vw,1.2em) clamp(.8em,2.65vw,2em);
 `
 
 export const AccordionHeaderTitle = styled.div`
@@ -79,6 +79,14 @@ export const AccordionHeaderButton = styled.button`
 		outline: none;
 		box-shadow: 0px 0px 10px 5px ${theme.color.purple[600]};
 	}
+
+	span {
+		display: none;
+
+		@media (min-width: ${theme.breakpoints.tabletP}) {
+			display: inline;
+		}
+	}
 `
 
 export const AccordionBody = styled.div<{isOpen: boolean}>`
@@ -86,15 +94,21 @@ export const AccordionBody = styled.div<{isOpen: boolean}>`
 	border-bottom-left-radius: ${theme.borderRadius}px;
 	border-bottom-right-radius: ${theme.borderRadius}px;
 	display: ${props => props.isOpen ? 'flex' : 'none'};
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 	padding: 1.5em 2em 2em;
+
+	@media (min-width: ${theme.breakpoints.tabletP}) {
+		flex-direction: row;
+	}
 `
 
 export const AccordionBodyContent = styled.div<{side: "left" | "right"}>`
-	border-left: ${props => props.side === "right" && `2px solid ${theme.color.colorsLayoutBorders}`};
-	padding-left: ${props => props.side === "right" && "5.5em"};
-	padding-right: ${props => props.side === "left" ? "5.5em" : "2.5em"};;
+	@media (min-width: ${theme.breakpoints.tabletP}) {
+		border-left: ${props => props.side === "right" && `2px solid ${theme.color.colorsLayoutBorders}`};
+		padding-left: ${props => props.side === "right" && "5.5em"};
+		padding-right: ${props => props.side === "left" ? "5.5em" : "2.5em"};
+	}
 `
 
 export default Accordion;

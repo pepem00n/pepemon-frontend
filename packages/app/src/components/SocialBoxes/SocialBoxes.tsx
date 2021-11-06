@@ -7,13 +7,13 @@ import { discord, telegram, twitter, medium } from "../../assets";
 const SocialBoxes: React.FC<any> = () => {
 	return (
 		<ContentCentered style={{paddingTop: "7.5em", paddingBottom: "7.5em"}}>
-			<Title as="h1" font={theme.font.neometric} size={3} lineHeight={1.04} weight={900} align="center">
+			<Title as="h1" font={theme.font.neometric} size='xxl' lineHeight={1.04} weight={900} align="center">
 				Say hi and meet all the Pepetrainers
 			</Title>
 			<Spacer size="md"/>
 			<Text as="p" font={theme.font.spaceMace} align="center" underline>Our socials</Text>
 			<Spacer size="lg"/>
-			<ContentBoxGrid gridTemplate='"socialBox1 socialBox2 socialBox3 socialBox4"'>
+			<CustomContentBoxGrid>
 				<ContentBoxLink as="a" href="https://twitter.com/pepemonfinance" target="_blank" rel="noopener noreferrer"
 				bgColor={theme.color.purple[300]} gridArea="socialBox1">
 					<StyledSocialIcon loading="lazy" src={twitter} alt="twitter"/>
@@ -46,7 +46,7 @@ const SocialBoxes: React.FC<any> = () => {
 					<Spacer size="sm"/>
 					<Text as="p" align="center" lineHeight={1.5}>Find more detailed articles on Medium about Pepemon and the ecosystem.</Text>
 				</ContentBoxLink>
-			</ContentBoxGrid>
+			</CustomContentBoxGrid>
 		</ContentCentered>
 	)
 }
@@ -55,6 +55,14 @@ const StyledSocialIcon = styled.img`
 	margin-left: auto;
 	margin-right: auto;
 	width: 3.75em;
+`
+
+const CustomContentBoxGrid = styled(ContentBoxGrid)`
+	grid-template-areas: 'socialBox1' 'socialBox2' 'socialBox3' 'socialBox4';
+
+	@media (min-width: ${theme.breakpoints.tabletL}) {
+		grid-template-areas: 'socialBox1 socialBox2 socialBox3 socialBox4';
+	}
 `
 
 const ContentBoxLink = styled(ContentBox)<{gridArea: string}>`

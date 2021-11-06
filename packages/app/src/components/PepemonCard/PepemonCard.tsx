@@ -188,7 +188,7 @@ const PepemonCard: React.FC<any> = ({
 					onRedeemCard: onRedeemCard,
 					setTransactions: setTransactions,
 				})}/>
-				<Title as="h4" size={1} font={theme.font.neometric}>{isReleasingSoon() ? 'Coming soon' : metadata.name}</Title>
+				<Title as="h4" size='xxs' font={theme.font.neometric}>{isReleasingSoon() ? 'Coming soon' : metadata.name}</Title>
 				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
 				<Spacer size="sm"/>
 				<StyledPepemonCardMeta>

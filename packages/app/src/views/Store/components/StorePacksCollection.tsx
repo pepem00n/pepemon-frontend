@@ -20,7 +20,7 @@ const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) =
 		<>{activeSeries.map((activeSerie, key) => {
 			return (
 				<div key={key}>
-					<Title as="h3" size={1.3} font={theme.font.spaceMace}>{activeSerie.title}</Title>
+					<Title as="h3" size='m' font={theme.font.spaceMace}>{activeSerie.title}</Title>
 					<Spacer size="sm"/>
 					<StyledStoreCardsWrapper gridCols={selectedPack ? 3 : 5}>
 						{activeSerie.packs.map((pack, key) => {

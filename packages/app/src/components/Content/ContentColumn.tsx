@@ -1,4 +1,5 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
+import { theme } from '../../theme';
 
 interface ContentColumnProps {
 	width?: string;
@@ -6,10 +7,12 @@ interface ContentColumnProps {
 }
 
 const ContentColumn = styled.div<ContentColumnProps>`
-	width: ${ props => props.width && props.width };
+	@media (min-width: ${theme.breakpoints.tabletL}) {
+		width: ${ props => props.width && props.width };
 
-	&:not(:first-child) {
-		margin-left: ${props => props.space && props.space};
+		&:not(:first-child) {
+			margin-left: ${props => props.space && props.space};
+		}
 	}
 `
 

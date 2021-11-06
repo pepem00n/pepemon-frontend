@@ -62,7 +62,7 @@ const IButtonPopover: React.FC<ModalProps> = ({ apy, isOpen, heading, toggle, cu
 		<Modal isOpen={isOpen}>
 			<ModalContainer>
 			<ModalHeader>
-				<Title as="h1" align="center" font={theme.font.inter} size={1} color={theme.color.purple[600]} weight="bold">{heading}</Title>
+				<Title as="h1" size='xxs' align="center" font={theme.font.inter} color={theme.color.purple[600]} weight="bold">{heading}</Title>
 				<ImgButton absolute aria-label="close"><img src={cross} alt="close" onClick={toggle}/></ImgButton>
 			</ModalHeader>
 					<Table>

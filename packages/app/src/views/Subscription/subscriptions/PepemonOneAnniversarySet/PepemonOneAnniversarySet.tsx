@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 import { Accordion, Spacer, Title, Text, ContentColumns, ContentColumn } from '../../../../components';
 import { theme } from '../../../../theme';
 import { pepechu1stanniversarycard, pepemander1stanniversarycard, pepertle1stanniversarycard, pepesaur1stanniversarycard } from '../../../../assets';
@@ -10,7 +11,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 			<div>
 				<ContentColumns>
 					<ContentColumn width="50%">
-						<Title as="h3" size={2.5} weight={900} font={theme.font.neometric}>
+						<Title as="h3" size='xl' weight={900} font={theme.font.neometric}>
 						1st Anniversary set
 						</Title>
 						<Spacer size="sm"/>
@@ -21,38 +22,42 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 				</ContentColumns>
 				<Spacer size="lg"/>
 				<ContentColumns>
-					<ContentColumn width="25%" space="3.5em">
+					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepechu"
 							text="Own any Pepemon NFT to receive this card"
 							img={{url: pepechu1stanniversarycard, title: 'Pepechu anniversary'}}
 							tokenId={75}/>
-					</ContentColumn>
-					<ContentColumn width="25%" space="3.5em">
+					</CardContentColumn>
+					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepemander"
 							text="Having donated to Gitcoin Grants to receive this card"
 							img={{url: pepemander1stanniversarycard, title: 'Pepemander anniversary'}}
 							tokenId={76}/>
-					</ContentColumn>
-					<ContentColumn width="25%" space="3.5em">
+					</CardContentColumn>
+					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepertle"
 							text="Provide PPBLZ liquidity to receive this card"
 							img={{url: pepertle1stanniversarycard, title: 'Pepertle anniversary'}}
 							tokenId={77}/>
-					</ContentColumn>
-					<ContentColumn width="25%" space="3.5em">
+					</CardContentColumn>
+					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepesaur"
 							text="Provide PPDEX liquidity to receive this card"
 							img={{url: pepesaur1stanniversarycard, title: 'Pepesaur anniversary'}}
 							tokenId={78}/>
-					</ContentColumn>
+					</CardContentColumn>
 				</ContentColumns>
 			</div>
 		</Accordion>
 	)
 }
+
+const CardContentColumn = styled(ContentColumn)`
+	margin-bottom: 2em;
+`
 
 export default PepemonOneAnniversarySet;

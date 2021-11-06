@@ -12,7 +12,7 @@ const ModalActions: React.FC = ({ children }) => {
           <div>
             {child}
           </div>
-          {i < l - 1 && <Spacer />}
+          {i < l - 1 && <Spacer size='sm'/>}
         </>
       ))}
     </StyledModalActions>

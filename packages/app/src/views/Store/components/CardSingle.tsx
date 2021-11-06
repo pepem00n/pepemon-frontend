@@ -104,7 +104,7 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 			<div>
 				<StyledPepemonCardImage loading="lazy" active={cardId === selectedCard?.cardId} src={cardMeta ? cardMeta.image : cardback_normal} alt={cardMeta ? cardMeta.name : 'Loading card'}
 					onClick={() => isLoaded && countdown() && selectCard(self)}/>
-				<Title as="h4" size={1} font={theme.font.neometric}>{cardMeta ? cardMeta.name : 'Loading'}</Title>
+				<Title as="h4" font={theme.font.neometric}>{cardMeta ? cardMeta.name : 'Loading'}</Title>
 				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
 				<Spacer size="sm"/>
 				<StyledPepemonCardMeta>

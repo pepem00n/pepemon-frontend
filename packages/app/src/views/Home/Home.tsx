@@ -1,12 +1,13 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from 'react';
+import styled from 'styled-components/macro';
+import { isMobile } from 'web3modal';
 // import { useTranslation } from 'react-i18next';
 import { AnimatedImg, ContentBox, ContentBoxNumber, ContentBoxGrid, ContentCentered, ContentColumn, ContentColumns, ExternalLink, Evolve, Spacer, ButtonLink, Title, Text, SocialBoxes, Newsletter } from "../../components";
 import Balances from './components/Balances';
 import { theme } from "../../theme";
 import { useTokenPrices } from "../../hooks";
 import { calculatePpblzApy } from "../../utils";
-import { dummyGraph, group, cover, coverblack, fudizardPng, logoexpand, bluecard, pepechucard, witchenerycard, pepechurcard } from "../../assets";
+import { dummyGraph, group, cover, coverblack, fudizardPng, logoexpand, pepechu_res, cardsStack } from "../../assets";
 
 const Home: React.FC<any> = () => {
 	const { ppblzPrice, ppdexPrice } = useTokenPrices();
@@ -18,13 +19,13 @@ const Home: React.FC<any> = () => {
 			<StyledSection bgImage={cover} style={{paddingTop: "12.125em"}}>
 				<ContentColumns>
 					<ContentColumn width="40%" style={{paddingTop: "3.75em"}}>
-						<Title as="h1" font={theme.font.spaceMace} size={4.5}>Gotta claim ‘em all!</Title>
+						<Title as="h1" font={theme.font.spaceMace} size='xxxl'>Gotta claim ‘em all!</Title>
 						<Text as="p" font={theme.font.inter} size={1.375}>
 							Digital collectible card games on blockchain owned by the players. 100% airdropped. Play2Earn games powered by DeFi and NFTs in-game assets.
 						</Text>
 						<Spacer size="lg"/>
 						<Spacer size="lg"/>
-						<ContentColumns style={{width: "250%"}}>
+						<ContentColumns width='250%'>
 							<ContentColumn width="calc(1/3 * 100%)" space="1.25em">
 								<ContentBox shadow>
 									<ContentBoxNumber><span>1</span></ContentBoxNumber>
@@ -67,16 +68,13 @@ const Home: React.FC<any> = () => {
 					</ContentColumn>
 				</ContentColumns>
 				<ContentColumns style={{marginTop: "23em", marginBottom: "7.5em"}}>
-					<ContentColumn width="40%">
-						<div style={{ position: "relative", height: "100%", width: "100%" }}>
-							<img loading="lazy" src={witchenerycard} alt="witchenery" style={{ objectFit: "cover", width: "80%", position: "absolute", right: "40%", top: "-10%", zIndex: 99 }}/>
-							<img loading="lazy" src={pepechucard} alt="pepechu" style={{ objectFit: "cover", width: "80%", position: "absolute", right: "10%", top: "20%" }}/>
-							<img loading="lazy" src={bluecard} alt="blue" style={{ objectFit: "cover", width: "63%", position: "absolute", left: "-20%", top: "70%" }}/>
-							<img loading="lazy" src={pepechurcard} alt="pepechur" style={{ objectFit: "cover", width: "20%", position: "absolute", right: "28%", top: "-18%" }}/>
-						</div>
-					</ContentColumn>
+					{ !isMobile() &&
+						<ContentColumn width="40%">
+							<img loading="lazy" src={cardsStack} alt='awesome cards' style={{ objectFit: "cover"}}/>
+						</ContentColumn>
+					}
 					<ContentColumn width="60%" style={{paddingTop: "3.75em"}}>
-						<Title as="h2" font={theme.font.neometric} size={3} weight={900} lineHeight={1.15}>Collect unique Pepemon NFT cards</Title>
+						<Title as="h2" font={theme.font.neometric} size='xxl' weight={900} lineHeight={1.15}>Collect unique Pepemon NFT cards</Title>
 						<Spacer size="md"/>
 						<Text as="p" font={theme.font.spaceMace} underline>Scarcity meets pixel perfect art</Text>
 						<Spacer size="md"/>
@@ -88,6 +86,12 @@ const Home: React.FC<any> = () => {
 							"Pepechu, I choose you!"
 						</Text>
 						<Spacer size="md"/>
+						{ isMobile() &&
+							<>
+								<img loading="lazy" src={pepechu_res} alt='pepechu'style={{ objectFit: "cover"}}/>
+								<Spacer size="md"/>
+							</>
+						}
 						<ButtonLink to="/store/cards">Mint your card</ButtonLink>
 					</ContentColumn>
 				</ContentColumns>
@@ -95,7 +99,7 @@ const Home: React.FC<any> = () => {
 
 			<StyledSection bgImage={coverblack}>
 				<ContentCentered style={{paddingTop: "7.5em"}}>
-					<Title as="h1" font={theme.font.neometric} size={3} color={theme.color.white} weight={900} align="center" lineHeight={1.04}>
+					<Title as="h1" font={theme.font.neometric} size='xxl' color={theme.color.white} weight={900} align="center" lineHeight={1.04}>
 						Start earning<br /> before ETH 2.0.
 					</Title>
 					<Spacer size="md"/>
@@ -111,7 +115,7 @@ const Home: React.FC<any> = () => {
 
 					<ContentColumns style={{marginTop: "10em", marginBottom: "7.5em"}}>
 						<ContentColumn width="40%" style={{paddingTop: "7em"}}>
-							<Title as="h2" font={theme.font.neometric} size={3} weight={900} lineHeight={1.04}>Get yours before it too late!</Title>
+							<Title as="h2" font={theme.font.neometric} size='xxl' weight={900} lineHeight={1.04}>Get yours before it's too late!</Title>
 							<Spacer size="md"/>
 							<ContentColumns justify="space-between">
 								<ContentColumn>
@@ -156,7 +160,7 @@ const Home: React.FC<any> = () => {
 						<Evolve/>
 					</ContentColumn>
 					<ContentColumn width="60%" style={{paddingTop: "3.75em"}}>
-						<Title as="h2" font={theme.font.neometric} size={3} weight={900}>Stake to evolve</Title>
+						<Title as="h2" font={theme.font.neometric} size='xxl' weight={900}>Stake to evolve</Title>
 						<Spacer size="md"/>
 						<Text as="p" font={theme.font.spaceMace} underline>Staking events</Text>
 						<Spacer size="md"/>
@@ -173,7 +177,7 @@ const Home: React.FC<any> = () => {
 			<StyledSection>
 				<ContentColumns style={{marginBottom: "7.5em"}}>
 					<ContentColumn width="55%" style={{paddingTop: "3.75em"}}>
-						<Title as="h2" font={theme.font.neometric} size={3} weight={900}>Pepemon: Degen Battleground</Title>
+						<Title as="h2" font={theme.font.neometric} size='xxl' weight={900}>Pepemon: Degen Battleground</Title>
 						<Spacer size="md"/>
 						<Text as="p" font={theme.font.spaceMace} underline>Beta release late 2021</Text>
 						<Spacer size="md"/>
@@ -201,9 +205,13 @@ const Home: React.FC<any> = () => {
 }
 
 const HomeWrapper = styled.div`
-	margin-left: ${props => props.theme.sideBar.width}px;
 	padding-bottom: ${2 * theme.footer.height}px;
-	width: calc(100vw - ${props => props.theme.sideBar.width}px);
+	width: 100vw;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		margin-left: ${theme.sideBar.width}px;
+		width: calc(100vw - ${theme.sideBar.width}px);
+	}
 `
 
 const StyledSection = styled.section<{bgImage?: string, bgColor?: string}>`

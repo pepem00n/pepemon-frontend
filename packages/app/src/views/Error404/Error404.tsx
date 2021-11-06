@@ -6,7 +6,7 @@ const Error404 = () => {
 	return (
 		<LoadingPage>
 			<ContentCentered>
-				<Title as="h1" size={2}>Error 404: Page not found</Title>
+				<Title as="h1" size='l'>Error 404: Page not found</Title>
 				<Spacer size="md"/>
 				<ButtonLink to="/">Return home</ButtonLink>
 				<Spacer size="md"/>

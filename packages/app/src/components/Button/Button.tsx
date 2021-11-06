@@ -31,7 +31,7 @@ const Button = styled.button<any>`
 		box-shadow: ${props => (!props.disabled && props.styling !== "link") && `0 4px 10px 0 ${theme.color.colorsLayoutShadows}`};
 		cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
 		font-family: ${props => props.styling === "link" ? theme.font.inter : theme.font.spaceMace};
-		font-size: ${props => props.symbol ? "2" : "1"}rem;
+		font-size: ${props => props.symbol ? "clamp(1.4rem, 2.65vw, 2rem)" : "clamp(.9rem, 2vw, 1rem)"};
 		font-weight: ${props => props.styling !== "link" && "bold"};
 		text-align: center;
 		text-transform: ${props => props.styling !== "link" && "uppercase"};

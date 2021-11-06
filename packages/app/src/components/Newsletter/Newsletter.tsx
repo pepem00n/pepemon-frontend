@@ -41,7 +41,7 @@ const Newsletter: React.FC<any> = () => {
 	return (
 		<>
 			<ContentCentered style={{paddingTop: "7.5em", paddingBottom: "7.5em"}}>
-				<Title as="h1" font={theme.font.neometric} size={3} weight={900} align="center">
+				<Title as="h1" font={theme.font.neometric} size='xxl' weight={900} align="center">
 					Stay up to date and claim ‘em all
 				</Title>
 				<Spacer size="md"/>
@@ -60,7 +60,7 @@ const Newsletter: React.FC<any> = () => {
 				<Modal onDismiss={() => setSignUpState(initSignUpState)}>
 					<ModalTitle text={signUpState.title}/>
 					<ModalContent>
-						<Text as='p' align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+						<Text align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
 							{signUpState.message}
 						</Text>
 					</ModalContent>

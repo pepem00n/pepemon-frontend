@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { theme } from  '../../theme';
 
 interface ContentCenteredProps {
 	bgColor?: string;
@@ -14,7 +15,7 @@ const ContentCentered = styled.div<ContentCenteredProps>`
 	flex-direction: column;
 	flex-direction: ${ props => props.direction ? props.direction : "column"};
 	justify-content: center;
-	max-width: ${ props => props.maxWidth ? props.maxWidth : "1120px"};
+	max-width: ${ props => props.maxWidth ? props.maxWidth : theme.breakpoints.ultra};
 	margin-left: auto;
 	margin-right: auto;
 	padding: ${ props => props.padding && props.padding };

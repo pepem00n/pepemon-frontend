@@ -1,15 +1,17 @@
-import React, {useState} from "react";
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components/macro";
-import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand } from "../../assets";
-import { theme } from "../../theme";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import { isMobile } from 'web3modal';
+import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand } from '../../assets';
+import { theme } from '../../theme';
 
 const Navigation = () => {
 	const [navLogo, setNavLogo] = useState(pepemon);
+	// const [isOpen, setIsOpen] = useState(false);
 	const { pathname } = useLocation();
 
 	return (
-		<StyledMenuOuterWrapper onMouseEnter={() => setNavLogo(logoexpand)} onMouseLeave={() => setNavLogo(pepemon)}>
+		<StyledMenuOuterWrapper {...(!isMobile() && { onMouseEnter: () => setNavLogo(logoexpand), onMouseLeave: () => setNavLogo(pepemon) })}>
 			<StyledMenuInnerWrapper>
 				<StyledLogoLink to="/">
 					<img src={navLogo} alt="logo" />
@@ -62,16 +64,25 @@ const StyledMenuInnerWrapper = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	overflow-y: auto;
+	width: 100vw;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		height: 100vh;
+		width: auto;
+	}
 `
 const StyledMenuList = styled.ul`
 	align-items: center;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	list-style-type: none;
 	padding-left: 32px;
 	width: 100%;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		display: flex;
+	}
 `
 
 interface StyledLinkProps {
@@ -85,18 +96,24 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 		display: flex;
 		font-family: ${theme.font.spaceMace};
 		justify-content: flex-start;
-		margin-bottom: 1.6em;
-		margin-top: 1.6em;
 		text-decoration: none;
+
+		@media (min-width: ${theme.breakpoints.desktop}) {
+			margin-bottom: 1.6em;
+			margin-top: 1.6em;
+		}
 	}
 
 	span {
-		display: none;
 		flex: 1 0 auto;
 		font-size: 1.25rem;
 		margin-left: 1em;
 		padding-right: 1.9em;
 		position: relative;
+
+		@media (min-width: ${theme.breakpoints.desktop}) {
+			display: none;
+		}
 	}
 `
 
@@ -132,12 +149,21 @@ const StyledMenuListItem = styled.li<StyledLinkProps>`
 `
 
 const StyledLogoLink = styled(StyledLink)<StyledLinkProps>`
-	height: 107px;
+	align-self: flex-start;
+	height: 60px;
 	margin-left: ${(theme.sideBar.width - 80) / 2}px;
 	margin-right: ${(theme.sideBar.width - 80) / 2}px;
 
 	img {
-		width: 80px;
+		width: 40px;
+	}
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		height: 107px;
+
+		img {
+			width: 80px;
+		}
 	}
 `
 
@@ -149,26 +175,27 @@ const StyledLinkIcon = styled.img`
 
 const StyledMenuOuterWrapper = styled.div`
 	&{
-		max-width: ${theme.sideBar.width}px;
 		background-color: ${theme.color.typographyAllTextOnDark};
-		height: 100%;
 		left: 0;
 		position: fixed;
 		top: 0;
-		z-index: 1000;
+		z-index: 10;
 
-		@media (min-height: 645px) {
-			height: 100vh;
+		@media (min-width: ${theme.breakpoints.desktop}) {
+			height: 100vw;
+			max-width: ${theme.sideBar.width}px;
 		}
 	}
 
 	&:hover {
-		max-width: unset;
-		box-shadow: 0 4px 15px 10px ${theme.color.colorsLayoutShadows};
+		@media (min-width: ${theme.breakpoints.desktop}) {
+			max-width: unset;
+			box-shadow: 0 4px 15px 10px ${theme.color.colorsLayoutShadows};
 
-		${StyledLogoLink} img { width: 200px; }
+			${StyledLogoLink} img { width: 200px; }
 
-		span { display: block; }
+			span { display: block; }
+		}
 	}
 `
 

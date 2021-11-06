@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import { theme } from '../../theme';
 
 interface StyledTextProps {
-	as: 'div' | 'p' | 'span' | 'b' | 'strong' | 'mark';
+	as?: 'div' | 'p' | 'span' | 'b' | 'strong' | 'mark';
 	align?: string;
 	color?: string;
 	font?: string;
@@ -40,5 +40,9 @@ const Text = styled.div<StyledTextProps>`
 		}
 	`}
 `
+
+Text.defaultProps = {
+	as: 'p'
+}
 
 export default Text;

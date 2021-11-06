@@ -69,7 +69,7 @@ const NetworkSwitch: React.FC<any> = () => {
 	const [currentChain] = chains.filter(chain => (parseInt(chain.chainId) === chainId) && chain.chainName);
 
 	return (
-		<>
+		<NetworkSwitchWrapper>
 			<ChainsListButton onClick={() => setChainsListActive(!chainsListActive)}>
 				{ currentChain ? currentChain.name : 'Not connected' }
 				<img alt='change network' src={up_down_arrows_dark} style={{ width: '.5em', marginLeft: '.8em' }}/>
@@ -92,7 +92,7 @@ const NetworkSwitch: React.FC<any> = () => {
 					errMsg={unhandledError.errMsg}
 					onDismiss={() => setUnhandledError({errCode: null, errMsg: ''})}/>
 			}
-		</>
+		</NetworkSwitchWrapper>
 	)
 }
 
@@ -110,16 +110,34 @@ const ChainsListButton = styled.button`
 	}
 `
 
+const NetworkSwitchWrapper = styled.div`
+	position: relative;
+
+	> ${ChainsListButton} {
+		@media (max-width: ${theme.breakpoints.mobile}) {
+			border-radius: 10px;
+			border: 1px solid ${theme.color.purple[800]};
+			padding: .4em .9em;
+		}
+	}
+`
+
 const ChainsList = styled.ul<{isOpen?: boolean}>`
-	background-color: rgba(255, 255, 255, .6);
+	background-color: ${theme.color.white};
 	border-radius: 10px;
 	border: 1px solid ${theme.color.purple[800]};
 	display: ${props => !props.isOpen && 'none'};
 	left: 0;
 	list-style-type: none;
+	margin-top: .5em;
 	overflow: hidden;
 	padding: .25em;
 	position: absolute;
+
+	@media (min-width: ${theme.breakpoints.mobile}) {
+		background-color: rgba(255, 255, 255, .6);
+		margin-top: 1em;
+	}
 
 	li {
 		&:not(:last-child) {

@@ -84,5 +84,6 @@ export { default as walkr } from './img/pepemons/walkr.png';
 export { default as walkw } from './img/pepemons/walkw.png';
 
 // other
+export { default as cardsStack } from './img/cards_stack.png';
 export { default as dummyGraph } from './img/dummy_graph.png';
 export { default as group } from './img/group.png';

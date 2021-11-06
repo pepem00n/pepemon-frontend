@@ -41,7 +41,7 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 
 	return (
 		<CardToClaimWrapper isDisabled={isDisabled}>
-			<Title as="h3" size={1} weight={900} font={theme.font.neometric}>{title}</Title>
+			<Title as="h3" size='xxs' weight={900} font={theme.font.neometric}>{title}</Title>
 			<Spacer size="sm"/>
 			<StyledFigure>
 			  <img loading='lazy' src={img.url} alt={img.title} title={img.title}/>

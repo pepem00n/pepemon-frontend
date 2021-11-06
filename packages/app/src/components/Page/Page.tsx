@@ -39,17 +39,21 @@ export const StyledPageWrapperMain = styled.main`
 	background-image: url(${darktealTiles});
 	background-repeat: no-repeat;
 	background-size: cover;
-	margin-left: ${theme.sideBar.width}px;
 	padding-bottom: 7.5em;
-	padding-left: 2em;
-	padding-right: 2em;
+	padding-left: clamp(.8em, 2.65vw, 2em);
+	padding-right: clamp(.8em, 2.65vw, 2em);
 	min-height: 100vh;
-	width: calc(100vw - ${theme.sideBar.width}px);
 	padding-bottom: ${2 * theme.footer.height}px;
+	width: 100vw;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		margin-left: ${theme.sideBar.width}px;
+		width: calc(100vw - ${theme.sideBar.width}px);
+	}
 `
 
 export const StyledPageWrapperMainInner = styled.div`
-	max-width: ${theme.breakpoints.ultra}px;
+	max-width: ${theme.breakpoints.ultra};
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 10em;

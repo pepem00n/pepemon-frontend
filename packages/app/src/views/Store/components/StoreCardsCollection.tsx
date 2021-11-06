@@ -51,7 +51,7 @@ const StoreCardsCollection : React.FC<any> = ({selectedCard, setSelectedCard}) =
 					<div key={key}>*/}
 					{ activeSeries &&
 						<div>
-							<Title as="h3" size={1.3} font={theme.font.spaceMace}>{activeSeries.title}</Title>
+							<Title as="h3" size='m' font={theme.font.spaceMace}>{activeSeries.title}</Title>
 							<Spacer size="sm"/>
 							<StyledStoreCardsWrapper gridCols={selectedCard ? 3 : 5}>
 								{activeSeries.cards.map(cardId => {

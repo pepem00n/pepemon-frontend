@@ -15,7 +15,7 @@ const Footer = () => {
 						<img loading='lazy' src={logoexpand} alt='pepemon logo' style={{maxWidth: '10em'}}/>
 					</div>
 					<div>
-						<Title as='h2' size={.8} weight={400} color={theme.color.white}>Start researching</Title>
+						<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Start researching</Title>
 						<StyledList>
 							<li><StyledLink href='https://docs.pepemon.world/'>Docs</StyledLink></li>
 							<li><StyledLink href='https://opensea.io/collection/pepemonfactory'>Opensea</StyledLink></li>
@@ -23,7 +23,7 @@ const Footer = () => {
 						</StyledList>
 					</div>
 					<div>
-						<Title as='h2' size={.8} weight={400} color={theme.color.white}>Start earning</Title>
+						<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Start earning</Title>
 						<StyledList>
 							<li><ExternalStyledLink href='https://etherscan.io/token/0x4d2ee5dae46c86da2ff521f7657dad98834f97b8'>PPBLZ Contract</ExternalStyledLink></li>
 							<li><ExternalStyledLink href='https://etherscan.io/token/0xf1f508c7c9f0d1b15a76fba564eef2d956220cf7'>PPDEX Contract</ExternalStyledLink></li>
@@ -33,7 +33,7 @@ const Footer = () => {
 					</div>
 
 					<div>
-						<Title as='h2' size={.8} weight={400} color={theme.color.white}>Get in touch</Title>
+						<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Get in touch</Title>
 						<StyledList>
 							<li><ExternalStyledLink href='https://twitter.com/pepemonfinance'>Twitter</ExternalStyledLink></li>
 							<li><ExternalStyledLink href='https://t.me/pepemonfinance'>Telegram</ExternalStyledLink></li>
@@ -71,8 +71,11 @@ const StyledFooter = styled.footer`
 	padding-right: 2em;
 	position: absolute;
 	bottom: 0;
-	margin-left: ${theme.sideBar.width}px;
-	width: calc(100vw - ${theme.sideBar.width}px);
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		margin-left: ${theme.sideBar.width}px;
+		width: calc(100vw - ${theme.sideBar.width}px);
+	}
 `
 
 const StyledFooterInner = styled.div`

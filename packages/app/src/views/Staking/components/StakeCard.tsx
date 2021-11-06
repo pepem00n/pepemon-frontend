@@ -456,7 +456,7 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaHeaderTitle>
 						<img loading="lazy" src={pokeball} alt="Pokeball"/>
 						<Spacer size="sm"/>
-						<Title as="h2" size={1.125} color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
+						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
 					</StakeGridAreaHeaderTitle>
 					<StakeGridAreaHeaderMeta>
 						<span>{ppblzApy.toFixed(0)}% APY</span>
@@ -547,7 +547,7 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaHeaderTitle>
 						<img loading="lazy" src={uniswap} alt="Uniswap"/>
 						<Spacer size="sm"/>
-						<Title as="h2" size={1.125} color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
+						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
 					</StakeGridAreaHeaderTitle>
 					<StakeGridAreaHeaderMeta>
 						<span>{ppblzEthLpApy.toFixed(0)}% APY</span>
@@ -638,27 +638,25 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaHeaderTitle>
 						<img loading="lazy" src={pokeball} alt="Pokeball"/>
 						<Spacer size="sm"/>
-						<Title as="h2" size={1.125} color={theme.color.white} font={theme.font.neometric} weight={900}>PPDEX Earned</Title>
+						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>PPDEX Earned</Title>
 					</StakeGridAreaHeaderTitle>
 				</StakeGridAreaHeader>
 				<StakeGridAreaBody>
-					<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-						<Text as="p" font={theme.font.neometric} weight={900} size={2}>
-							{parseFloat(ppdexBalance.toString()).toFixed(2)} PPDEX
+					<ClaimGrid>
+						<Text style={{ gridArea: 'area0' }} as="p" font={theme.font.neometric} weight={900} size={2}>
+							{parseFloat(ppdexBalance.toString()).toFixed(2)} $PPDEX
 						</Text>
 
-						<div style={{ display: "flex" }}>
-							<Text as="p" font={theme.font.inter}>
-								Total value: $ {((parseFloat(ppdexBalance.toString()) * ppdexPrice) + (ppdexRewards * ppdexPrice)).toFixed(2)}
-							</Text>
-							<Spacer size="md"/>
-							<Button styling="link" style={{padding: 0}} onClick={() => !isUpdatingRewards && getPpdexRewards()} {...(isUpdatingRewards && {disabled: true})}>
-								{isUpdatingRewards ? "UPDATING..." : "UPDATE"}
-							</Button>
-						</div>
-						<Spacer size="md"/>
-						<Button styling="purple" disabled={(isStakingPpblz || isWithdrawingPpblz) || isUpdatingRewards || (!(ppblzStakedAmount > 0) && (!(ppdexRewards > 0.1) || isClaiming))} onClick={claimRewards} width="clamp(100px, 18em, 100%)">{(isStakingPpblz || isWithdrawingPpblz || isUpdatingRewards) ? "Updating..." : isClaiming ? "Claiming..." : `${ppdexRewards.toFixed(2)} PPDEX to claim`}</Button>
-					</div>
+						<Text style={{ gridArea: 'area1' }} as="p" font={theme.font.inter}>
+							Total value: $ {((parseFloat(ppdexBalance.toString()) * ppdexPrice) + (ppdexRewards * ppdexPrice)).toFixed(2)}
+						</Text>
+
+						<UpdateButton style={{ gridArea: 'area2' }} styling="link" onClick={() => !isUpdatingRewards && getPpdexRewards()} {...(isUpdatingRewards && {disabled: true})}>
+							{isUpdatingRewards ? "UPDATING..." : "UPDATE"}
+						</UpdateButton>
+
+						<Button style={{ gridArea: 'area3' }} styling="purple" disabled={(isStakingPpblz || isWithdrawingPpblz) || isUpdatingRewards || (!(ppblzStakedAmount > 0) && (!(ppdexRewards > 0.1) || isClaiming))} onClick={claimRewards} width="clamp(100px, 18em, 100%)">{(isStakingPpblz || isWithdrawingPpblz || isUpdatingRewards) ? "Updating..." : isClaiming ? "Claiming..." : `${ppdexRewards.toFixed(2)} PPDEX to claim`}</Button>
+					</ClaimGrid>
 				</StakeGridAreaBody>
 			</StakeGridArea>
 		</StakeGrid>
@@ -666,19 +664,21 @@ const StakeCard: React.FC<any> = () => {
 }
 
 const StakeGrid = styled.section`
-	display: grid;
-	grid-column-gap: 1.25em;
-	grid-row-gap: 1em;
-	grid-template-areas: "ppblz pplbzEthLp" "ppdexEarned ppdexEarned";
-	grid-auto-columns: 1fr;
+	@media (min-width: ${theme.breakpoints.tabletL}) {
+		display: grid;
+		grid-column-gap: 1.25em;
+		grid-template-areas: "ppblz pplbzEthLp" "ppdexEarned ppdexEarned";
+		grid-auto-columns: 1fr;
+	}
 `
 
 const StakeGridArea = styled.div<{area: string}>`
-	background-color: ${props => props.theme.color.purple[800]};
-	border-radius: ${props => props.theme.borderRadius}px;
+	background-color: ${theme.color.purple[800]};
+	border-radius: ${theme.borderRadius}px;
 	display: flex;
 	flex-direction: column;
 	grid-area: ${props => props.area};
+	margin-bottom: 1em;
 	min-width: 0px;
 	overflow: hidden;
 `
@@ -688,7 +688,7 @@ const StakeGridAreaHeader = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 1.25em 2em;
+	padding: clamp(1.125em, 3.75vw, 1.2em) clamp(.8em, 2.65vw, 2em);
 `
 
 const StakeGridAreaHeaderTitle = styled.div`
@@ -719,8 +719,29 @@ const StakeGridAreaBody = styled.div`
 	background-color: ${props => props.theme.color.white};
 	display: flex;
 	flex-direction: column;
-	padding: 1.5em 2em 2em;
+	padding: clamp(1.125em,3.75vw,1.2em) clamp(.8em,2.65vw,2em) clamp(.8em,2.65vw,2em);
 	flex: 1 0 auto;
+`
+
+const ClaimGrid = styled.div`
+	display: grid;
+	grid-template-areas: "area0 area2" "area1 area1" "area3 area3";
+	grid-column-gap: 1.25em;
+	grid-row-gap: 1.25em;
+
+	@media (min-width: ${theme.breakpoints.tabletL}) {
+		grid-template-areas: "area0 area0" "area1 area2" "area3 area3";
+		justify-content: center;
+	}
+`
+
+const UpdateButton = styled(Button)`
+	text-align: right;
+	padding: 0;
+
+	@media (min-width: ${theme.breakpoints.tabletL}) {
+		text-align: left;
+	}
 `
 
 const DataColumns = styled.div`

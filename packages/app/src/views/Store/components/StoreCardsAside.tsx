@@ -91,7 +91,7 @@ const StoreCardsAside: React.FC<any> = ({setSelectedCard, selectedCard: { cardId
 	return (
 		<StoreAside close={() => setSelectedCard("")} title="Selected Card">
 			<StyledStoreBody>
-				<Title as="h2" font={theme.font.neometric} size={1.3}>{cardMeta ? cardMeta.name : 'Loading card'}</Title>
+				<Title as="h2" font={theme.font.neometric} size='m'>{cardMeta ? cardMeta.name : 'Loading card'}</Title>
 				<Spacer size="sm"/>
 				<Text as="p" font={theme.font.inter} size={.875} lineHeight={1.3} color={theme.color.gray[600]}>{cardMeta && cardMeta.description}</Text>
 				<Spacer size="sm"/>

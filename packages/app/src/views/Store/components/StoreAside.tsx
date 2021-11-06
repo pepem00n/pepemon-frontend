@@ -10,7 +10,7 @@ const StoreAside = ({children, close, title}) => {
 			<div style={{position: 'sticky', top: '1em'}}>
 				<StyledStoreHeader>
 					<div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-						<Title as="h2" color={theme.color.white} font={theme.font.neometric} weight={900} size={1.2}>
+						<Title as="h2" color={theme.color.white} font={theme.font.neometric} weight={900} size='s'>
 							{title}
 						</Title>
 						<ActionClose onClick={close}/>

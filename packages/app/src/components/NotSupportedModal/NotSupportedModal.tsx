@@ -28,7 +28,7 @@ const NotSupportedModal: React.FC<{page: string}> = ({ page }) => {
         <Modal>
             <ModalTitle text='Not (yet) supported' />
             <ModalContent>
-				<Text as='p' align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+				<Text align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
                 	{`Your chosen network is currently not supported on the ${page} page.`}
 					<br/>
 					Please change your wallet provider's network to ETH.

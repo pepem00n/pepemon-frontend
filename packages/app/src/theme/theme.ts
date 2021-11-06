@@ -1,10 +1,11 @@
 const theme = {
 	borderRadius: 16,
 	breakpoints: {
-		mobile: 576,
-		tablet: 768,
-		desktop: 992,
-		ultra: 1200,
+		mobile: '576px',
+		tabletP: '768px',
+		tabletL: '880px',
+		desktop: '1024px',
+		ultra: '1200px',
 	},
 	color: {
 		transparent: "transparent",
