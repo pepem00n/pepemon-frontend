@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Accordion, Spacer, Title, Text, ContentColumns, ContentColumn } from '../../../../components';
 import { theme } from '../../../../theme';
 import { pepechu1stanniversarycard, pepemander1stanniversarycard, pepertle1stanniversarycard, pepesaur1stanniversarycard } from '../../../../assets';
@@ -25,7 +25,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepechu"
-							text="Own any Pepemon NFT to receive this card"
+							text="Provide PPBLZ liquidity to receive this card"
 							img={{url: pepechu1stanniversarycard, title: 'Pepechu anniversary'}}
 							tokenId={75}/>
 					</CardContentColumn>
@@ -39,7 +39,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepertle"
-							text="Provide PPBLZ liquidity to receive this card"
+							text="Own any Pepemon NFT to receive this card"
 							img={{url: pepertle1stanniversarycard, title: 'Pepertle anniversary'}}
 							tokenId={77}/>
 					</CardContentColumn>
