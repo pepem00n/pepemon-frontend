@@ -47,8 +47,8 @@ export const StyledPageWrapperMain = styled.main`
 	width: 100vw;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
-		margin-left: ${theme.sideBar.width}px;
-		width: calc(100vw - ${theme.sideBar.width}px);
+		margin-left: ${theme.sideBar.width.closed}px;
+		width: calc(100vw - ${theme.sideBar.width.closed}px);
 	}
 `
 

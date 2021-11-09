@@ -76,7 +76,10 @@ const theme = {
 	},
 	topBarSize: 72,
 	sideBar: {
-		width: 96
+		width: {
+			closed: 96,
+			opened: 260
+		}
 	},
 	footer: {
 		height: 450
