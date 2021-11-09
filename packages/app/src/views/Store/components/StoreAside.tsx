@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components/macro';
 import { Title } from '../../../components';
 import { ActionClose } from '../../../assets';
 import { theme } from '../../../theme';
@@ -7,7 +8,7 @@ import { StyledStoreWrapper, StyledStoreHeader } from '../components';
 const StoreAside = ({children, close, title}) => {
 	return (
 		<StyledStoreWrapper width="34%">
-			<div style={{position: 'sticky', top: '1em'}}>
+			<StyledStoreAsideInner>
 				<StyledStoreHeader>
 					<div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
 						<Title as="h2" color={theme.color.white} font={theme.font.neometric} weight={900} size='s'>
@@ -17,9 +18,20 @@ const StoreAside = ({children, close, title}) => {
 					</div>
 				</StyledStoreHeader>
 				{children}
-			</div>
+			</StyledStoreAsideInner>
 		</StyledStoreWrapper>
 	)
 }
+
+const StyledStoreAsideInner = styled.div`
+	@media (min-width: ${theme.breakpoints.mobileS}) and (max-width: ${theme.breakpoints.tabletL}) {
+		padding-top: 1em;
+	}
+	
+	@media (max-width: ${theme.breakpoints.tabletL}) {
+		padding-bottom: 1em;
+		position: sticky;
+	}
+`
 
 export default StoreAside;

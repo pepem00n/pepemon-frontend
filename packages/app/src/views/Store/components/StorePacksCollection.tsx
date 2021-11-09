@@ -21,7 +21,7 @@ const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) =
 			return (
 				<div key={key}>
 					<Title as="h3" size='m' font={theme.font.spaceMace}>{activeSerie.title}</Title>
-					<Spacer size="sm"/>
+					<Spacer size="md"/>
 					<StyledStoreCardsWrapper gridCols={selectedPack ? 3 : 5}>
 						{activeSerie.packs.map((pack, key) => {
 							return <PackSingle key={key}

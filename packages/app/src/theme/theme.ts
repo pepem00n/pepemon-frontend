@@ -1,6 +1,7 @@
 const theme = {
 	borderRadius: 16,
 	breakpoints: {
+		mobileS: '400px',
 		mobile: '576px',
 		tabletP: '768px',
 		tabletL: '880px',

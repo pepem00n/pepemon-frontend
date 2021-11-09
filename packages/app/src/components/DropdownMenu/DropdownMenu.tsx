@@ -71,7 +71,6 @@ const StyledMenuContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	position: relative;
-	z-index: 2;
 `
 
 

@@ -11,15 +11,17 @@ const StoreCard : React.FC<any> = () => {
 
 	if (!routerParams.storeState) return <Redirect to="/store/cards"/>
 
+	const itemSelected = (selectedCard && routerParams.storeState === "cards") ||
+	(selectedPack && routerParams.storeState === "boosterpacks");
+
 	const storeWidth = () =>{
-		if ((selectedCard && routerParams.storeState === "cards") ||
-		(selectedPack && routerParams.storeState === "boosterpacks")) return "66%";
+		if (itemSelected) return "66%";
 		return "100%";
 	}
 
 	return (
-		<div style={{display: 'flex'}}>
-			<StyledStoreWrapper style={{ width: storeWidth() }}>
+		<div style={{display: 'flex', position: 'relative'}}>
+			<StyledStoreWrapper width={storeWidth()} itemSelected={itemSelected}>
 				<StyledStoreHeader>
 					<div style={{display: 'flex'}}>
 						<StyledLinkTitle isInactive={routerParams.storeState !== "cards"}>

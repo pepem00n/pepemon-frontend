@@ -191,7 +191,8 @@ export const StyledPepemonCardMeta = styled.dl`
 
 	& dd {
 		color: ${props => props.theme.color.gray[600]};
-		font-weight: bold
+		font-weight: bold;
+		text-align: right;
 	}
 `
 

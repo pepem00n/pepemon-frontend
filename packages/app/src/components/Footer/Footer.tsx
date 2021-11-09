@@ -18,30 +18,29 @@ const Footer = () => {
 						<div>
 							<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Start researching</Title>
 							<StyledList>
-								<li><StyledLink href='https://docs.pepemon.world/'>Docs</StyledLink></li>
-								<li><StyledLink href='https://opensea.io/collection/pepemonfactory'>Opensea</StyledLink></li>
-								<li><StyledLink href='https://docs.pepemon.world/gaming'>Pepemon: Degen Battleground</StyledLink></li>
+								<li><StyledLink external href='https://docs.pepemon.world/'>Docs</StyledLink></li>
+								<li><StyledLink external href='https://opensea.io/collection/pepemonfactory'>Opensea</StyledLink></li>
+								<li><StyledLink external href='https://docs.pepemon.world/gaming'>Degen Battleground</StyledLink></li>
 							</StyledList>
 						</div>
 						<div>
 							<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Start earning</Title>
 							<StyledList>
-								<li><ExternalStyledLink href='https://etherscan.io/token/0x4d2ee5dae46c86da2ff521f7657dad98834f97b8'>PPBLZ Contract</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://etherscan.io/token/0xf1f508c7c9f0d1b15a76fba564eef2d956220cf7'>PPDEX Contract</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8'>Buy $PPBLZ</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://app.uniswap.org/#/swap?outputCurrency=0xf1f508c7c9f0d1b15a76fba564eef2d956220cf7'>Buy $PPDEX</ExternalStyledLink></li>
+								<li><StyledLink external href='https://etherscan.io/token/0x4d2ee5dae46c86da2ff521f7657dad98834f97b8'>PPBLZ Contract</StyledLink></li>
+								<li><StyledLink external href='https://etherscan.io/token/0xf1f508c7c9f0d1b15a76fba564eef2d956220cf7'>PPDEX Contract</StyledLink></li>
+								<li><StyledLink external href='https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8'>Buy $PPBLZ</StyledLink></li>
+								<li><StyledLink external href='https://app.uniswap.org/#/swap?outputCurrency=0xf1f508c7c9f0d1b15a76fba564eef2d956220cf7'>Buy $PPDEX</StyledLink></li>
 							</StyledList>
 						</div>
 
 						<div>
 							<Title as='h2' size='xxxs' weight={400} color={theme.color.white}>Get in touch</Title>
 							<StyledList>
-								<li><ExternalStyledLink href='https://twitter.com/pepemonfinance'>Twitter</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://t.me/pepemonfinance'>Telegram</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://discord.gg/R8sZwMv'>Discord</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://github.com/pepem00n'>Github</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://medium.com/@pepemonfinance'>Medium</ExternalStyledLink></li>
-								<li><ExternalStyledLink href='https://opensea.io/collection/pepemonfactory'>OpenSea</ExternalStyledLink></li>
+								<li><StyledLink external href='https://twitter.com/pepemonfinance'>Twitter</StyledLink></li>
+								<li><StyledLink external href='https://t.me/pepemonfinance'>Telegram</StyledLink></li>
+								<li><StyledLink external href='https://discord.gg/R8sZwMv'>Discord</StyledLink></li>
+								<li><StyledLink external href='https://github.com/pepem00n'>Github</StyledLink></li>
+								<li><StyledLink external href='https://medium.com/@pepemonfinance'>Medium</StyledLink></li>
 							</StyledList>
 						</div>
 					</StyledFooterGrid>
@@ -104,7 +103,14 @@ const StyledList = styled.ul`
 	padding-left: 0;
 `
 
-const footerLinks = `
+interface StyledLinkProps {
+  external?: boolean;
+}
+
+const StyledLink = styled.a.attrs<StyledLinkProps>(props => props.external && {
+	target: '_blank',
+	rel: 'noopener noreferrer',
+})<StyledLinkProps>`
 	color: ${theme.color.white};
 	font-size: .875rem;
 	line-height: 1.6;
@@ -114,13 +120,6 @@ const footerLinks = `
 		text-decoration: underline;
 	}
 `
-
-const StyledLink = styled.a`${footerLinks}`
-
-const ExternalStyledLink = styled.a.attrs({
-	target: '_blank',
-	rel: 'noopener noreferrer',
-})`${footerLinks}`;
 
 const StyledFooterLegal = styled.div`
 	color: ${theme.color.white};

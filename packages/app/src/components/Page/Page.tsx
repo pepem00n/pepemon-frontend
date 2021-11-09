@@ -56,7 +56,11 @@ export const StyledPageWrapperMainInner = styled.div`
 	max-width: ${theme.breakpoints.ultra};
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 10em;
+	padding-top: 6em;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		padding-top: 10em;
+	}
 `
 
 export default Page
