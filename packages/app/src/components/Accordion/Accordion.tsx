@@ -96,7 +96,7 @@ export const AccordionBody = styled.div<{isOpen: boolean}>`
 	display: ${props => props.isOpen ? 'flex' : 'none'};
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 1.5em 2em 2em;
+	padding: clamp(1.125em,3.75vw,1.2em) clamp(.8em,2.65vw,2em) 2em;
 
 	@media (min-width: ${theme.breakpoints.tabletP}) {
 		flex-direction: row;
