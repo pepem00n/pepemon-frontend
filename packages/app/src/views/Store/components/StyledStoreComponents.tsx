@@ -64,8 +64,8 @@ export const StyledStoreBody = styled.div`
     position: relative;
     background-color: ${props => props.theme.color.white};
     padding: 1.1em;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: ${theme.borderRadius}px;;
+    border-bottom-right-radius: ${theme.borderRadius}px;
 `
 
 export const StyledStoreCardsWrapper = styled.div<{gridCols: number}>`

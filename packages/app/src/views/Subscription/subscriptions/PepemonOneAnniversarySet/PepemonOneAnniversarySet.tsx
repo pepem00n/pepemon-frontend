@@ -16,7 +16,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 						</Title>
 						<Spacer size="sm"/>
 						<Text as="p" size='s' lineHeight={1.125}>
-						Celebrating a full year of Pepemon with an awesome birthday set. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							Celebrating a full year of Pepemon with an awesome birthday set.
 						</Text>
 					</ContentColumn>
 				</ContentColumns>
