@@ -758,7 +758,8 @@ const DataColumn = styled.div`
 const StyledInput = styled.input`
 	border: none;
 	font-size: 1rem;
-	flex: 1 0 auto;
+	flex: 1 1 auto;
+	min-width: 0;
 
 	&:focus-within {
 		outline : none;
