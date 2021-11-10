@@ -57,7 +57,7 @@ const WalletModal: React.FC<WalletModal> = ({onDismiss, account, setChainId, ppb
 						<dd>{ppmnCardsOwned}</dd>
 					</StyledTextInfos>
 				}
-				<CustomText font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+				<CustomText font={theme.font.inter} size='s' color={theme.color.gray[600]}>
 					View your account on <ExternalLink href={`${currentChain?.blockExplorerUrls}/address/${account}`}>{currentChain?.blockExplorerTitle}</ExternalLink>
 				</CustomText>
 			</ModalContent>

@@ -81,11 +81,11 @@ const IButtonPopover: React.FC<ModalProps> = ({ apy, isOpen, heading, toggle, cu
 					</Table>
 					<Spacer size="sm"/>
 
-					<Text as="p" size={.75} lineHeight={1.33}>
+					<Text as="p" size='xs' lineHeight={1.33}>
 						Rates are estimates provided for your convenience only, and by no means represent guaranteed returns.
 					</Text>
 					<Spacer size="sm"/>
-						<Text as="p" size={.75} lineHeight={1.33}>
+						<Text as="p" size='xs' lineHeight={1.33}>
 							All estimated rates take into account this pool’s 2% performance fee
 						</Text>
 						{button && <><Spacer size="sm"/>

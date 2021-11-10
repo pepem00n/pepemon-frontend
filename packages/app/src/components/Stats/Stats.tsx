@@ -20,15 +20,15 @@ const Stats: React.FC<any> = () => {
 						<StyledContentBoxGrid gridTemplate='"meta1 meta2 meta3"'>
 							<div style={{ gridArea: "meta1" }}>
 								<Text as="p">owners</Text>
-								<Text as="p" size={2} font={theme.font.neometric} weight={900}>28</Text>
+								<Text as="p" size='xl' font={theme.font.neometric} weight={900}>28</Text>
 							</div>
 							<div style={{ gridArea: "meta2" }}>
 								<Text as="p">total</Text>
-								<Text as="p" size={2} font={theme.font.neometric} weight={900}>30</Text>
+								<Text as="p" size='xl' font={theme.font.neometric} weight={900}>30</Text>
 							</div>
 							<div style={{ gridArea: "meta3" }}>
 								<Text as="p">last sold</Text>
-								<Text as="p" size={2} font={theme.font.neometric} weight={900}>2.8ETH</Text>
+								<Text as="p" size='xl' font={theme.font.neometric} weight={900}>2.8ETH</Text>
 							</div>
 						</StyledContentBoxGrid>
 					</ContentColumn>

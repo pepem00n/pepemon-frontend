@@ -93,7 +93,7 @@ const StoreCardsAside: React.FC<any> = ({setSelectedCard, selectedCard: { cardId
 			<StyledStoreBody>
 				<Title as="h2" font={theme.font.neometric} size='m'>{cardMeta ? cardMeta.name : 'Loading card'}</Title>
 				<Spacer size="sm"/>
-				<Text as="p" font={theme.font.inter} size={.875} lineHeight={1.3} color={theme.color.gray[600]}>{cardMeta && cardMeta.description}</Text>
+				<Text as="p" font={theme.font.inter} size='s' lineHeight={1.3} color={theme.color.gray[600]}>{cardMeta && cardMeta.description}</Text>
 				<Spacer size="sm"/>
 				<img loading="lazy" src={cardMeta ? cardMeta.image : cardback_normal} alt={cardMeta ? cardMeta.name : 'Loading card'} style={{width: "100%"}}/>
 				<Spacer size='md'/>

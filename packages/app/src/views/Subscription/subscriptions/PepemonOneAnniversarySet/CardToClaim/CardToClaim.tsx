@@ -45,7 +45,7 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 			<Spacer size="sm"/>
 			<StyledFigure>
 			  <img loading='lazy' src={img.url} alt={img.title} title={img.title}/>
-			  <figcaption><Text as="p" size={.875} lineHeight={1.125} align="center" color={theme.color.gray[300]}>{text}</Text></figcaption>
+			  <figcaption><Text as="p" size='s' lineHeight={1.125} align="center" color={theme.color.gray[300]}>{text}</Text></figcaption>
 			</StyledFigure>
 			<Spacer size="sm"/>
 			<Button width="100%" styling="purple" style={{marginTop: "auto"}}

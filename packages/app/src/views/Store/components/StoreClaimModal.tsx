@@ -7,7 +7,7 @@ const StoreClaimModal: React.FC<any> = ({disabled, dismiss, claimButtonText, cla
 		<Modal rounded onDismiss={dismiss} maxWidth={theme.page.maxWidth}>
 		    <ModalTitle text="Claim ice pack" />
 			<ModalContent>
-				<Text as="p" font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+				<Text as="p" font={theme.font.inter} size='s' color={theme.color.gray[600]}>
 		  			Claim this item.
 				</Text>
 			</ModalContent>

@@ -471,12 +471,12 @@ const StakeCard: React.FC<any> = () => {
 						<DataColumn>
 							<Text as="p" font={theme.font.inter}>PPBLZ balance</Text>
 							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size={2}>{parseFloat(ppblzBalance.toString()).toFixed(2)}</Text>
+							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzBalance.toString()).toFixed(2)}</Text>
 						</DataColumn>
 						<DataColumn>
 							<Text as="p" font={theme.font.inter}>PPBLZ staked</Text>
 							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size={2}>{parseFloat(ppblzStakedAmount.toString()).toFixed(2)}</Text>
+							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzStakedAmount.toString()).toFixed(2)}</Text>
 						</DataColumn>
 					</DataColumns>
 					<div style={{ marginTop: "auto" }}>
@@ -562,12 +562,12 @@ const StakeCard: React.FC<any> = () => {
 						<DataColumn>
 							<Text as="p" font={theme.font.inter}>PPBLZ-ETH balance</Text>
 							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size={2}>{parseFloat(uniV2PpblzBalance.toString()).toFixed(2)}</Text>
+							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzBalance.toString()).toFixed(2)}</Text>
 						</DataColumn>
 						<DataColumn>
 							<Text as="p" font={theme.font.inter}>PPBLZ-ETH staked</Text>
 							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size={2}>{parseFloat(uniV2PpblzStakedAmount.toString()).toFixed(2)}</Text>
+							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzStakedAmount.toString()).toFixed(2)}</Text>
 						</DataColumn>
 					</DataColumns>
 					<div style={{ marginTop: "auto" }}>
@@ -643,7 +643,7 @@ const StakeCard: React.FC<any> = () => {
 				</StakeGridAreaHeader>
 				<StakeGridAreaBody>
 					<ClaimGrid>
-						<Text style={{ gridArea: 'area0' }} as="p" font={theme.font.neometric} weight={900} size={2}>
+						<Text style={{ gridArea: 'area0' }} as="p" font={theme.font.neometric} weight={900} size='xl'>
 							{parseFloat(ppdexBalance.toString()).toFixed(2)} $PPDEX
 						</Text>
 

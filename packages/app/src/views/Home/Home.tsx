@@ -124,7 +124,7 @@ const Home: React.FC<any> = () => {
 }
 
 const HomeWrapper = styled.div<{bgImage?: string}>`
-	padding-bottom: ${2 * theme.footer.height}px;
+	padding-bottom: ${theme.footer.spaceTop}px;
 	width: 100vw;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {

@@ -39,11 +39,10 @@ export const StyledPageWrapperMain = styled.main`
 	background-image: url(${darktealTiles});
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding-bottom: 7.5em;
 	padding-left: clamp(1em, 2.65vw, 2em);
 	padding-right: clamp(1em, 2.65vw, 2em);
 	min-height: 100vh;
-	padding-bottom: ${2 * theme.footer.height}px;
+	padding-bottom: ${theme.footer.spaceTop}px;
 	width: 100vw;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {

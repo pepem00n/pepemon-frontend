@@ -12,7 +12,7 @@ const UnhandledError: React.FC<UnhandledErrorProps> = ({errCode, errMsg, onDismi
 		<Modal onDismiss={onDismiss}>
 			<ModalTitle text={`Error ${errCode}`}/>
 			<ModalContent>
-				<Text align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+				<Text align='center' font={theme.font.inter} size='s' color={theme.color.gray[600]}>
 					{errMsg}
 				</Text>
 			</ModalContent>

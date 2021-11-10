@@ -60,7 +60,7 @@ const Newsletter: React.FC<any> = () => {
 				<Modal onDismiss={() => setSignUpState(initSignUpState)}>
 					<ModalTitle text={signUpState.title}/>
 					<ModalContent>
-						<Text align='center' font={theme.font.inter} size={.875} color={theme.color.gray[600]}>
+						<Text align='center' font={theme.font.inter} size='s' color={theme.color.gray[600]}>
 							{signUpState.message}
 						</Text>
 					</ModalContent>

@@ -18,7 +18,7 @@ const SocialBoxes: React.FC<any> = () => {
 				bgColor={theme.color.purple[300]} gridArea="socialBox1">
 					<StyledSocialIcon loading="lazy" src={twitter} alt="twitter"/>
 					<Spacer size="sm"/>
-					<Text as="p" size={2} font={theme.font.neometric} weight={900} align="center">Twitter</Text>
+					<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">Twitter</Text>
 					<Spacer size="sm"/>
 					<Text as="p" align="center" lineHeight={1.5}>Follow us on Twitter for all updates and anouncements.</Text>
 				</ContentBoxLink>
@@ -26,7 +26,7 @@ const SocialBoxes: React.FC<any> = () => {
 				bgColor={theme.color.purple[300]} gridArea="socialBox2">
 					<StyledSocialIcon loading="lazy" src={telegram} alt="telegram"/>
 					<Spacer size="sm"/>
-					<Text as="p" size={2} font={theme.font.neometric} weight={900} align="center">Telegram</Text>
+					<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">Telegram</Text>
 					<Spacer size="sm"/>
 					<Text as="p" align="center" lineHeight={1.5}>Join us on Telegram to ask us questions and talk with your fellow Pepetrainers.</Text>
 				</ContentBoxLink>
@@ -34,7 +34,7 @@ const SocialBoxes: React.FC<any> = () => {
 				bgColor={theme.color.purple[300]} gridArea="socialBox3">
 					<StyledSocialIcon loading="lazy" src={discord} alt="discord"/>
 					<Spacer size="sm"/>
-					<Text as="p" size={2} font={theme.font.neometric} weight={900} align="center">Discord</Text>
+					<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">Discord</Text>
 					<Spacer size="sm"/>
 					<Text as="p" align="center" lineHeight={1.5}>Come hang out with us and all the Pepetrainers on Discord.</Text>
 				</ContentBoxLink>
@@ -42,7 +42,7 @@ const SocialBoxes: React.FC<any> = () => {
 				bgColor={theme.color.purple[300]} gridArea="socialBox4">
 					<StyledSocialIcon loading="lazy" src={medium} alt="medium"/>
 					<Spacer size="sm"/>
-					<Text as="p" size={2} font={theme.font.neometric} weight={900} align="center">Medium</Text>
+					<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">Medium</Text>
 					<Spacer size="sm"/>
 					<Text as="p" align="center" lineHeight={1.5}>Find more detailed articles on Medium about Pepemon and the ecosystem.</Text>
 				</ContentBoxLink>

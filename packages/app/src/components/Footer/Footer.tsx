@@ -64,7 +64,7 @@ const Footer = () => {
 
 const StyledFooter = styled.footer`
 	bottom: 0;
-	position: absolute;
+	position: relative;
 	width: 100vw;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
@@ -74,7 +74,9 @@ const StyledFooter = styled.footer`
 `
 
 const StyledFooterImg = styled.img`
+	bottom: 100%;
 	display: block;
+	position: absolute;
 	width: 100%;
 `
 

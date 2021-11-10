@@ -39,7 +39,7 @@ const PepemonOneSubscription: React.FC<any> = () => {
 	return (
 		<Accordion title='Pepemon One Subscription'>
 			<AccordionBodyContent side="left">
-				<Text as="p" size={.875} lineHeight={1.125}>
+				<Text as="p" size='s' lineHeight={1.125}>
 					Get Exclusive NFTs! Provide 100 PPDEX (+ETH) on Uniswap LP, stake these LP tokens and recieve a unique NFT every month. Your LP tokens will be locked for a minimum 32 days.
 				</Text>
 				<Spacer size="lg"/>
@@ -47,13 +47,13 @@ const PepemonOneSubscription: React.FC<any> = () => {
 					<ContentColumn width="50%">
 						<Text as="p" lineHeight={1}>PPDEX-ETH LP balance</Text>
 						<Spacer size="sm"/>
-						<Text as="p" size={2.5} weight={900} lineHeight={1} font={theme.font.neometric}>
+						<Text as="p" size='xxl' weight={900} lineHeight={1} font={theme.font.neometric}>
 							{parseFloat(getBalanceNumber(ppdexUniV2Balance).toString()).toFixed(2)}
 						</Text>
 						<Spacer size="md"/>
 						<Text as="p" lineHeight={1}>PPDEX-ETH LP staked</Text>
 						<Spacer size="sm"/>
-						<Text as="p" size={2.5} weight={900} lineHeight={1} font={theme.font.neometric}>
+						<Text as="p" size='xxl' weight={900} lineHeight={1} font={theme.font.neometric}>
 							{parseFloat(getBalanceNumber(stakedBalance).toString()).toFixed(2)}
 						</Text>
 					</ContentColumn>
@@ -64,7 +64,7 @@ const PepemonOneSubscription: React.FC<any> = () => {
 				<Spacer size="md"/>
 				{ isStaking &&
 					<>
-						<Text as="p" size={2.5} lineHeight={1.1} color={theme.color.purple[600]} weight={900} font={theme.font.neometric}>
+						<Text as="p" size='xxl' lineHeight={1.1} color={theme.color.purple[600]} weight={900} font={theme.font.neometric}>
 							You have an active <wbr/>subscription!
 						</Text>
 						<Spacer size="md"/>
@@ -73,7 +73,7 @@ const PepemonOneSubscription: React.FC<any> = () => {
 					<div style={{ display: "inline-flex", flexDirection: "column" }}>
 						{ !isStaking &&
 							<>
-								<Text as="p" size={.875}>
+								<Text as="p" size='s'>
 									{ minLPTokens ?
 										`${parseFloat(parseFloat((getBalanceNumber(minLPTokens) + 0.01).toString()).toPrecision(3))} PPDEX-ETH LP needed to subscribe` :
 										'loading...'
@@ -101,11 +101,11 @@ const PepemonOneSubscription: React.FC<any> = () => {
 
 			<AccordionBodyContent side="right">
 				<div>
-					<Text as="p" size={.75} color={theme.color.gray[400]} txtTransform="uppercase">This months card:</Text>
+					<Text as="p" size='xs' color={theme.color.gray[400]} txtTransform="uppercase">This months card:</Text>
 					<Spacer size="md"/>
-					<Text as="p" size={1.375} color={theme.color.headers} weight={900} font={theme.font.neometric}>{cardMeta ? cardMeta.name : 'Loading card title...'}</Text>
+					<Text as="p" size='l' color={theme.color.headers} weight={900} font={theme.font.neometric}>{cardMeta ? cardMeta.name : 'Loading card title...'}</Text>
 					<Spacer size="sm"/>
-					<Text as="p" size={.875} color={theme.color.headers}>
+					<Text as="p" size='s' color={theme.color.headers}>
 						{cardMeta ? cardMeta.description : 'Loading card description...'}
 					</Text>
 					<Spacer size="sm"/>

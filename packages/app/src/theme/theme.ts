@@ -82,7 +82,7 @@ const theme = {
 		}
 	},
 	footer: {
-		height: 450
+		spaceTop: 150
 	},
 	page: {
 		maxWidth: 1120

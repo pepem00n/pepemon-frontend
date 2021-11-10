@@ -17,7 +17,7 @@ const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
 			<StyledStoreBody>
 				<Title as="h2" font={theme.font.neometric} size='m'>{selectedPack.name}</Title>
 				<Spacer size="sm"/>
-				<Text as="p" font={theme.font.inter} size={.875} lineHeight={1.3} color={theme.color.gray[600]}>When claiming this boosterpack you will recieve {selectedPack.cardsPerPack} random cards.</Text>
+				<Text as="p" font={theme.font.inter} size='s' lineHeight={1.3} color={theme.color.gray[600]}>When claiming this boosterpack you will recieve {selectedPack.cardsPerPack} random cards.</Text>
 				<Spacer size="sm"/>
 				<img loading="lazy" src={selectedPack.url} alt={selectedPack.name} style={{width: "100%"}}/>
 				<Spacer size='md'/>
@@ -55,7 +55,7 @@ const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
 					</dd>
 				</StyledPepemonCardMeta>
 				<Spacer size='md'/>
-				<Text as="p" font={theme.font.inter} size={.75} color={theme.color.gray[300]} spacing={1.2} txtTransform="uppercase">Chances of getting this card:</Text>
+				<Text as="p" font={theme.font.inter} size='xs' color={theme.color.gray[300]} spacing={1.2} txtTransform="uppercase">Chances of getting this card:</Text>
 				<Spacer size='sm'/>
 				<Container>
 					<Background />

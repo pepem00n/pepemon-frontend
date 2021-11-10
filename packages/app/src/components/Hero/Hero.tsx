@@ -8,14 +8,14 @@ const Hero: React.FC<any> = ({apy}) => {
 		<ContentColumns mobileStyle={{ marginBottom: '7em' }}>
 			<ContentColumn width="40%" style={{paddingTop: "3.75em"}}>
 				<Title as="h1" font={theme.font.spaceMace} size='xxxl'>Gotta claim ‘em all!</Title>
-				<ContentColumns>
+				<ContentColumns mobileStyle={{ flexDirection: 'row' }}>
 					<ContentColumn
 						desktopStyle={{ paddingTop: "3.75em", maxWidth: '65%' }}>
-						<Text as="p" font={theme.font.inter} size={1.375}>
+						<Text as="p" font={theme.font.inter} size='l'>
 							Digital collectible card games on blockchain owned by the players. 100% airdropped. Play2Earn games powered by DeFi and NFTs in-game assets.
 						</Text>
 					</ContentColumn>
-					<ContentColumn tabletLStyle={{ display: 'none' }}>
+					<ContentColumn mobileStyle={{ marginLeft: '1em', flex: '1 0 35%' }} tabletLStyle={{ display: 'none' }}>
 						<img src={pepetrainer} alt='pepetrainer' style={{ margin: '0 auto', display: 'block' }}/>
 					</ContentColumn>
 				</ContentColumns>
@@ -40,7 +40,7 @@ const Hero: React.FC<any> = ({apy}) => {
 							<Text as="p" align="center">
 								Stake your $PPBLZ with
 							</Text>
-							<Text as="p" size={2} font={theme.font.neometric} weight={900} align="center">
+							<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">
 								{apy && apy}
 							</Text>
 							<Spacer size="md"/>
