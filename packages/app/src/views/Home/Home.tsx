@@ -149,8 +149,8 @@ interface StyledSectionProps {
 
 const StyledSection = styled.section<any>`
 	background-color: ${props => props.bgColor && props.bgColor};
-	padding-left: 2em;
-	padding-right: 2em;
+	padding-left: clamp(1em, 2.65vw, 2em);
+	padding-right: clamp(1em, 2.65vw, 2em);
 
 	@media (max-width: ${theme.breakpoints.desktop}) {
 		${props => props.mobileStyle && props.mobileStyle}

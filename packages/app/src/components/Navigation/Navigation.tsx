@@ -18,11 +18,9 @@ const Navigation = () => {
 		<StyledMenuOuterWrapper {...(!isMobile() && { onMouseEnter: () => setNavLogo(logoexpand), onMouseLeave: () => setNavLogo(pepemon) })} ref={navRef}>
 			<StyledMenuInnerWrapper isOpen={isOpen}>
 				<StyledLogoWrapper>
-					{isMobile() &&
-						<StyledMenuIcon onClick={() => setIsOpen(!isOpen)}>
-							<MenuIcon isOpen={isOpen}/>
-						</StyledMenuIcon>
-					}
+					<StyledMenuIcon onClick={() => setIsOpen(!isOpen)}>
+						<MenuIcon isOpen={isOpen}/>
+					</StyledMenuIcon>
 					<StyledLogoLink to="/">
 						<img src={navLogo} alt="logo" />
 					</StyledLogoLink>
@@ -192,6 +190,10 @@ const StyledMenuIcon = styled.button`
 	border: none;
 	padding-left: 1em;
 	padding-right: 1em;
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		display: none;
+	}
 `
 
 const StyledLogoLink = styled(StyledLink)<StyledLinkProps>`

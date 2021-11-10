@@ -86,8 +86,8 @@ const StyledFooterInner = styled.div`
 	margin-left: auto;
 	margin-right: auto;
 	max-width: ${theme.page.maxWidth}px;
-	padding-left: 2em;
-	padding-right: 2em;
+	padding-left: clamp(1em, 2.65vw, 2em);
+	padding-right: clamp(1em, 2.65vw, 2em);
 `
 
 const StyledFooterGrid = styled.div`
