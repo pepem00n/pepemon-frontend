@@ -7,8 +7,6 @@ interface MenuIconProps {
 }
 
 const MenuIcon: React.FC<MenuIconProps> = ({ isOpen }) => {
-	console.log(isOpen);
-
 	return (
 		<StyledMenuIcon isOpen={isOpen}>
 			<TopStroke/>
