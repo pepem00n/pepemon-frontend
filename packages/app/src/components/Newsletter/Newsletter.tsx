@@ -40,7 +40,7 @@ const Newsletter: React.FC<any> = () => {
 
 	return (
 		<>
-			<ContentCentered style={{paddingTop: "6em", paddingBottom: "6em"}}>
+			<ContentCentered id="newsletter" style={{paddingTop: "6em", paddingBottom: "6em"}}>
 				<Title as="h1" font={theme.font.neometric} size='xxl' weight={900} align="center">
 					Stay up to date and claim ‘em all
 				</Title>

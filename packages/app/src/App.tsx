@@ -40,6 +40,9 @@ const App: React.FC = () => {
 							</Route>
 							<Route path='/terms-of-service' component={TermsOfService} />
 							<Route path='/privacy-policy' component={PrivacyPolicy} />
+							<Route path={["/events", "/my-collection"]}>
+								<Error404 title='This page will be available soon👀'/>
+							</Route>
 							<Route component={Error404} />
 						</Switch>
 					</Suspense>

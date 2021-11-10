@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { theme } from "../../theme";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
 
 export interface ButtonProps {
 	disabled?: boolean;
