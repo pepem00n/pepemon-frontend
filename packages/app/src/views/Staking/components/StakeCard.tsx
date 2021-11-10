@@ -356,28 +356,28 @@ const StakeCard: React.FC<any> = () => {
 
     const setMaxPpblz = () => {
         if (parseFloat(ppblzBalance.toString()) === 0) {
-            return setPpblzStakeAmount(ppblzStakedAmount.toFixed(2));
+            return setPpblzStakeAmount(ppblzStakedAmount);
         }
         if (parseFloat(ppblzStakedAmount.toString()) === 0) {
-            return setPpblzStakeAmount(ppblzBalance.toFixed(2));
+            return setPpblzStakeAmount(ppblzBalance);
         }
         if (ppblzBalance === ppblzStakeAmount) {
-            return setPpblzStakeAmount(ppblzStakedAmount.toFixed(2));
+            return setPpblzStakeAmount(ppblzStakedAmount);
         }
-        return setPpblzStakeAmount(ppblzBalance.toFixed(2));
+        return setPpblzStakeAmount(ppblzBalance);
     }
 
     const setMaxUniV2Ppblz = () => {
         if (parseFloat(uniV2PpblzBalance.toString()) === 0) {
-            return setUniV2PpblzStakeAmount(uniV2PpblzStakedAmount.toFixed(2));
+            return setUniV2PpblzStakeAmount(uniV2PpblzStakedAmount);
         }
         if (parseFloat(uniV2PpblzStakedAmount.toString()) === 0) {
-            return setUniV2PpblzStakeAmount(uniV2PpblzBalance.toFixed(2));
+            return setUniV2PpblzStakeAmount(uniV2PpblzBalance);
         }
         if (uniV2PpblzBalance === uniV2PpblzStakeAmount) {
-            return setUniV2PpblzStakeAmount(uniV2PpblzStakedAmount.toFixed(2));
+            return setUniV2PpblzStakeAmount(uniV2PpblzStakedAmount);
         }
-        return setUniV2PpblzStakeAmount(uniV2PpblzBalance.toFixed(2));
+        return setUniV2PpblzStakeAmount(uniV2PpblzBalance);
     }
 
     const claimRewards = async () => {
