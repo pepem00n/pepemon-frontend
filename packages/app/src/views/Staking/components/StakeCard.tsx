@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef, useContext } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import Web3 from 'web3';
 import { Spacer, Button, Title, IButtonPopover, ExternalLink, Text, ContentCentered } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';

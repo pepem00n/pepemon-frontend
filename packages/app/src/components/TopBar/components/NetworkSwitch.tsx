@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { up_down_arrows_dark } from '../../../assets';
 import { chains } from '../../../constants';

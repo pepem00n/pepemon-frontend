@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled, { ThemeContext } from "styled-components/macro";
+import styled, { ThemeContext } from "styled-components";
 
 interface SpacerProps {
   size?: "sm" | "md" | "lg";

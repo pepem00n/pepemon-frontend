@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { StyledStoreBody, StyledPepemonCardMeta, StyledPepemonCardPrice } from './index';
 import { Button, Title, Text, Spacer, StyledSpacer } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';

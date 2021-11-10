@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useState } from 'react'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 interface ModalsContext {
   content?: React.ReactNode,

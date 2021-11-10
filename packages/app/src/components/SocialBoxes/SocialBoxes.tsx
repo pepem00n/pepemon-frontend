@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../theme";
 import { ContentBox, ContentBoxGrid, ContentCentered, Title, Text, Spacer } from "../../components";
 import { discord, telegram, twitter, medium } from "../../assets";

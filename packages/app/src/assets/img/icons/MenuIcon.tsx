@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components/macro';
+import styled, { keyframes, css } from 'styled-components';
 import { theme } from '../../../theme';
 
 interface MenuIconProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { ContentBoxGrid, ContentCentered, ContentColumn, ContentColumns, ExternalLink, Spacer, Title, Text } from '../../components';
 import { theme } from '../../theme';
 import { dummyGraph, fudizardPng } from '../../assets';

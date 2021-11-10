@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 interface ValueProps {
   value: string | number

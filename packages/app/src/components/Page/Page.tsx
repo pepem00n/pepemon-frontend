@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { Footer, Navigation, NotSupportedModal } from '../../components';
 import { PepemonProviderContext } from '../../contexts';

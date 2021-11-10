@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { coin } from "../../../assets";
 import { Title, Spacer, StyledSpacer } from "../../../components";
 import { StyledPepemonCardMeta, StyledPepemonCardPrice } from "../components";

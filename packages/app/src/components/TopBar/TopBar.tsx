@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState, useContext } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import Web3 from 'web3';
 import { isMobile } from 'web3modal';
 import BigNumber from 'bignumber.js';

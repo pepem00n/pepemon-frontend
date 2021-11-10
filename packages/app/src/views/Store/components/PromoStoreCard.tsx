@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import BigNumber from 'bignumber.js';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { PepemonCard, Card, Spacer, Button } from '../../../components';
 import { CardMetadata, CardBalances, CardPrice, useRedeemCard, useOutsideClick }  from '../../../hooks';
 import { getDisplayBalance } from '../../../utils';

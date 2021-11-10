@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components';
 import { walk1, walk2, walk3 } from '../../assets';
 import { Title } from '../../components';
 import { theme } from '../../theme';

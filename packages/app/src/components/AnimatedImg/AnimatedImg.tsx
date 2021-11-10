@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styled, { keyframes, css } from 'styled-components/macro';
+import styled, { keyframes, css } from 'styled-components';
 import { useIsVisible } from '../../hooks';
 
 const AnimatedImg: React.FC<any> = ({ src, alt }) => {

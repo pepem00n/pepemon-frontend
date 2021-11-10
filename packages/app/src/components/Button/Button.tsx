@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components/macro";
+import styled, { css, keyframes } from "styled-components";
 import { theme } from "../../theme";
 import { Link } from "react-router-dom";
 

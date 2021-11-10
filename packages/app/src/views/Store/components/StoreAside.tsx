@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { Title } from '../../../components';
 import { ActionClose } from '../../../assets';
 import { theme } from '../../../theme';

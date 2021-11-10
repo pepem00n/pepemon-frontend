@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { theme } from '../../theme';
 
 type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';

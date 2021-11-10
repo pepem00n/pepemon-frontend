@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { isMobile } from 'web3modal';
 // import { useTranslation } from 'react-i18next';
 import { AnimatedImg, ContentCentered, ContentColumn, ContentColumns, Evolve, Hero, Stats, Spacer, ButtonLink, Title, Text, SocialBoxes, Newsletter } from '../../components';

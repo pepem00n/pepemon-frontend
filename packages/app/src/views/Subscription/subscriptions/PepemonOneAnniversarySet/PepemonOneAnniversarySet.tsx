@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { Accordion, Spacer, Title, Text, ContentColumns, ContentColumn } from '../../../../components';
 import { theme } from '../../../../theme';
 import { pepechu1stanniversarycard, pepemander1stanniversarycard, pepertle1stanniversarycard, pepesaur1stanniversarycard } from '../../../../assets';

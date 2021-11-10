@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components/macro";
+import styled, { keyframes } from "styled-components";
 import { ActionClose } from '../../assets';
 import { theme } from '../../theme';
 

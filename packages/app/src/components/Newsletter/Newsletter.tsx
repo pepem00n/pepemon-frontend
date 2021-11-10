@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../theme";
 import { api } from "../../constants";
 import { Button, ContentCentered, Modal, ModalTitle, ModalContent, ModalActions, Title, Text, Spacer } from "../../components";

@@ -1,7 +1,7 @@
 import React, {useCallback,
 	// useEffect, useState
 } from 'react'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { StyledSpacer, Spacer, Title } from '../../components';
 import { CardMetadata, CardBalances } from '../../hooks';
 import { coin } from '../../assets';

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { isMobile } from 'web3modal';
 import { useOutsideClick } from '../../hooks';
 import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand, MenuIcon } from '../../assets';

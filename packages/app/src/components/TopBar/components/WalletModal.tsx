@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { isMobile } from 'web3modal';
 import { Button, ExternalLink, Modal, ModalTitle, ModalContent, ModalActions, ModalProps, NetworkSwitch, Spacer, Text } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';

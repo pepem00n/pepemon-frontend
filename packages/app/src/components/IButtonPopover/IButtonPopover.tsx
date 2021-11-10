@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { ibutton, cross } from "../../assets";
 import { theme } from "../../theme";
 import { Spacer, Text, Title } from "../../components";
