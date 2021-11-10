@@ -22,7 +22,7 @@ const Home: React.FC<any> = () => {
 				<Hero apy={`${ppblzApy.toFixed(0)}% APY`}/>
 			</StyledSection>
 
-			<StyledSection desktopStyle={{marginTop: "23em", marginBottom: "7.5em"}}>
+			<StyledSection desktopStyle={{marginTop: "17em", marginBottom: "7.5em"}}>
 				<ContentColumns>
 					{ !isMobile() &&
 						<ContentColumn width="40%">

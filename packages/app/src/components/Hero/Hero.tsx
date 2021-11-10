@@ -1,16 +1,24 @@
 import React from 'react';
 import { ContentBox, ContentBoxNumber, ContentColumn, ContentColumns, ExternalLink, Spacer, ButtonLink, Title, Text } from "../../components";
 import { theme } from "../../theme";
-import { group } from "../../assets";
+import { group, pepetrainer } from "../../assets";
 
 const Hero: React.FC<any> = ({apy}) => {
 	return (
-		<ContentColumns>
+		<ContentColumns mobileStyle={{ marginBottom: '7em' }}>
 			<ContentColumn width="40%" style={{paddingTop: "3.75em"}}>
 				<Title as="h1" font={theme.font.spaceMace} size='xxxl'>Gotta claim ‘em all!</Title>
-				<Text as="p" font={theme.font.inter} size={1.375}>
-					Digital collectible card games on blockchain owned by the players. 100% airdropped. Play2Earn games powered by DeFi and NFTs in-game assets.
-				</Text>
+				<ContentColumns>
+					<ContentColumn
+						desktopStyle={{ paddingTop: "3.75em", maxWidth: '65%' }}>
+						<Text as="p" font={theme.font.inter} size={1.375}>
+							Digital collectible card games on blockchain owned by the players. 100% airdropped. Play2Earn games powered by DeFi and NFTs in-game assets.
+						</Text>
+					</ContentColumn>
+					<ContentColumn tabletLStyle={{ display: 'none' }}>
+						<img src={pepetrainer} alt='pepetrainer' style={{ margin: '0 auto', display: 'block' }}/>
+					</ContentColumn>
+				</ContentColumns>
 				<Spacer size="lg"/>
 				<Spacer size="lg"/>
 				<ContentColumns width='250%'>
@@ -51,7 +59,7 @@ const Hero: React.FC<any> = ({apy}) => {
 					</ContentColumn>
 				</ContentColumns>
 			</ContentColumn>
-			<ContentColumn width="60%">
+			<ContentColumn width="60%" mobileStyle={{ display: 'none' }} tabletLStyle={{ display: 'block' }}>
 				<img src={group} alt="Pepetrainers" style={{maxWidth: "120%", width: "750px"}}/>
 			</ContentColumn>
 		</ContentColumns>

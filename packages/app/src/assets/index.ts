@@ -88,3 +88,4 @@ export { default as walkw } from './img/pepemons/walkw.png';
 export { default as cardsStack } from './img/cards_stack.png';
 export { default as dummyGraph } from './img/dummy_graph.png';
 export { default as group } from './img/group.png';
+export { default as pepetrainer } from './img/pepetrainer.png';
