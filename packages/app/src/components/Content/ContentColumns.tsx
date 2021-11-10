@@ -5,6 +5,8 @@ interface ContentColumnsProps {
 	justify?: string;
 	width?: string;
 	maxWidth?: string;
+	desktopStyle?: any;
+	mobileStyle?: any;
 }
 
 const ContentColumns = styled.div<ContentColumnsProps>`
@@ -15,6 +17,14 @@ const ContentColumns = styled.div<ContentColumnsProps>`
 	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
+
+	@media (max-width: ${theme.breakpoints.desktop}) {
+		${props => props.mobileStyle && props.mobileStyle}
+	}
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
+		${props => props.desktopStyle && props.desktopStyle}
+	}
 
 	@media (min-width: ${theme.breakpoints.tabletL}) {
 		flex-direction: row;

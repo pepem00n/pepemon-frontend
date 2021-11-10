@@ -140,7 +140,7 @@ const StyledTopBar = styled.div<{border?: boolean}>`
 	padding: ${props => props.border && '.25em'};
 	position: fixed;
 	right: .6em;
-	top: .6em;
+	top: 1em;
 	z-index: 20;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {

@@ -7,6 +7,7 @@ const ContentBox = styled.div<{bgColor?: string, shadow?: boolean}>`
 	padding: 1em 1.25em;
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	justify-content: center;
 	position: relative;
 

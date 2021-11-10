@@ -15,7 +15,7 @@ const ContentCentered = styled.div<ContentCenteredProps>`
 	flex-direction: column;
 	flex-direction: ${ props => props.direction ? props.direction : "column"};
 	justify-content: center;
-	max-width: ${ props => props.maxWidth ? props.maxWidth : theme.breakpoints.ultra};
+	max-width: ${ props => props.maxWidth ? props.maxWidth : `min(100%, ${theme.breakpoints.ultra})`};
 	margin-left: auto;
 	margin-right: auto;
 	padding: ${ props => props.padding && props.padding };

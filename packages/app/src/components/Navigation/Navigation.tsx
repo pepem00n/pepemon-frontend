@@ -113,8 +113,6 @@ const StyledMenuList = styled.ul<{isOpen: boolean}>`
 	list-style-type: none;
 	margin-top: 0;
 	padding-left: 1em;
-	// transform: translateX(-100%);
-	// transition: transform .1s ease-in;
 	width: 100%;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
@@ -222,6 +220,7 @@ const StyledLinkIcon = styled.img`
 const StyledMenuOuterWrapper = styled.div`
 	&{
 		background-color: ${theme.color.typographyAllTextOnDark};
+		box-shadow: 0 4px 8px 0 ${theme.color.iconBackgroundGrey8};
 		height: ${theme.topBarSize}px;
 		left: 0;
 		position: fixed;
@@ -231,6 +230,7 @@ const StyledMenuOuterWrapper = styled.div`
 		z-index: 10;
 
 		@media (min-width: ${theme.breakpoints.desktop}) {
+			box-shadow: none;
 			width: ${theme.sideBar.width.closed}px;
 		}
 	}
@@ -240,7 +240,13 @@ const StyledMenuOuterWrapper = styled.div`
 			width: ${theme.sideBar.width.opened}px;
 			box-shadow: 0 4px 15px 10px ${theme.color.colorsLayoutShadows};
 
-			${StyledLogoLink} img { width: 200px; }
+			${StyledLogoLink} {
+				margin-left: 2em;
+
+				img {
+					width: 200px;
+				}
+			}
 
 			span { display: block; }
 		}

@@ -10,6 +10,7 @@ export { ContentBox, ContentBoxNumber, ContentBoxGrid, ContentCentered, ContentC
 export { default as DropdownMenu } from './DropdownMenu';
 export { default as Evolve } from './Evolve';
 export { default as Footer } from './Footer';
+export { default as Hero } from './Hero';
 export { default as IButtonPopover } from './IButtonPopover';
 export { default as Label } from './Label';
 export { default as ExternalLink } from './Link';
@@ -30,6 +31,7 @@ export { DefaultPage, PlainText } from './Pages';
 export { default as PepemonCard, StyledPepemonCardImage, StyledPepemonCardMeta, StyledPepemonCardPrice } from './PepemonCard';
 export { default as SocialBoxes } from './SocialBoxes';
 export { default as Spacer, StyledSpacer } from './Spacer';
+export { default as Stats } from './Stats';
 export { Title, StyledPageTitle, StyledLinkTitle, Text } from './Text';
 export { default as TopBar, NetworkSwitch } from './TopBar';
 export { default as UnhandledError } from './UnhandledError';

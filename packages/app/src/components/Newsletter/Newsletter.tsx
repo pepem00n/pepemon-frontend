@@ -40,7 +40,7 @@ const Newsletter: React.FC<any> = () => {
 
 	return (
 		<>
-			<ContentCentered style={{paddingTop: "7.5em", paddingBottom: "7.5em"}}>
+			<ContentCentered style={{paddingTop: "6em", paddingBottom: "6em"}}>
 				<Title as="h1" font={theme.font.neometric} size='xxl' weight={900} align="center">
 					Stay up to date and claim ‘em all
 				</Title>
@@ -78,7 +78,9 @@ const Newsletter: React.FC<any> = () => {
 
 const StyledInput = styled.input`
 	border: none;
+	flex: 1 1 0%;
 	font-size: 1.2rem;
+	min-width: 0;
 	padding: 0.5em;
 	&:focus-visible {
 		outline: none;

@@ -36,7 +36,7 @@ const Button = styled.button<any>`
 		text-align: center;
 		text-transform: ${props => props.styling !== "link" && "uppercase"};
 		opacity: ${props => props.disabled && .5};
-		padding: ${props => props.symbol ? ".22em" : ".75em"} 1.5em;
+		padding: ${props => props.symbol ? ".22em 0" : ".75em 1.5em"};
 		position: relative;
 		transition: all .4s;
 		width: ${props => props.width && props.width};

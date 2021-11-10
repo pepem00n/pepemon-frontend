@@ -31,7 +31,7 @@ const Text = styled.div<StyledTextProps>`
 		flex-direction: column;
 
 		&:after {
-			background-color: ${color ? "currentColor" : theme.color.purple[600]};
+			background-color: ${theme.color.purple[600]};
 			content: "";
 			display: block;
 			height: 2px;
