@@ -60,6 +60,7 @@ export { default as my_collection } from './img/icons/icon_my_collection_32px.sv
 export { default as staking } from './img/icons/icon_staking_32px.svg';
 export { default as store } from './img/icons/icon_store_32px.svg';
 export { default as subscriptions } from './img/icons/icon_subscriptions_32px.svg';
+export { default as MenuIcon } from './img/icons/MenuIcon';
 export { default as up_down_arrows_dark } from './img/icons/up_down_arrows_dark.png';
 export { default as uparrow } from './img/icons/uparrow.png';
 

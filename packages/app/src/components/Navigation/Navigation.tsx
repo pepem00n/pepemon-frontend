@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { isMobile } from 'web3modal';
-import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand } from '../../assets';
+import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand, MenuIcon } from '../../assets';
 import { theme } from '../../theme';
 
 const Navigation = () => {
@@ -14,7 +14,11 @@ const Navigation = () => {
 		<StyledMenuOuterWrapper {...(!isMobile() && { onMouseEnter: () => setNavLogo(logoexpand), onMouseLeave: () => setNavLogo(pepemon) })}>
 			<StyledMenuInnerWrapper isOpen={isOpen}>
 				<StyledLogoWrapper>
-					{isMobile() && <button onClick={() => setIsOpen(!isOpen)}>X</button>}
+					{isMobile() &&
+						<StyledMenuIcon onClick={() => setIsOpen(!isOpen)}>
+							<MenuIcon isOpen={isOpen}/>
+						</StyledMenuIcon>
+					}
 					<StyledLogoLink to="/">
 						<img src={navLogo} alt="logo" />
 					</StyledLogoLink>
@@ -23,37 +27,37 @@ const Navigation = () => {
 				<StyledMenuList isOpen={isOpen}>
 					<StyledMenuListItem onClick={() => setIsOpen(false)} isActive={ pathname === "/" && true }>
 						<StyledLink to="/">
-							<StyledLinkIcon loading="lazy" src={ home } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ home } alt="home" />
 							<span>Home</span>
 						</StyledLink>
 					</StyledMenuListItem>
 					<StyledMenuListItem onClick={() => setIsOpen(false)} isActive={ pathname.startsWith("/staking") && true }>
 						<StyledLink to="/staking">
-							<StyledLinkIcon loading="lazy" src={ staking } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ staking } alt="staking" />
 							<span>Staking</span>
 						</StyledLink>
 					</StyledMenuListItem>
 					<StyledMenuListItem onClick={() => setIsOpen(false)} isActive={ pathname.startsWith("/subscription") && true }>
 						<StyledLink to="/subscription">
-							<StyledLinkIcon loading="lazy" src={ subscriptions } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ subscriptions } alt="subscriptions" />
 							<span>Subscription</span>
 						</StyledLink>
 					</StyledMenuListItem>
 					<StyledMenuListItem onClick={() => setIsOpen(false)} isActive={ pathname.startsWith("/store") && true }>
 						<StyledLink to="/store">
-							<StyledLinkIcon loading="lazy" src={ store } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ store } alt="store" />
 							<span>Store</span>
 						</StyledLink>
 					</StyledMenuListItem>
-					<StyledMenuListItem onClick={() => setIsOpen(false)} soon isActive={false}>
+					<StyledMenuListItem soon isActive={false}>
 						<StyledLink to="/">
-							<StyledLinkIcon loading="lazy" src={ my_collection } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ my_collection } alt="my collection" />
 							<span>My Collection</span>
 						</StyledLink>
 					</StyledMenuListItem>
-					<StyledMenuListItem onClick={() => setIsOpen(false)} soon isActive={false}>
+					<StyledMenuListItem soon isActive={false}>
 						<StyledLink to="/">
-							<StyledLinkIcon loading="lazy" src={ events } alt="logo" />
+							<StyledLinkIcon loading="lazy" src={ events } alt="events" />
 							<span>Events</span>
 						</StyledLink>
 					</StyledMenuListItem>
@@ -181,17 +185,26 @@ const StyledMenuListItem = styled.li<StyledLinkProps>`
 	}
 `
 
+const StyledMenuIcon = styled.button`
+	background-color: transparent;
+	border: none;
+	padding-left: 1em;
+	padding-right: 1em;
+`
+
 const StyledLogoLink = styled(StyledLink)<StyledLinkProps>`
 	align-items: center;
 	height: ${theme.topBarSize}px;
-	margin-left: ${(theme.sideBar.width.closed - 80) / 2}px;
-	margin-right: ${(theme.sideBar.width.closed - 80) / 2}px;
+	margin-bottom: 0;
+	margin-top: 0;
 
 	img {
 		width: 40px;
 	}
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
+		margin-left: ${(theme.sideBar.width.closed - 80) / 2}px;
+		margin-right: ${(theme.sideBar.width.closed - 80) / 2}px;
 		height: 107px;
 
 		img {
