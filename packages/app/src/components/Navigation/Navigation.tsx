@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { isMobile } from 'web3modal';
+import { useOutsideClick } from '../../hooks';
 import { pepemon, events, home, my_collection, staking, store, subscriptions, logoexpand, MenuIcon } from '../../assets';
 import { theme } from '../../theme';
 
@@ -10,8 +11,11 @@ const Navigation = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { pathname } = useLocation();
 
+	const navRef = useRef(null);
+	useOutsideClick(navRef, () => isOpen && setIsOpen(false));
+
 	return (
-		<StyledMenuOuterWrapper {...(!isMobile() && { onMouseEnter: () => setNavLogo(logoexpand), onMouseLeave: () => setNavLogo(pepemon) })}>
+		<StyledMenuOuterWrapper {...(!isMobile() && { onMouseEnter: () => setNavLogo(logoexpand), onMouseLeave: () => setNavLogo(pepemon) })} ref={navRef}>
 			<StyledMenuInnerWrapper isOpen={isOpen}>
 				<StyledLogoWrapper>
 					{isMobile() &&
