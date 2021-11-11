@@ -10,8 +10,11 @@
 }
 
 html, body {
-	overflow-x: hidden;
 	width: 100vw;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 body {

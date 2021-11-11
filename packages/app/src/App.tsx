@@ -1,10 +1,10 @@
-import React, { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
-import { Page, TopBar } from './components'
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { Page, TopBar } from './components';
 import { ModalsProvider, PepemonProvider } from './contexts';
-import { withConnectedWallet } from './hocs'
-import { theme } from './theme'
+import { withConnectedWallet } from './hocs';
+import { theme } from './theme';
 import { LoadingPage } from './views';
 const Home = lazy(() =>  import("./views/Home").then((module) => ({ default: module.default })));
 const Staking = lazy(() =>  import("./views/Staking").then((module) => ({ default: module.default })));

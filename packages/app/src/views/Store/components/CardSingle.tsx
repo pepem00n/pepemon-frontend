@@ -124,7 +124,7 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 const StyledPepemonCard = styled.div<{isClickable?: boolean}>`
 	display: flex;
 	cursor: ${props => props.isClickable ? 'pointer' : 'not-allowed'};
-	justify-content: center;
+	justify-content: flex-start;
 	flex-direction: column;
 `
 

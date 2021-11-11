@@ -43,7 +43,7 @@ export const AccordionGroup = styled.section`
 export const AccordionWrapper = styled.div<{isOpen: boolean}>`
 	background-color: ${theme.color.purple[800]};
 	border-radius: ${theme.borderRadius}px;
-	margin-bottom: .5em;
+	margin-bottom: .8em;
 	outline: ${props => props.isOpen && `2px solid ${props.theme.color.green[200]}` };
 	width: 100%;
 `

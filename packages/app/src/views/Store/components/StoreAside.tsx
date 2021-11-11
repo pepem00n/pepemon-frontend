@@ -27,10 +27,14 @@ const StyledStoreAsideInner = styled.div`
 	@media (min-width: ${theme.breakpoints.mobileS}) and (max-width: ${theme.breakpoints.tabletL}) {
 		padding-top: 1em;
 	}
-	
+
 	@media (max-width: ${theme.breakpoints.tabletL}) {
 		padding-bottom: 1em;
+	}
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
 		position: sticky;
+		top: 1em;
 	}
 `
 

@@ -18,20 +18,14 @@ const Card: React.FC<CardProps> = (
 }
 
 const StyledCard = styled.div`
-
-
   border-radius: 12px;
-
   display: flex;
   flex: 1;
   flex-direction: column;
 `
 
 const StyledDisabledCard = styled.div`
-
-
   border-radius: 12px;
-
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -39,7 +33,6 @@ const StyledDisabledCard = styled.div`
 `
 
 const StyledBoostedCard = styled.div`
-
   border-radius: 12px;
   margin: -.3rem;
   box-shadow: 0 0 10px rgb(239,0,111,.9);
