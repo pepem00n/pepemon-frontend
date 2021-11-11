@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
-import usePepemon from './usePepemon'
-import { getIsApprovedForAll, getPepemonFactoryContract, getPepemonStakeAddress } from '../pepemon/utils'
+import { useCallback, useEffect, useState } from 'react';
+import usePepemon from './usePepemon';
+import { getIsApprovedForAll, getPepemonFactoryContract, getPepemonStakeAddress } from '../pepemon/utils';
 import { correctChainIsLoaded } from '../utils/network';
 
 const useIsApprovedForAll = () => {

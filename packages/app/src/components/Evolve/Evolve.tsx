@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { AnimatedImg } from "../../components";
 import { theme } from "../../theme";
 import { downgreenarrow, pepertle, warpertle, rektoise } from "../../assets";

@@ -14,6 +14,7 @@ export type { Merkle } from './useClaimMerkle';
 export { default as useDetectMobile } from './useDetectMobile';
 export { default as useDetectMobileScreen } from './useDetectMobileScreen';
 export { default as useEarnings } from './useEarnings';
+export { default as useHorizontalScroll } from './useHorizontalScroll';
 export { default as useIsApprovedForAll } from './useIsApprovedForAll';
 export { default as useIsClaimedMerkle } from './useIsClaimedMerkle';
 export { default as useIsVisible } from './useIsVisible';

@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState, useRef, useContext } from 'react';
-import styled from 'styled-components';
+// TODO:
+import styled from "styled-components/macro";
 import Web3 from 'web3';
 import { Spacer, Button, Title, IButtonPopover, ExternalLink, Text, ContentCentered } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';
-import { useTokenPrices } from '../../../hooks';
+import { useTokenPrices, useHorizontalScroll } from '../../../hooks';
 import { calculatePpblzApy, calculatePpblzEthLpApy, correctChainIsLoaded } from '../../../utils';
-import { pokeball, uniswap } from '../../../assets';
+import { pepeball, uniswap, ppdexLogo } from '../../../assets';
 import { theme } from '../../../theme';
 import { sendTransaction } from '../../../pepemon/utils';
 
@@ -53,6 +54,8 @@ const StakeCard: React.FC<any> = () => {
 	const ppblzEthLpApy = calculatePpblzEthLpApy(ppblzPrice, ppdexPrice);
 
     let timer: any = useRef(null);
+    let horzScroll: any = useRef(null);
+	useHorizontalScroll(horzScroll);
 
     useEffect(() => {
         return () => timer && clearTimeout(timer);
@@ -451,192 +454,194 @@ const StakeCard: React.FC<any> = () => {
     //TODO: simplify validation
     return (
 		<StakeGrid>
-			<StakeGridArea area="ppblz">
-				<StakeGridAreaHeader>
-					<StakeGridAreaHeaderTitle>
-						<img loading="lazy" src={pokeball} alt="Pokeball"/>
-						<Spacer size="sm"/>
-						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
-					</StakeGridAreaHeaderTitle>
-					<StakeGridAreaHeaderMeta>
-						<span>{ppblzApy.toFixed(0)}% APY</span>
-						<IButtonPopover toggle={toggle} cursor={'help'} isOpen={popoverOpen} heading="APY staking PPBLZ"
-							apy={ppblzApy}
-							ppdexPrice={ppdexPrice}
-							button={<ExternalLink size={.75} href="https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8">Buy PPBLZ</ExternalLink>}/>
-					</StakeGridAreaHeaderMeta>
-				</StakeGridAreaHeader>
-				<StakeGridAreaBody>
-					<DataColumns>
-						<DataColumn>
-							<Text as="p" font={theme.font.inter}>PPBLZ balance</Text>
+			<StakeGridTop ref={horzScroll}>
+				<StakeGridArea>
+					<StakeGridAreaHeader>
+						<StakeGridAreaHeaderTitle>
+							<img loading="lazy" src={pepeball} alt="Pepeball"/>
 							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzBalance.toString()).toFixed(2)}</Text>
-						</DataColumn>
-						<DataColumn>
-							<Text as="p" font={theme.font.inter}>PPBLZ staked</Text>
-							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzStakedAmount.toString()).toFixed(2)}</Text>
-						</DataColumn>
-					</DataColumns>
-					<div style={{ marginTop: "auto" }}>
-						{isApprovedPpblz && !ppblzStakeAdd && !ppblzStakeSub &&
-							<ContentCentered
-								style={{
-								display: "flex",
-								flexDirection: "row",
-								justifyContent: "center",
-								}}
-							>
-								<Button styling="white" onClick={() => {
-									setPpblzStakeSub(true);
-									setPpblzStakeAdd(false);
-								}} width="20%" symbol aria-label="withdraw"
-									{...(ppblzStakedAmount <= 0 && {disabled: true})}
-								>-</Button>
+							<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
+						</StakeGridAreaHeaderTitle>
+						<StakeGridAreaHeaderMeta>
+							<span>{ppblzApy.toFixed(0)}% APY</span>
+							<IButtonPopover toggle={toggle} cursor={'help'} isOpen={popoverOpen} heading="APY staking PPBLZ"
+								apy={ppblzApy}
+								ppdexPrice={ppdexPrice}
+								button={<ExternalLink size={.75} href="https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8">Buy PPBLZ</ExternalLink>}/>
+						</StakeGridAreaHeaderMeta>
+					</StakeGridAreaHeader>
+					<StakeGridAreaBody>
+						<DataColumns>
+							<DataColumn>
+								<Text as="p" font={theme.font.inter}>PPBLZ balance</Text>
 								<Spacer size="sm"/>
-								<Button styling="purple" onClick={() => {
-									setPpblzStakeSub(false);
-									setPpblzStakeAdd(true);
-								}} width="80%" symbol aria-label="stake"
-								{...(ppblzBalance <= 0 && {disabled: true})}
-								>+</Button>
-							</ContentCentered>
-						}
-						{(!isApprovedPpblz || ppblzAllowance < parseFloat(ppblzStakeAmount)) &&
-							<Button styling="purple" onClick={approvePpblz} {...((isUpdatingRewards || isApprovingPpblz) && {disabled: true})} width="100%">{isUpdatingRewards ? "Updating..." : !isApprovingPpblz ? "Enable" : "Enabling..."}</Button>
-						}
-						{isApprovedPpblz &&
-						!isWithdrawingPpblz &&
-						!isStakingPpblz &&
-						(ppblzStakeAdd || ppblzStakeSub) &&
-							<ContentCentered direction="row" bgColor={theme.color.white} style={{ borderRadius: "8px", border: `1px solid ${theme.color.purple[700]}`, padding: ".1em .1em .1em 0.75em" }}>
-								<StyledInput
-									placeholder="0.00"
-									value={setPpblzInputField() || ""}
-									onChange={(event) => updatePpblzStakingInput(event) }
-									min="0.00"
-									step="1"
-									autoFocus={true} />
-								<Button styling="link" onClick={setMaxPpblz}>Max</Button>
-								<Button styling="purple"
-									{...(ppblzStakeAdd && !ppblzStakeSub ?
-										{
-											onClick: stakePpblz,
-											disabled: !(parseFloat(ppblzStakeAmount) > 0 && parseFloat(ppblzStakeAmount) <= ppblzBalance) || isStakingPpblz
-										} : ppblzStakeSub && !ppblzStakeAdd &&
-										{ onClick: withdrawPpblz,
-											disabled: !(parseFloat(ppblzStakeAmount) > 0 && parseFloat(ppblzStakeAmount) <= ppblzStakedAmount) || isWithdrawingPpblz }
-									)}
-								>
-									{ppblzStakeAdd && !ppblzStakeSub ? "Stake" : !ppblzStakeAdd && ppblzStakeSub && "Withdraw"}
-								</Button>
-							</ContentCentered>
-						}
-						{ (isStakingPpblz || isWithdrawingPpblz) &&
-							<Button styling="purple" onClick={approvePpblz} width="100%" disabled>
-								{isStakingPpblz && "Staking"}
-								{isWithdrawingPpblz &&  "Withdrawing"}
-							...</Button>
-						}
-					</div>
-				</StakeGridAreaBody>
-			</StakeGridArea>
-			<StakeGridArea area="pplbzEthLp">
-				<StakeGridAreaHeader>
-					<StakeGridAreaHeaderTitle>
-						<img loading="lazy" src={uniswap} alt="Uniswap"/>
-						<Spacer size="sm"/>
-						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
-					</StakeGridAreaHeaderTitle>
-					<StakeGridAreaHeaderMeta>
-						<span>{ppblzEthLpApy.toFixed(0)}% APY</span>
-						<IButtonPopover toggle={toggle2} cursor={'help'} isOpen={popoverOpen2} heading="APY staking PPBLZ-ETH"
-							apy={ppblzEthLpApy}
-							ppdexPrice={ppdexPrice}
-							button={<ExternalLink size={.75} href="https://app.uniswap.org/#/add/0x4D2eE5DAe46C86DA2FF521F7657dad98834f97b8/ETH">Provide PPBLZ-ETH LP liquidity</ExternalLink>}/>
-					</StakeGridAreaHeaderMeta>
-				</StakeGridAreaHeader>
-				<StakeGridAreaBody>
-					<DataColumns>
-						<DataColumn>
-							<Text as="p" font={theme.font.inter}>PPBLZ-ETH balance</Text>
-							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzBalance.toString()).toFixed(2)}</Text>
-						</DataColumn>
-						<DataColumn>
-							<Text as="p" font={theme.font.inter}>PPBLZ-ETH staked</Text>
-							<Spacer size="sm"/>
-							<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzStakedAmount.toString()).toFixed(2)}</Text>
-						</DataColumn>
-					</DataColumns>
-					<div style={{ marginTop: "auto" }}>
-						{isApprovedUniV2Ppblz && !uniV2PpblzStakeAdd && !uniV2PpblzStakeSub &&
-							<ContentCentered
-								style={{
-								display: "flex",
-								flexDirection: "row",
-								justifyContent: "center",
-								}}
-							>
-								<Button styling="white" onClick={() => {
-									setUniV2PpblzStakeSub(true);
-									setUniV2PpblzStakeAdd(false);
-								}} width="20%" symbol aria-label="withdraw"
-								{...(uniV2PpblzStakedAmount <= 0 && {disabled: true})}
-								>-</Button>
+								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzBalance.toString()).toFixed(2)}</Text>
+							</DataColumn>
+							<DataColumn>
+								<Text as="p" font={theme.font.inter}>PPBLZ staked</Text>
 								<Spacer size="sm"/>
-								<Button styling="purple" onClick={() => {
-									setUniV2PpblzStakeSub(false);
-									setUniV2PpblzStakeAdd(true);
-								}} width="80%" symbol aria-label="stake"
-								{...(uniV2PpblzBalance <= 0 && {disabled: true})}
-								>+</Button>
-							</ContentCentered>
-						}
-						{(!isApprovedUniV2Ppblz || uniV2PpblAllowance < parseFloat(uniV2PpblzStakeAmount)) &&
-							<Button styling="purple" onClick={approveUniV2Ppblz} {...((isUpdatingRewards || isApprovingUniV2Ppblz) && {disabled: true})} width="100%">{isUpdatingRewards ? "Updating..." :!isApprovingUniV2Ppblz ? "Enable" : "Enabling..."}</Button>
-						}
-						{isApprovedUniV2Ppblz &&
-						!isWithdrawingUniV2Ppblz &&
-						!isStakingUniV2Ppblz &&
-						(uniV2PpblzStakeAdd || uniV2PpblzStakeSub) &&
-							<ContentCentered direction="row" bgColor={theme.color.white} style={{ borderRadius: "8px", border: `1px solid ${theme.color.purple[700]}`, padding: ".1em .1em .1em 0.75em" }}>
-								<StyledInput
-									placeholder="0.00"
-									value={setUniV2PpblzInputField() || ""}
-									onChange={(event) => updateUniV2PpblzStakingInput(event) }
-									min="0.00"
-									step="1"
-									autoFocus={true} />
-								<Button styling="link" onClick={setMaxUniV2Ppblz}>Max</Button>
-								<Button styling="purple"
-									{...(uniV2PpblzStakeAdd && !uniV2PpblzStakeSub ?
-										{
-											onClick: stakeUniV2Ppblz,
-											disabled: !(parseFloat(uniV2PpblzStakeAmount) > 0 && parseFloat(uniV2PpblzStakeAmount) <= uniV2PpblzBalance) || isStakingUniV2Ppblz
-										} : !uniV2PpblzStakeAdd && uniV2PpblzStakeSub &&
-										{ onClick: withdrawUniV2Ppblz,
-											disabled: !(parseFloat(uniV2PpblzStakeAmount) > 0 && parseFloat(uniV2PpblzStakeAmount) <= ppblzStakedAmount) || isWithdrawingUniV2Ppblz }
-									)}
+								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzStakedAmount.toString()).toFixed(2)}</Text>
+							</DataColumn>
+						</DataColumns>
+						<div style={{ marginTop: "auto" }}>
+							{isApprovedPpblz && !ppblzStakeAdd && !ppblzStakeSub &&
+								<ContentCentered
+									style={{
+									display: "flex",
+									flexDirection: "row",
+									justifyContent: "center",
+									}}
 								>
-									{uniV2PpblzStakeAdd && !uniV2PpblzStakeSub ? "Stake" : !uniV2PpblzStakeAdd && uniV2PpblzStakeSub && "Withdraw"}
-								</Button>
-							</ContentCentered>
-						}
-						{ (isStakingUniV2Ppblz || isWithdrawingUniV2Ppblz) &&
-							<Button styling="purple" onClick={approveUniV2Ppblz} width="100%" disabled>
-								{isStakingUniV2Ppblz && "Staking"}
-								{isWithdrawingUniV2Ppblz &&  "Withdrawing"}
-							...</Button>
-						}
-					</div>
-				</StakeGridAreaBody>
-			</StakeGridArea>
-			<StakeGridArea area="ppdexEarned">
-				<StakeGridAreaHeader>
+									<Button styling="white" onClick={() => {
+										setPpblzStakeSub(true);
+										setPpblzStakeAdd(false);
+									}} width="20%" symbol aria-label="withdraw"
+										{...(ppblzStakedAmount <= 0 && {disabled: true})}
+									>-</Button>
+									<Spacer size="sm"/>
+									<Button styling="purple" onClick={() => {
+										setPpblzStakeSub(false);
+										setPpblzStakeAdd(true);
+									}} width="80%" symbol aria-label="stake"
+									{...(ppblzBalance <= 0 && {disabled: true})}
+									>+</Button>
+								</ContentCentered>
+							}
+							{(!isApprovedPpblz || ppblzAllowance < parseFloat(ppblzStakeAmount)) &&
+								<Button styling="purple" onClick={approvePpblz} {...((isUpdatingRewards || isApprovingPpblz) && {disabled: true})} width="100%">{isUpdatingRewards ? "Updating..." : !isApprovingPpblz ? "Enable" : "Enabling..."}</Button>
+							}
+							{isApprovedPpblz &&
+							!isWithdrawingPpblz &&
+							!isStakingPpblz &&
+							(ppblzStakeAdd || ppblzStakeSub) &&
+								<ContentCentered direction="row" bgColor={theme.color.white} style={{ borderRadius: "8px", border: `1px solid ${theme.color.purple[700]}`, padding: ".1em .1em .1em 0.75em" }}>
+									<StyledInput
+										placeholder="0.00"
+										value={setPpblzInputField() || ""}
+										onChange={(event) => updatePpblzStakingInput(event) }
+										min="0.00"
+										step="1"
+										autoFocus={true} />
+									<Button styling="link" onClick={setMaxPpblz}>Max</Button>
+									<Button styling="purple"
+										{...(ppblzStakeAdd && !ppblzStakeSub ?
+											{
+												onClick: stakePpblz,
+												disabled: !(parseFloat(ppblzStakeAmount) > 0 && parseFloat(ppblzStakeAmount) <= ppblzBalance) || isStakingPpblz
+											} : ppblzStakeSub && !ppblzStakeAdd &&
+											{ onClick: withdrawPpblz,
+												disabled: !(parseFloat(ppblzStakeAmount) > 0 && parseFloat(ppblzStakeAmount) <= ppblzStakedAmount) || isWithdrawingPpblz }
+										)}
+									>
+										{ppblzStakeAdd && !ppblzStakeSub ? "Stake" : !ppblzStakeAdd && ppblzStakeSub && "Withdraw"}
+									</Button>
+								</ContentCentered>
+							}
+							{ (isStakingPpblz || isWithdrawingPpblz) &&
+								<Button styling="purple" onClick={approvePpblz} width="100%" disabled>
+									{isStakingPpblz && "Staking"}
+									{isWithdrawingPpblz &&  "Withdrawing"}
+								...</Button>
+							}
+						</div>
+					</StakeGridAreaBody>
+				</StakeGridArea>
+				<StakeGridArea>
+					<StakeGridAreaHeader>
+						<StakeGridAreaHeaderTitle>
+							<img loading="lazy" src={uniswap} alt="Uniswap"/>
+							<Spacer size="sm"/>
+							<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
+						</StakeGridAreaHeaderTitle>
+						<StakeGridAreaHeaderMeta>
+							<span>{ppblzEthLpApy.toFixed(0)}% APY</span>
+							<IButtonPopover toggle={toggle2} cursor={'help'} isOpen={popoverOpen2} heading="APY staking PPBLZ-ETH"
+								apy={ppblzEthLpApy}
+								ppdexPrice={ppdexPrice}
+								button={<ExternalLink size={.75} href="https://app.uniswap.org/#/add/0x4D2eE5DAe46C86DA2FF521F7657dad98834f97b8/ETH">Provide PPBLZ-ETH LP liquidity</ExternalLink>}/>
+						</StakeGridAreaHeaderMeta>
+					</StakeGridAreaHeader>
+					<StakeGridAreaBody>
+						<DataColumns>
+							<DataColumn>
+								<Text as="p" font={theme.font.inter}>PPBLZ-ETH balance</Text>
+								<Spacer size="sm"/>
+								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzBalance.toString()).toFixed(2)}</Text>
+							</DataColumn>
+							<DataColumn>
+								<Text as="p" font={theme.font.inter}>PPBLZ-ETH staked</Text>
+								<Spacer size="sm"/>
+								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzStakedAmount.toString()).toFixed(2)}</Text>
+							</DataColumn>
+						</DataColumns>
+						<div style={{ marginTop: "auto" }}>
+							{isApprovedUniV2Ppblz && !uniV2PpblzStakeAdd && !uniV2PpblzStakeSub &&
+								<ContentCentered
+									style={{
+									display: "flex",
+									flexDirection: "row",
+									justifyContent: "center",
+									}}
+								>
+									<Button styling="white" onClick={() => {
+										setUniV2PpblzStakeSub(true);
+										setUniV2PpblzStakeAdd(false);
+									}} width="20%" symbol aria-label="withdraw"
+									{...(uniV2PpblzStakedAmount <= 0 && {disabled: true})}
+									>-</Button>
+									<Spacer size="sm"/>
+									<Button styling="purple" onClick={() => {
+										setUniV2PpblzStakeSub(false);
+										setUniV2PpblzStakeAdd(true);
+									}} width="80%" symbol aria-label="stake"
+									{...(uniV2PpblzBalance <= 0 && {disabled: true})}
+									>+</Button>
+								</ContentCentered>
+							}
+							{(!isApprovedUniV2Ppblz || uniV2PpblAllowance < parseFloat(uniV2PpblzStakeAmount)) &&
+								<Button styling="purple" onClick={approveUniV2Ppblz} {...((isUpdatingRewards || isApprovingUniV2Ppblz) && {disabled: true})} width="100%">{isUpdatingRewards ? "Updating..." :!isApprovingUniV2Ppblz ? "Enable" : "Enabling..."}</Button>
+							}
+							{isApprovedUniV2Ppblz &&
+							!isWithdrawingUniV2Ppblz &&
+							!isStakingUniV2Ppblz &&
+							(uniV2PpblzStakeAdd || uniV2PpblzStakeSub) &&
+								<ContentCentered direction="row" bgColor={theme.color.white} style={{ borderRadius: "8px", border: `1px solid ${theme.color.purple[700]}`, padding: ".1em .1em .1em 0.75em" }}>
+									<StyledInput
+										placeholder="0.00"
+										value={setUniV2PpblzInputField() || ""}
+										onChange={(event) => updateUniV2PpblzStakingInput(event) }
+										min="0.00"
+										step="1"
+										autoFocus={true} />
+									<Button styling="link" onClick={setMaxUniV2Ppblz}>Max</Button>
+									<Button styling="purple"
+										{...(uniV2PpblzStakeAdd && !uniV2PpblzStakeSub ?
+											{
+												onClick: stakeUniV2Ppblz,
+												disabled: !(parseFloat(uniV2PpblzStakeAmount) > 0 && parseFloat(uniV2PpblzStakeAmount) <= uniV2PpblzBalance) || isStakingUniV2Ppblz
+											} : !uniV2PpblzStakeAdd && uniV2PpblzStakeSub &&
+											{ onClick: withdrawUniV2Ppblz,
+												disabled: !(parseFloat(uniV2PpblzStakeAmount) > 0 && parseFloat(uniV2PpblzStakeAmount) <= ppblzStakedAmount) || isWithdrawingUniV2Ppblz }
+										)}
+									>
+										{uniV2PpblzStakeAdd && !uniV2PpblzStakeSub ? "Stake" : !uniV2PpblzStakeAdd && uniV2PpblzStakeSub && "Withdraw"}
+									</Button>
+								</ContentCentered>
+							}
+							{ (isStakingUniV2Ppblz || isWithdrawingUniV2Ppblz) &&
+								<Button styling="purple" onClick={approveUniV2Ppblz} width="100%" disabled>
+									{isStakingUniV2Ppblz && "Staking"}
+									{isWithdrawingUniV2Ppblz &&  "Withdrawing"}
+								...</Button>
+							}
+						</div>
+					</StakeGridAreaBody>
+				</StakeGridArea>
+			</StakeGridTop>
+			<StakeGridArea>
+				<StakeGridAreaHeader wide>
 					<StakeGridAreaHeaderTitle>
-						<img loading="lazy" src={pokeball} alt="Pokeball"/>
+						<img loading="lazy" src={ppdexLogo} alt="PPDEX"/>
 						<Spacer size="sm"/>
 						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>PPDEX Earned</Title>
 					</StakeGridAreaHeaderTitle>
@@ -664,15 +669,12 @@ const StakeCard: React.FC<any> = () => {
 }
 
 const StakeGrid = styled.section`
-	@media (min-width: ${theme.breakpoints.tabletL}) {
-		display: grid;
-		grid-column-gap: 1.25em;
-		grid-template-areas: "ppblz pplbzEthLp" "ppdexEarned ppdexEarned";
-		grid-auto-columns: 1fr;
+	@media (min-width: ${theme.breakpoints.ultra}) {
+		margin-bottom: 10em;
 	}
 `
 
-const StakeGridArea = styled.div<{area: string}>`
+const StakeGridArea = styled.div<{area?: string}>`
 	background-color: ${theme.color.purple[800]};
 	border-radius: ${theme.borderRadius}px;
 	display: flex;
@@ -683,19 +685,46 @@ const StakeGridArea = styled.div<{area: string}>`
 	overflow: hidden;
 `
 
-const StakeGridAreaHeader = styled.div`
+const StakeGridTop = styled.div`
+	display: flex;
+	justify-content: space-between;
+	overflow: auto;
+
+	@media (min-width: ${theme.breakpoints.mobile}) and (max-width: ${theme.breakpoints.tabletL}) {
+		flex-wrap: wrap;
+	}
+
+	${StakeGridArea} {
+		min-width: min(400px, 90%);
+		width: 100%;
+
+		&:not(:first-child) {
+			margin-left: 1.25em;
+
+			@media (min-width: ${theme.breakpoints.mobile}) and (max-width: ${theme.breakpoints.tabletL}) {
+				margin-left: 0;
+			}
+		}
+	}
+`
+
+const StakeGridAreaHeader = styled.div<{wide?: boolean}>`
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: clamp(1.125em, 3.75vw, 1.2em) clamp(.8em, 2.65vw, 2em);
+
+	${({wide}) => wide && `
+		@media (min-width: ${theme.breakpoints.tabletL}) {
+			justify-content: center;
+		}
+	`}
 `
 
 const StakeGridAreaHeaderTitle = styled.div`
-	&{
-		display: flex;
-		align-items: center;
-	}
+	align-items: center;
+	display: flex;
 
 	img { width: 2.5em; }
 `
