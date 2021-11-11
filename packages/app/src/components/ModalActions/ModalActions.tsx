@@ -30,8 +30,8 @@ const StyledModalActions = styled.div`
 
 const StyledModalAction = styled.div`
 	display: block;
-	flex: 1 0 auto;
 	margin-bottom: 1em;
+	width: fit-content;
 
 	a {
 		display: block;

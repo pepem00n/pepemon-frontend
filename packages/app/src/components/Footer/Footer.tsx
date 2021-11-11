@@ -76,6 +76,7 @@ const StyledFooter = styled.footer`
 const StyledFooterImg = styled.img`
 	bottom: 100%;
 	display: block;
+	max-height: 170px;
 	position: absolute;
 	width: 100%;
 `
