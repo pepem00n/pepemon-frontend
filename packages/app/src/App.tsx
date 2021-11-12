@@ -5,7 +5,7 @@ import { Page, TopBar } from './components';
 import { ModalsProvider, PepemonProvider } from './contexts';
 import { withConnectedWallet } from './hocs';
 import { theme } from './theme';
-import { LoadingPage } from './views';
+import { metas, LoadingPage } from './views';
 const Home = lazy(() =>  import("./views/Home").then((module) => ({ default: module.default })));
 const Staking = lazy(() =>  import("./views/Staking").then((module) => ({ default: module.default })));
 const Subscription = lazy(() =>  import("./views/Subscription").then((module) => ({ default: module.default })));
@@ -14,9 +14,9 @@ const TermsOfService = lazy(() =>  import("./views/TermsOfService").then((module
 const PrivacyPolicy = lazy(() =>  import("./views/PrivacyPolicy").then((module) => ({ default: module.default })));
 const Error404 = lazy(() =>  import("./views/Error404").then((module) => ({ default: module.default })));
 
-const StakingWithAuth = withConnectedWallet(Staking);
-const SubscriptionWithAuth = withConnectedWallet(Subscription);
-const StoreWithAuth = withConnectedWallet(Store);
+const StakingWithAuth = withConnectedWallet(Staking, {metas: metas.stakingMeta});
+const SubscriptionWithAuth = withConnectedWallet(Subscription, {metas: metas.subscriptionMeta});
+const StoreWithAuth = withConnectedWallet(Store, {metas: metas.storeMeta});
 
 const App: React.FC = () => {
 	return (

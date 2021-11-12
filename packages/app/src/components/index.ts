@@ -12,6 +12,7 @@ export { default as Evolve } from './Evolve';
 export { default as Footer } from './Footer';
 export { default as Hero } from './Hero';
 export { default as IButtonPopover } from './IButtonPopover';
+export { default as Head } from './Head';
 export { default as Label } from './Label';
 export { default as ExternalLink } from './Link';
 export { default as Loader } from './Loader';

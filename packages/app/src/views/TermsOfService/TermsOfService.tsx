@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { ExternalLink, PlainText, DefaultPage } from '../../components';
+import { ExternalLink, Head, PlainText, DefaultPage } from '../../components';
 
 const TermsOfService: React.FC<any> = () => {
 	return (
 		<DefaultPage title='Terms and Conditions'>
+			<Head title='Pepemon - Terms and Conditions'
+				description="Please read these terms and conditions carefully before using Our Service."
+				index={false} follow={false}/>
 			<PlainText>
 				<p>Last updated: October 24, 2021</p>
 				<p>Please read these terms and conditions carefully before using Our Service.</p>

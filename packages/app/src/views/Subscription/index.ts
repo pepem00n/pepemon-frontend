@@ -1,1 +1,1 @@
-export { default } from './Subscription'
+export { default, subscriptionMeta } from './Subscription'

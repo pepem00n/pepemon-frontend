@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { isMobile } from 'web3modal';
 // import { useTranslation } from 'react-i18next';
-import { AnimatedImg, ContentCentered, ContentColumn, ContentColumns, Evolve, Hero, Stats, Spacer, ButtonLink, Title, Text, SocialBoxes, Newsletter } from '../../components';
+import { AnimatedImg, ContentCentered, ContentColumn, ContentColumns, Evolve, Head, Hero, Stats, Spacer, ButtonLink, Title, Text, SocialBoxes, Newsletter } from '../../components';
 import Balances from './components/Balances';
 import { theme } from '../../theme';
 import { useTokenPrices } from '../../hooks';
@@ -16,6 +16,10 @@ const Home: React.FC<any> = () => {
 
 	return (
 		<HomeWrapper bgImage={cover}>
+			<Head title='Pepemon - DeFi, NFTs, Blockchain gaming'
+				description='Earn $PPDEX with $PPBLZ Token. Use $PPDEX to Mint NFTs and use those to duel others on a blockchain trading card game!'
+				twitterTitle='Pepemon! Community-driven TCG on blockchain'
+				twitterDescription='Pepemon DeFi economy is powered by $PPBLZ, staking it earns $PPDEX. Collectors and gamers can get their NFT cards on our store. Subscribe to Pepemon One NFT subscription for exclusive NFTs every month.'/>
 			<StyledSection
 				desktopStyle={{paddingTop: "12.125em"}}
 				mobileStyle={{paddingTop: '3em', backgroundColor: theme.color.purple[200]}}>
