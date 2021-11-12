@@ -16,15 +16,12 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 	const [cardBalance, setCardBalance] = useState([]);
 
 	useEffect(() => {(async() => {
-			setCardMeta(await getCardMeta(cardId, pepemon));
-			setCardPrice(await getCardStorePrices(cardId, pepemon));
-			setCardBalance(await getCardFactoryData(cardId, pepemon, 0));
+			await setCardMeta(await getCardMeta(cardId, pepemon));
+			await setCardPrice(await getCardStorePrices(cardId, pepemon));
+			await setCardBalance(await getCardFactoryData(cardId, pepemon, 0));
+			setIsLoaded(true);
 		})()
 	}, [cardId, pepemon]);
-
-	useEffect(() => {
-		if (cardPrice && cardMeta && cardBalance) setIsLoaded(true);
-	}, [cardPrice, cardMeta, cardBalance])
 
 	const priceOfCard = !cardPrice ? 0 : parseFloat(getDisplayBalance(cardPrice.price, 18)).toFixed(2);
 	const isSoldOut = () => {
@@ -89,10 +86,10 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 	if (cardMeta?.status === "failed") return <></>
 
 	const self = {
-		cardId: cardId,
+		cardId: cardId && cardId,
 		cardPrice: cardPrice && cardPrice.price,
-		cardMeta: cardMeta,
-		cardBalance: cardBalance,
+		cardMeta: cardMeta && cardMeta,
+		cardBalance: cardBalance && cardBalance[0],
 	};
 
 	return (
@@ -109,7 +106,6 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 				<Spacer size="sm"/>
 				<StyledPepemonCardMeta>
 					<dt>Minted</dt>
-					{/*console.log(cardBalance)*/}
 					<dd>{cardBalance === null ? 'loading' : `${parseFloat(cardBalance[0]?.totalSupply)} / ${parseFloat(cardBalance[0]?.maxSupply) > 10000 ? '♾️': parseFloat(cardBalance[0]?.maxSupply)}`}</dd>
 				</StyledPepemonCardMeta>
 				<StyledPepemonCardMeta>

@@ -47,37 +47,32 @@ const StoreCardsAside: React.FC<any> = ({setSelectedCard, selectedCard: { cardId
 
 	const isReleasingSoon = () => {
         const birthdayMetaData = cardMeta.attributes.find(attribute => attribute.trait_type === 'birthday');
-        if (parseFloat(birthdayMetaData.value) === 0) {
-            return true;
-        }
-
+		if (parseFloat(birthdayMetaData.value) === 0) return true;
         return parseFloat(birthdayMetaData.value) > (Date.now() / 1000);
     }
 
 	const isForSale = () => {
         const birthdayMetaData = cardMeta.attributes.find(attribute => attribute.trait_type === 'birthday');
-        if (parseFloat(birthdayMetaData.value) === 0) {
-            return false;
-        }
-        return (parseFloat(birthdayMetaData.value) + (daysForSale() * 24 * 60 * 60)) > (Date.now() / 1000)
+		if (parseFloat(birthdayMetaData.value) === 0) return false;
+		return (parseFloat(birthdayMetaData.value) + (daysForSale() * 24 * 60 * 60)) > (Date.now() / 1000)
     }
 
-	const isSoldOut = () => {
-        return (!isMintable() && !isReleasingSoon()) || (!isForSale() && !isReleasingSoon());
-    }
 	const isNoLongerForSale = () => {
-        return !isReleasingSoon() && !isForSale()
+		return !isForSale() && !isReleasingSoon();
+	}
+
+	const isSoldOut = () => {
+        return (!isMintable() && !isReleasingSoon()) || (isNoLongerForSale());
     }
 
 	const priceOfCard = cardPrice && parseFloat(getDisplayBalance(cardPrice, 18)).toFixed(2);
 
 	const buttonProps = () => {
 		if (isSoldOut() || isNoLongerForSale()) {
-			return { disabled: true, onClick: () => null, text: 'Sold out' }
-		}
-		else if (isAllowedSpending()) {
+			return { disabled: true, onClick: () => null, text: 'Not available' }
+		} else if (isAllowedSpending()) {
 			if (isReleasingSoon()) {
-				return { disabled: true, onClick: () => null, text: 'Releasing soon' }
+				return { disabled: true, onClick: () => null, text: 'Available soon' }
 			} else if (!isAffordable()) {
 				return { disabled: true, onClick: () => null, text: 'Not enough balance' };
 			} else {
