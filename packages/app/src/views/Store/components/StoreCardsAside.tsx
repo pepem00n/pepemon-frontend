@@ -76,7 +76,7 @@ const StoreCardsAside: React.FC<any> = ({setSelectedCard, selectedCard: { cardId
 			} else if (!isAffordable()) {
 				return { disabled: true, onClick: () => null, text: 'Not enough balance' };
 			} else {
-				return { disabled: true, onClick: setActiveClaimModal(true), text: isRedeemingCard ? 'Claiming...' : 'Claim card' }
+				return { disabled: isRedeemingCard ? true : false, onClick: () => setActiveClaimModal(true), text: isRedeemingCard ? 'Claiming...' : 'Claim card' }
 			}
 		} else {
 			return { disabled: false, onClick: () => !isApproving && onApprove(), text: isApproving ? 'Enabling...' : 'Enable' }

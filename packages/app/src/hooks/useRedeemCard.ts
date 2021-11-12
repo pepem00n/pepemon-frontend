@@ -24,7 +24,7 @@ const useRedeemCard = (storeContract: any) => {
 
 	return {
         onRedeemCard: (tokenId: number, amount?: string) => handleRedeem(tokenId, amount),
-        isRedeemingCard: isRedeeming,
+        isRedeemingCard: isRedeeming[1] ? isRedeeming : false,
     }
 };
 
