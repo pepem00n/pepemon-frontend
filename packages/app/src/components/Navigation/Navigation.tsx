@@ -90,7 +90,7 @@ const StyledMenuInnerWrapper = styled.div<{isOpen: boolean}>`
 	flex-direction: column;
 	height: 100vh;
 	transform: translateX(-100%);
-	transition: transform .1s ease-in;
+	transition: transform .2s cubic-bezier(.04,.8,.61,.89);
 	max-width: ${theme.sideBar.width.opened}px;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
@@ -113,6 +113,7 @@ const StyledMenuList = styled.ul<{isOpen: boolean}>`
 	flex-direction: column;
 	height: 100%;
 	list-style-type: none;
+	margin-bottom: 0;
 	margin-top: 0;
 	padding-left: 1em;
 	width: 100%;
@@ -134,6 +135,7 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 	justify-content: flex-start;
 	margin-bottom: 1.6em;
 	margin-top: 1.6em;
+	overflow: hidde;
 	text-decoration: none;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
@@ -148,13 +150,16 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 		position: relative;
 
 		@media (min-width: ${theme.breakpoints.desktop}) {
-			display: none;
+			opacity: 0;
 			padding-right: 1.9em;
+			transform: translateX(-100%);
+			transition: all .4s cubic-bezier(.04,.8,.61,.89);
 		}
 	}
 `
 
 const StyledMenuListItem = styled.li<StyledLinkProps>`
+	overflow: hidden;
 	width: 100%;
 
 	${StyledLink} {
@@ -231,7 +236,7 @@ const StyledMenuOuterWrapper = styled.div`
 		left: 0;
 		position: fixed;
 		top: 0;
-		transition: width .1s ease-in;
+		transition: width .2s cubic-bezier(.04,.8,.61,.89);
 		width: 100vw;
 		z-index: 10;
 
@@ -254,7 +259,10 @@ const StyledMenuOuterWrapper = styled.div`
 				}
 			}
 
-			span { display: block; }
+			span {
+				opacity: 1;
+				transform: translateX(0%);
+			}
 		}
 
 	}
