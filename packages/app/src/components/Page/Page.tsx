@@ -45,6 +45,10 @@ export const StyledPageWrapperMain = styled.main`
 	padding-bottom: ${theme.footer.spaceTop}px;
 	width: 100vw;
 
+	@supports ( -webkit-touch-callout : none) {
+		background-attachment: scroll;
+	}
+
 	@media (min-width: ${theme.breakpoints.desktop}) {
 		margin-left: ${theme.sideBar.width.closed}px;
 		width: calc(100vw - ${theme.sideBar.width.closed}px);

@@ -141,7 +141,7 @@ const StyledTopBar = styled.div<{border?: boolean}>`
 	position: fixed;
 	right: .6em;
 	top: 1em;
-	z-index: 20;
+	z-index: 40;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
 		position: absolute;
