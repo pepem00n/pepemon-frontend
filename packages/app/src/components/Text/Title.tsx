@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-type Size = 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
+type Size = 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'inherit';
 
 interface TitleProps {
 	as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -15,22 +15,24 @@ interface TitleProps {
 
 const getSize = (size) : string => {
 	switch (size) {
-		case  'xxxs':
-			return 'clamp(.8rem, .8rem, .8rem)';
-		case  'xxs':
-			return 'clamp(1.125rem, 1.125rem, 1.125rem)';
-		case  'xs':
+		case 'xxxs':
+			return '.8rem';
+		case 'xxs':
+			return 'clamp(1.1rem, 1.1vw, 1.125rem)';
+		case 'xs':
 			return 'clamp(1.125rem, 1.2vw, 1.2rem)';
-		case  's':
-			return 'clamp(1.3rem, 1.3rem, 1.3rem)';
-		case  'l':
+		case 's':
+			return '1.3rem';
+		case 'l':
 			return 'clamp(1.4rem, 2.65vw, 2rem)';
-		case  'xl':
-			return 'clamp(2.5rem, 2.5rem, 2.5rem)';
-		case  'xxl':
-			return 'clamp(3rem, 3rem, 3rem)';
-		case  'xxxl':
+		case 'xl':
+			return '2.5rem';
+		case 'xxl':
+			return '3rem';
+		case 'xxxl':
 			return 'clamp(2.5rem, 6vw, 4.5rem)';
+		case 'inherit':
+			return 'inherit';
 		case 'm':
 		default:
 			return 'clamp(.9rem, 1vw, 1rem)';

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+type Size = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'inherit';
 
 interface StyledTextProps {
 	as?: 'div' | 'p' | 'span' | 'b' | 'strong' | 'mark';
@@ -18,16 +18,18 @@ interface StyledTextProps {
 
 const getSize = (size) : string => {
 	switch (size) {
-		case  'xs':
+		case 'xs':
 			return 'clamp(.7rem, 1vw, .75rem)';
-		case  's':
+		case 's':
 			return 'clamp(.75rem, 1.1vw, .875rem)';
-		case  'l':
+		case 'l':
 			return 'clamp(1.1rem, 1.8vw, 1.375rem)';
-		case  'xl':
+		case 'xl':
 			return 'clamp(1.8rem, 3rem, 2rem)';
-		case  'xxl':
+		case 'xxl':
 			return 'clamp(2rem, 4vw, 2.5rem)';
+		case 'inherit':
+			return 'inherit';
 		case 'm':
 		default:
 			return 'clamp(.9rem, 1vw, 1rem)';

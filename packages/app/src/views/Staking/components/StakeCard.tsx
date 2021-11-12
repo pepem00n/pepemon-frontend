@@ -460,7 +460,7 @@ const StakeCard: React.FC<any> = () => {
 						<StakeGridAreaHeaderTitle>
 							<img loading="lazy" src={pepeball} alt="Pepeball"/>
 							<Spacer size="sm"/>
-							<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
+							<Title as="h2" size='m' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ</Title>
 						</StakeGridAreaHeaderTitle>
 						<StakeGridAreaHeaderMeta>
 							<span>{ppblzApy.toFixed(0)}% APY</span>
@@ -473,12 +473,12 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaBody>
 						<DataColumns>
 							<DataColumn>
-								<Text as="p" font={theme.font.inter}>PPBLZ balance</Text>
+								<Text as="p" size="m" font={theme.font.inter}>PPBLZ balance</Text>
 								<Spacer size="sm"/>
 								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzBalance.toString()).toFixed(2)}</Text>
 							</DataColumn>
 							<DataColumn>
-								<Text as="p" font={theme.font.inter}>PPBLZ staked</Text>
+								<Text as="p" size="m" font={theme.font.inter}>PPBLZ staked</Text>
 								<Spacer size="sm"/>
 								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(ppblzStakedAmount.toString()).toFixed(2)}</Text>
 							</DataColumn>
@@ -551,7 +551,7 @@ const StakeCard: React.FC<any> = () => {
 						<StakeGridAreaHeaderTitle>
 							<img loading="lazy" src={uniswap} alt="Uniswap"/>
 							<Spacer size="sm"/>
-							<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
+							<Title as="h2" size='m' color={theme.color.white} font={theme.font.neometric} weight={900}>Stake PPBLZ-ETH LP</Title>
 						</StakeGridAreaHeaderTitle>
 						<StakeGridAreaHeaderMeta>
 							<span>{ppblzEthLpApy.toFixed(0)}% APY</span>
@@ -564,12 +564,12 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaBody>
 						<DataColumns>
 							<DataColumn>
-								<Text as="p" font={theme.font.inter}>PPBLZ-ETH balance</Text>
+								<Text as="p" size="m" font={theme.font.inter}>PPBLZ-ETH balance</Text>
 								<Spacer size="sm"/>
 								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzBalance.toString()).toFixed(2)}</Text>
 							</DataColumn>
 							<DataColumn>
-								<Text as="p" font={theme.font.inter}>PPBLZ-ETH staked</Text>
+								<Text as="p" size="m" font={theme.font.inter}>PPBLZ-ETH staked</Text>
 								<Spacer size="sm"/>
 								<Text as="p" font={theme.font.neometric} weight={900} size='xl'>{parseFloat(uniV2PpblzStakedAmount.toString()).toFixed(2)}</Text>
 							</DataColumn>
@@ -643,7 +643,7 @@ const StakeCard: React.FC<any> = () => {
 					<StakeGridAreaHeaderTitle>
 						<img loading="lazy" src={ppdexLogo} alt="PPDEX"/>
 						<Spacer size="sm"/>
-						<Title as="h2" size='xs' color={theme.color.white} font={theme.font.neometric} weight={900}>PPDEX Earned</Title>
+						<Title as="h2" size='m' color={theme.color.white} font={theme.font.neometric} weight={900}>PPDEX Earned</Title>
 					</StakeGridAreaHeaderTitle>
 				</StakeGridAreaHeader>
 				<StakeGridAreaBody>
