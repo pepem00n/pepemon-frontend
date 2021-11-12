@@ -237,7 +237,7 @@ const StyledMenuOuterWrapper = styled.div`
 		top: 0;
 		transition: width .2s cubic-bezier(.04,.8,.61,.89);
 		width: 100vw;
-		z-index: 10;
+		z-index: 30;
 
 		@media (min-width: ${theme.breakpoints.desktop}) {
 			box-shadow: none;
