@@ -120,7 +120,6 @@ const StyledMenuList = styled.ul<{isOpen: boolean}>`
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
 		padding-left: 2em;
-		// transform: translateX(0);
 	}
 `
 

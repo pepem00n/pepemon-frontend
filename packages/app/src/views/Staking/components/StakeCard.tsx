@@ -668,11 +668,7 @@ const StakeCard: React.FC<any> = () => {
     );
 }
 
-const StakeGrid = styled.section`
-	@media (min-width: ${theme.breakpoints.ultra}) {
-		margin-bottom: 10em;
-	}
-`
+const StakeGrid = styled.section``
 
 const StakeGridArea = styled.div<{area?: string}>`
 	background-color: ${theme.color.purple[800]};

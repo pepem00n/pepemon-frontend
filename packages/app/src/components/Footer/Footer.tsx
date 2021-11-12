@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
 	return (
 		<StyledFooter>
-			<StyledFooterImg src={footercover}/>
+			<StyledFooterImg/>
 			<StyledFooterInnerWrapper>
 				<StyledFooterInner>
 					<StyledFooterGrid>
@@ -73,12 +73,16 @@ const StyledFooter = styled.footer`
 	}
 `
 
-const StyledFooterImg = styled.img`
+const StyledFooterImg = styled.div`
+	background-image: url(${footercover});
+	background-position-y: bottom;
+	background-repeat: repeat-x;
+	background-size: contain;
 	bottom: 100%;
-	display: block;
-	max-height: 170px;
+	height: 170px;
+	left: 0;
 	position: absolute;
-	width: 100%;
+	right: 0;
 `
 
 const StyledFooterInnerWrapper = styled.div`
