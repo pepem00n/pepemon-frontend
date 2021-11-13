@@ -6,6 +6,7 @@ const theme = {
 		tabletP: '768px',
 		tabletL: '880px',
 		desktop: '1024px',
+		wide: '1380px',
 		ultra: '1200px',
 	},
 	color: {

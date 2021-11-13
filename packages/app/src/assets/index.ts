@@ -54,6 +54,7 @@ export { default as downgreenarrow } from './img/icons/downgreenarrow.svg';
 export { default as dropdownarrow } from './img/icons/dropdownarrow.png';
 export { default as homeactive } from './img/icons/homeactive.png';
 export { default as ibutton } from './img/icons/i.svg';
+export { default as arrowUp } from './img/icons/icon_arrow_up.svg';
 export { default as events } from './img/icons/icon_events_32px.svg';
 export { default as home } from './img/icons/icon_home_32px.svg';
 export { default as my_collection } from './img/icons/icon_my_collection_32px.svg';

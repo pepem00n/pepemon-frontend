@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { Page, TopBar } from './components';
+import { Page, TopBar, ScrollToTop } from './components';
 import { ModalsProvider, PepemonProvider } from './contexts';
 import { withConnectedWallet } from './hocs';
 import { theme } from './theme';
@@ -48,6 +48,7 @@ const App: React.FC = () => {
 					</Suspense>
 				</Page>
 			</Router>
+			<ScrollToTop/>
 		</Providers>
 	)
 }
