@@ -66,6 +66,7 @@ const StyledFooter = styled.footer`
 	bottom: 0;
 	position: relative;
 	width: 100vw;
+	margin-top: auto;
 
 	@media (min-width: ${theme.breakpoints.desktop}) {
 		margin-left: ${theme.sideBar.width.closed}px;

@@ -18,19 +18,26 @@ const Page: React.FC<any> = ({children}) => {
 	window.scrollTo(0,0);
 
 	return (
-		<div style={{ position: 'relative' }}>
-			<StyledPageWrapper>
+		<StyledPageWrapper>
+			<StyledPageInner>
 				<Navigation/>
 				{ (!isSupportedChain(chainId, pathname) && chainId) ? <NotSupportedModal page='Home'/>
 				: children
 				}
-			</StyledPageWrapper>
+			</StyledPageInner>
 			<Footer/>
-		</div>
+		</StyledPageWrapper>
 	)
 }
 
 export const StyledPageWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	position: relative;
+`
+
+export const StyledPageInner = styled.div`
 	display: flex;
 `
 
