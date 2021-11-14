@@ -93,14 +93,14 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 	};
 
 	return (
-		<StyledPepemonCard style={{ opacity: (!isSoldOut() && isLoaded && countdown()) ? "100%" : "50%" }} isClickable={(!isSoldOut() && isLoaded && countdown()) && true}>
+		<StyledPepemonCard style={{ opacity: (!isSoldOut() && isLoaded && countdown()) ? "100%" : "60%" }} isLoaded={isLoaded}>
 			<StyledPepemonCardPrice>
 				<img loading="lazy" src={coin} alt="coin"/>
 				{cardPrice ? `${priceOfCard} ${chainId === 56 ? 'BNB' : 'PPDEX'}` : 'loading'}
 			</StyledPepemonCardPrice>
 			<div>
 				<StyledPepemonCardImage loading="lazy" active={cardId === selectedCard?.cardId} src={cardMeta ? cardMeta.image : cardback_normal} alt={cardMeta ? cardMeta.name : 'Loading card'}
-					onClick={() => isLoaded && countdown() && selectCard(self)}/>
+					onClick={() => isLoaded && selectCard(self)}/>
 				<Title as="h4" font={theme.font.neometric}>{cardMeta ? cardMeta.name : 'Loading'}</Title>
 				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
 				<Spacer size="sm"/>
@@ -110,18 +110,21 @@ const CardSingle : React.FC<any> = ({cardId, selectedCard, selectCard}) => {
 				</StyledPepemonCardMeta>
 				<StyledPepemonCardMeta>
 					<dt>Time</dt>
-					<dd>{countdown() ? countdown() : 'Soon'}</dd>
+					<dd>{countdown() ? countdown() : 'Not available'}</dd>
 				</StyledPepemonCardMeta>
 			</div>
 		</StyledPepemonCard>
 	)
 }
 
-const StyledPepemonCard = styled.div<{isClickable?: boolean}>`
+const StyledPepemonCard = styled.div<{isLoaded: boolean}>`
 	display: flex;
-	cursor: ${props => props.isClickable ? 'pointer' : 'not-allowed'};
 	justify-content: flex-start;
 	flex-direction: column;
+
+	&{
+		cursor: ${({isLoaded}) => isLoaded ? 'pointer' : 'not-allowed'};
+	}
 `
 
 export const StyledPepemonCardPrice = styled.span<{styling?: string}>`
@@ -153,10 +156,6 @@ export const StyledPepemonCardImage = styled.img<{active?: boolean}>`
 	position: relative;
 	width: 100%;
 	z-index: 0;
-
-	&:hover {
-		cusror: pointer;
-	}
 
 	${({ active }) => active && `
 		&{
