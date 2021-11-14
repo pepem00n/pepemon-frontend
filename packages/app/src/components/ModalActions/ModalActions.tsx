@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, ButtonProps, Spacer } from '../../components';
+import { ExternalLink, ExternalLinkProps, Button, ButtonProps, Spacer } from '../../components';
 
 interface ModalActionProps {
 	text: string,
-	buttonProps: ButtonProps,
+	buttonProps: ButtonProps|ExternalLinkProps,
+	href?: string
 }
 
 export interface ModalActionsProps {
@@ -19,7 +20,11 @@ const ModalActions: React.FC<ModalActionsProps> = ({ modalActions }) => {
 			{modalActions.map((modalAction, i) => (
 				<StyledModalActions key={i}>
 					<StyledModalAction>
-						<Button {...modalAction.buttonProps}>{modalAction.text}</Button>
+						{modalAction.href ?
+								<ExternalLink href={modalAction.href} styling='button'>{modalAction.text}</ExternalLink>
+							:
+								<Button {...modalAction.buttonProps}>{modalAction.text}</Button>
+						}
 					</StyledModalAction>
 					{i < l - 1 && <Spacer size='sm'/>}
 				</StyledModalActions>

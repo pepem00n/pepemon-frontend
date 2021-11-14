@@ -11,7 +11,7 @@ import { useOutsideClick } from '../../../hooks';
 
 const NetworkSwitch: React.FC<any> = () => {
 	const [chainsListActive, setChainsListActive] = useState(false);
-	const [unhandledError, setUnhandledError] = useState({errCode: null, errMsg: ''})
+	const [unhandledError, setUnhandledError] = useState<{errCode?: number, errMsg: string}>({errCode: null, errMsg: ''})
 	const networkSwitchRef = useRef(null);
 	useOutsideClick(networkSwitchRef, () => {
 		if (chainsListActive) {
@@ -45,8 +45,6 @@ const NetworkSwitch: React.FC<any> = () => {
 						}]
 					});
 				} catch (addError: any) {
-					console.log(addError);
-
 					// handle 'add' error
 					setUnhandledError({
 						errCode: addError.code,
@@ -57,8 +55,7 @@ const NetworkSwitch: React.FC<any> = () => {
 			// handle other 'switch' errors
 			else {
 				setUnhandledError({
-					errCode: switchError.code,
-					errMsg: switchError.message
+					errMsg: 'Your provider either does not support switching chains or does not allow dynamically adding new chains. If you are connected with another device, please switch your chain there and reload this page or try adding the chain manually first before switching.'
 				})
 			}
 		}
@@ -86,7 +83,7 @@ const NetworkSwitch: React.FC<any> = () => {
 					)
 				})}
 			</ChainsList>
-			{ unhandledError.errCode &&
+			{ (unhandledError.errCode || unhandledError.errMsg) &&
 				<UnhandledError
 					errCode={unhandledError.errCode}
 					errMsg={unhandledError.errMsg}

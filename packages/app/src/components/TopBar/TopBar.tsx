@@ -12,7 +12,6 @@ import { PepemonProviderContext } from '../../contexts';
 import { theme } from '../../theme';
 
 const TopBar: React.FC<any> = () => {
-	const [copied, setCopied] = useState(false);
 	const [nativeBalance, setNativeBalance] = useState(new BigNumber(0));
 	const [ppblzStakedAmount, setPpblzStakedAmount] = useState(0);
 	const [ppdexRewards, setPpdexRewards] = useState(0);
@@ -88,17 +87,13 @@ const TopBar: React.FC<any> = () => {
 		}
 	}
 
-	const handleCopy = () => {
-		copyText(account);
-		setCopied(true);
-	}
+	const handleCopy = () => copyText(account);
 
 	const handleLogout = async () => {
 		await logoutOfWeb3Modal();
-		onDismiss();
 	}
 
-	const [handlePresent, onDismiss] = useModal({
+	const [handlePresent] = useModal({
 		title: 'Your wallet',
 		content: <WalletModal account={account}
 				{...isMobile() && {
@@ -110,7 +105,7 @@ const TopBar: React.FC<any> = () => {
 				}}/>,
 		modalActions: [
 			{
-				text: copied ? 'Copied!' : 'Copy address',
+				text: 'Copy address',
 				buttonProps: { styling: 'purple', onClick: handleCopy }
 			},
 			{

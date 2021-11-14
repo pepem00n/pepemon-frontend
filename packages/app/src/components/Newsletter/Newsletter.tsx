@@ -55,7 +55,7 @@ const Newsletter: React.FC<any> = () => {
 	useEffect(() => {
 		if (signUpState.success !== undefined) {
 			handlePresent();
-		} else {
+		} else if (signUpState.success) {
 			onDismiss();
 		}
 	}, [signUpState, handlePresent, onDismiss]);

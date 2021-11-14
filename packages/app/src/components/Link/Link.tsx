@@ -2,10 +2,15 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import { buttonLinksStyling } from '../Button/Button';
 
+export interface ExternalLinkProps {
+	styling?: 'button',
+	size?: number
+}
+
 const ExternalLink = styled.a.attrs({
 	target: "_blank",
 	rel: "external noopener noreferrer",
-})<{styling?: 'button', size?: number}>`
+})<ExternalLinkProps>`
 	${({styling}) => styling === 'button' ?
 		buttonLinksStyling
 	: `

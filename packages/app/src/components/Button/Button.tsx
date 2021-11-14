@@ -137,8 +137,10 @@ export interface ButtonLinkProps {
 export const buttonLinksStyling = css<ButtonLinkProps>`
 	background-color: ${props => props.light && props.theme.color.white};
 	background-image: ${props => !props.light && `linear-gradient(to bottom, #aa6cd6 -100%, ${props.theme.color.purple[600]})`};
+	border-color: ${props => props.light ? props.theme.color.purple[600] : 'transparent'};
 	border-radius: 8px;
-	border: ${props => props.light && `1px solid ${props.theme.color.purple[600]}`};
+	border-style: solid;
+	border-width: 1px;
 	box-shadow: ${props => !props.light && `0 4px 10px 0 ${theme.color.colorsLayoutShadows}`};
 	color: ${props => props.light ? props.theme.color.purple[600] : props.theme.color.white};
 	font-family: ${props => props.theme.font.spaceMace};
@@ -151,7 +153,7 @@ export const buttonLinksStyling = css<ButtonLinkProps>`
 	&:hover {
 		background-image: ${props => props.light ? `linear-gradient(to bottom, #aa6cd6 -100%, ${props.theme.color.purple[600]})` : "unset"};
 		background-color: ${props => !props.light && props.theme.color.white};
-		border: ${props => !props.light && `1px solid ${props.theme.color.purple[600]}`};
+		border-color: ${props => !props.light && props.theme.color.purple[600]};
 		color: ${props => props.light ? props.theme.color.white : props.theme.color.purple[600]};
 		box-shadow: 0 4px 10px 0 ${theme.color.colorsLayoutShadows};
 	}

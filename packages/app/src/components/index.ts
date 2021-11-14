@@ -16,6 +16,7 @@ export { default as IButtonPopover } from './IButtonPopover';
 export { default as Head } from './Head';
 export { default as Label } from './Label';
 export { default as ExternalLink } from './Link';
+export type { ExternalLinkProps } from './Link';
 export { default as Loader } from './Loader';
 export { default as Loading } from './Loading';
 export { default as Logo } from './Logo';
