@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UnhandledError, Button, Modal, ModalTitle, ModalContent, ModalActions, Spacer, Text } from '../../components';
+import { UnhandledError, Modal, ModalTitle, ModalContent, ModalActions, Spacer, Text } from '../../components';
 import { theme } from '../../theme';
 
 const NotSupportedModal: React.FC<{page: string}> = ({ page }) => {
@@ -35,9 +35,12 @@ const NotSupportedModal: React.FC<{page: string}> = ({ page }) => {
 				</Text>
             </ModalContent>
 			<Spacer size='md'/>
-            <ModalActions>
-                <Button styling='purple' onClick={handleSwitch}>Switch to ETH</Button>
-            </ModalActions>
+            <ModalActions modalActions={[
+				{
+					text: 'Switch to ETH',
+					buttonProps: { styling: 'purple', onClick: handleSwitch }
+				}
+			]}/>
         </Modal>
     }</>)
 }

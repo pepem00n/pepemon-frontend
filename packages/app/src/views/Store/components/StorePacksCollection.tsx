@@ -4,7 +4,7 @@ import { PepemonProviderContext } from '../../../contexts';
 import { packs } from '../../../constants';
 import { theme } from '../../../theme';
 // import { useCardsMetadata, useCardsFactoryData, useCardsStorePrices, useApprove, useAllowance, useTokenBalance } from '../../../hooks';
-import { PackSingle, StyledStoreCardsWrapper } from '../components';
+import { PackSingle, StyledStoreCardsInner } from '../components';
 
 const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) => {
 	const [pepemon] = useContext(PepemonProviderContext);
@@ -22,7 +22,7 @@ const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) =
 				<div key={key}>
 					<Title as="h3" size='m' font={theme.font.spaceMace}>{activeSerie.title}</Title>
 					<Spacer size="md"/>
-					<StyledStoreCardsWrapper gridCols={selectedPack ? 3 : 5}>
+					<StyledStoreCardsInner gridCols={selectedPack ? 3 : 5}>
 						{activeSerie.packs.map((pack, key) => {
 							return <PackSingle key={key}
 										packId={`${activeSerie.title_formatted}_${key}`}
@@ -31,7 +31,7 @@ const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) =
 										chainId={chainId}
 										packMeta={pack}/>
 						})}
-					</StyledStoreCardsWrapper>
+					</StyledStoreCardsInner>
 					<Spacer size="md"/>
 				</div>
 			)

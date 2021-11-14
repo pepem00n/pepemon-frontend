@@ -1,26 +1,23 @@
-import React, { Suspense, lazy, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import Web3 from 'web3';
 import { isMobile } from 'web3modal';
 import BigNumber from 'bignumber.js';
-import { useWeb3Modal, useTokenBalance } from '../../hooks';
-import { getNativeBalance, getNativeToken, getBalanceNumber, formatAddress } from '../../utils';
+import { useModal, useWeb3Modal, useTokenBalance } from '../../hooks';
+import { copyText, getNativeBalance, getNativeToken, getBalanceNumber, formatAddress } from '../../utils';
 import { getBalanceOfBatch } from '../../utils/erc1155';
 import { Button, Text } from '../../components';
-import { NetworkSwitch } from './components';
+import { NetworkSwitch, WalletModal } from './components';
 import { PepemonProviderContext } from '../../contexts';
 import { theme } from '../../theme';
-const WalletModal = lazy(() =>  import('./components/WalletModal').then((module) => ({ default: module.default })));
-// import { PPMNONE_ANNIVERSARY_SET } from '../../constants/cards';
-// import { cards } from '../../constants';
 
 const TopBar: React.FC<any> = () => {
-	const [visibleWalletModal, setVisibleWalletModal] = useState(false);
+	const [copied, setCopied] = useState(false);
 	const [nativeBalance, setNativeBalance] = useState(new BigNumber(0));
 	const [ppblzStakedAmount, setPpblzStakedAmount] = useState(0);
 	const [ppdexRewards, setPpdexRewards] = useState(0);
 	const [ppmnCardsOwned, setPpmnCardsOwned] = useState(0);
-	const [, loadWeb3Modal] = useWeb3Modal();
+	const [, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
 	const [pepemon] = useContext(PepemonProviderContext);
 
 	const { account, chainId, ppblzAddress, ppdexAddress, contracts, provider } = pepemon;
@@ -85,11 +82,43 @@ const TopBar: React.FC<any> = () => {
 
 	const handleWalletButtonClick = () => {
 		if (account) {
-			setVisibleWalletModal(!visibleWalletModal);
+			handlePresent();
 		} else {
 			loadWeb3Modal();
 		}
 	}
+
+	const handleCopy = () => {
+		copyText(account);
+		setCopied(true);
+	}
+
+	const handleLogout = async () => {
+		await logoutOfWeb3Modal();
+		onDismiss();
+	}
+
+	const [handlePresent, onDismiss] = useModal({
+		title: 'Your wallet',
+		content: <WalletModal account={account}
+				{...isMobile() && {
+					ppblzBalance: ppblzBalance,
+					nativeBalance: `${getBalanceNumber(nativeBalance).toFixed(2)} $${getNativeToken(chainId)}`,
+					totalPpblz: `${totalPpblz.toFixed(2)} $PPBLZ`,
+					totalPpdex: `${totalPpdex.toFixed(2)} $PPDEX`,
+					ppmnCardsOwned: ppmnCardsOwned
+				}}/>,
+		modalActions: [
+			{
+				text: copied ? 'Copied!' : 'Copy address',
+				buttonProps: { styling: 'purple', onClick: handleCopy }
+			},
+			{
+				text: 'Log out',
+				buttonProps: { styling: 'white', onClick: handleLogout }
+			}
+		]
+	});
 
 	return (
 		<StyledTopBar {...((account && !isMobile()) && {border: true})}>
@@ -117,18 +146,6 @@ const TopBar: React.FC<any> = () => {
 				}
 				<Button styling='green' title={account ? 'Your wallet' : 'Connect wallet'} onClick={handleWalletButtonClick}>{!account ? 'Connect wallet' : formatAddress(account)}</Button>
 			</StyledTopBarInner>
-			{ visibleWalletModal &&
-				<Suspense fallback={<></>}>
-					<WalletModal account={account} onDismiss={() => setVisibleWalletModal(!visibleWalletModal)}
-						{...isMobile() && {
-							ppblzBalance: ppblzBalance,
-							nativeBalance: `${getBalanceNumber(nativeBalance).toFixed(2)} $${getNativeToken(chainId)}`,
-							totalPpblz: `${totalPpblz.toFixed(2)} $PPBLZ`,
-							totalPpdex: `${totalPpdex.toFixed(2)} $PPDEX`,
-							ppmnCardsOwned: ppmnCardsOwned
-						}}/>
-				</Suspense>
-			}
 		</StyledTopBar>
 	);
 };

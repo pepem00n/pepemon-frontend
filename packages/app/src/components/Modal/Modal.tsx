@@ -1,9 +1,10 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components/macro';
 import { ActionClose } from '../../assets';
 import { theme } from '../../theme';
 
 export interface ModalProps {
+	ref?: any;
 	onDismiss?: () => void;
 	maxWidth?: number;
 	rounded?: boolean;
@@ -13,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ children, onDismiss, maxWidth }) => {
 	return (
 		<StyledResponsiveWrapper>
 			<StyledModal maxWidth={maxWidth}>
-				{onDismiss && <ActionClose onClick={() => onDismiss()} />}
+				<ActionClose onClick={onDismiss} />
 				{children}
 			</StyledModal>
 		</StyledResponsiveWrapper>

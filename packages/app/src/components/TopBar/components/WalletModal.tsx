@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { isMobile } from 'web3modal';
-import { Button, ExternalLink, Modal, ModalTitle, ModalContent, ModalActions, ModalProps, NetworkSwitch, Spacer, Text } from '../../../components';
+import { ExternalLink, ModalProps, NetworkSwitch, Text } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';
-import { useWeb3Modal } from '../../../hooks';
 import { theme } from '../../../theme';
 import { chains } from '../../../constants';
-import { copyText } from '../../../utils';
 
 interface WalletModal extends ModalProps {
 	account: string,
@@ -18,55 +16,35 @@ interface WalletModal extends ModalProps {
 	ppmnCardsOwned?: number
 }
 
-const WalletModal: React.FC<WalletModal> = ({onDismiss, account, setChainId, ppblzBalance, nativeBalance, totalPpblz, totalPpdex, ppmnCardsOwned}) => {
-	const [copied, setCopied] = useState(false);
+const WalletModal: React.FC<WalletModal> = ({account, setChainId, ppblzBalance, nativeBalance, totalPpblz, totalPpdex, ppmnCardsOwned}) => {
 	const [{chainId}] = useContext(PepemonProviderContext);
-	const [,,logoutOfWeb3Modal] = useWeb3Modal();
-
-	const handleCopy = () => {
-		copyText(account);
-		setCopied(true);
-	}
-
-	const handleLogout = async () => {
-		await logoutOfWeb3Modal();
-		onDismiss();
-	}
 
 	const [currentChain] = chains.filter(chain => (parseInt(chain.chainId) === chainId) && chain.chainName);
 
     return (
-        <Modal onDismiss={onDismiss}>
-            <ModalTitle text='Your wallet' />
-			<ModalContent>
-				{ ppblzBalance &&
-					<StyledTextInfos>
-						{ isMobile() &&
-							<>
-								<dt>Change network:</dt>
-								<dd><NetworkSwitch {...{appChainId: chainId, providerChainId: chainId}}/></dd>
-							</>
-						}
-						<dt>Native balance</dt>
-						<dd>{nativeBalance}</dd>
-						<dt>In Wallet + Staked PPBLZ</dt>
-						<dd>{totalPpblz}</dd>
-						<dt>In Wallet + Not Claimed PPDEX</dt>
-						<dd>{totalPpdex}</dd>
-						<dt>Unique card{ppmnCardsOwned !== 1 && 's'}</dt>
-						<dd>{ppmnCardsOwned}</dd>
-					</StyledTextInfos>
-				}
-				<CustomText font={theme.font.inter} size='s' color={theme.color.gray[600]}>
-					View your account on <ExternalLink href={`${currentChain?.blockExplorerUrls}/address/${account}`}>{currentChain?.blockExplorerTitle}</ExternalLink>
-				</CustomText>
-			</ModalContent>
-			<Spacer size='md'/>
-            <ModalActions>
-				<Button styling='purple' onClick={handleCopy}>{copied ? 'Copied!' : 'Copy address'}</Button>
-				<Button styling='white' onClick={handleLogout}>{'Log out'}</Button>
-            </ModalActions>
-        </Modal>
+		<>
+			{ ppblzBalance &&
+				<StyledTextInfos>
+					{ isMobile() &&
+						<>
+							<dt>Change network:</dt>
+							<dd><NetworkSwitch {...{appChainId: chainId, providerChainId: chainId}}/></dd>
+						</>
+					}
+					<dt>Native balance</dt>
+					<dd>{nativeBalance}</dd>
+					<dt>In Wallet + Staked PPBLZ</dt>
+					<dd>{totalPpblz}</dd>
+					<dt>In Wallet + Not Claimed PPDEX</dt>
+					<dd>{totalPpdex}</dd>
+					<dt>Unique card{ppmnCardsOwned !== 1 && 's'}</dt>
+					<dd>{ppmnCardsOwned}</dd>
+				</StyledTextInfos>
+			}
+			<CustomText font={theme.font.inter} size='s' color={theme.color.gray[600]}>
+				View your account on <ExternalLink href={`${currentChain?.blockExplorerUrls}/address/${account}`}>{currentChain?.blockExplorerTitle}</ExternalLink>
+			</CustomText>
+		</>
     )
 }
 

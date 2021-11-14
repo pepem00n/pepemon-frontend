@@ -6,7 +6,6 @@ import { PepemonProviderContext } from '../../contexts';
 import { darktealTiles } from '../../assets';
 import { theme } from '../../theme';
 import { isSupportedChain } from '../../utils';
-// import Footer from '../Footer';
 
 const Page: React.FC<any> = ({children}) => {
 	const [pepemon] = useContext(PepemonProviderContext);

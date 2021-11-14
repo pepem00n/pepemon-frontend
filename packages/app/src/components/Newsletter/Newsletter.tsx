@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { useModal } from "../../hooks";
 import { api } from "../../constants";
-import { Button, ContentCentered, Modal, ModalTitle, ModalContent, ModalActions, Title, Text, Spacer } from "../../components";
+import { Button, ContentCentered, Title, Text, Spacer } from "../../components";
 
 const Newsletter: React.FC<any> = () => {
 	const [email, setEmail] = useState('');
@@ -38,6 +39,27 @@ const Newsletter: React.FC<any> = () => {
 		setEmail('');
 	}
 
+	const [handlePresent, onDismiss] = useModal({
+		title: signUpState.title,
+		content: <Text align='center' font={theme.font.inter} size='s' color={theme.color.gray[600]}>
+					{signUpState.message}
+				</Text>,
+		modalActions: [
+			{
+				text: signUpState.success ? 'Great!' : 'I\'ll try again',
+				buttonProps: { styling: 'purple', onClick: () => setSignUpState(initSignUpState) },
+			}
+		]
+	})
+
+	useEffect(() => {
+		if (signUpState.success !== undefined) {
+			handlePresent();
+		} else {
+			onDismiss();
+		}
+	}, [signUpState, handlePresent, onDismiss]);
+
 	return (
 		<>
 			<ContentCentered id="newsletter" style={{paddingTop: "6em", paddingBottom: "6em"}}>
@@ -56,22 +78,6 @@ const Newsletter: React.FC<any> = () => {
 						<Button styling="purple" disabled={email ? false : true} onClick={handleSignUp}>Sign up</Button>
 				</ContentCentered>
 			</ContentCentered>
-			{ signUpState.success !== undefined &&
-				<Modal onDismiss={() => setSignUpState(initSignUpState)}>
-					<ModalTitle text={signUpState.title}/>
-					<ModalContent>
-						<Text align='center' font={theme.font.inter} size='s' color={theme.color.gray[600]}>
-							{signUpState.message}
-						</Text>
-					</ModalContent>
-					<Spacer size='md'/>
-					<ModalActions>
-						<Button styling='purple' onClick={() => setSignUpState(initSignUpState)}>{
-							signUpState.success ? 'Great!' : 'I\'ll try again'
-						}</Button>
-					</ModalActions>
-				</Modal>
-			}
 		</>
 	)
 }

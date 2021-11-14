@@ -5,7 +5,7 @@ import { Title, Spacer, DropdownMenu,
 import { PepemonProviderContext } from '../../../contexts';
 import { cards } from '../../../constants';
 import { theme } from '../../../theme';
-import { CardSingle, StyledStoreCardsWrapper, StoreSelectionWrapper } from '../components';
+import { CardSingle, StyledStoreCardsWrapper, StyledStoreCardsInner, StoreSelectionWrapper } from '../components';
 
 const StoreCardsCollection : React.FC<any> = ({selectedCard, setSelectedCard}) => {
 	const [pepemon] = useContext(PepemonProviderContext);
@@ -50,16 +50,16 @@ const StoreCardsCollection : React.FC<any> = ({selectedCard, setSelectedCard}) =
 				return (
 					<div key={key}>*/}
 					{ activeSeries &&
-						<div>
+						<StyledStoreCardsWrapper>
 							<Title as="h3" size='m' font={theme.font.spaceMace}>{activeSeries.title}</Title>
 							<Spacer size="md"/>
-							<StyledStoreCardsWrapper gridCols={selectedCard ? 3 : 5}>
+							<StyledStoreCardsInner gridCols={selectedCard ? 3 : 5}>
 								{activeSeries.cards.map(cardId => {
 									return <CardSingle key={cardId} cardId={cardId} selectedCard={selectedCard} selectCard={setSelectedCard}/>
 								})}
-							</StyledStoreCardsWrapper>
+							</StyledStoreCardsInner>
 							<Spacer size="md"/>
-						</div>
+						</StyledStoreCardsWrapper>
 					}
 				{/*)
 			})}*/}

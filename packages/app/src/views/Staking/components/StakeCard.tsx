@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef, useContext } from 'react';
 import styled from "styled-components";
 import Web3 from 'web3';
-import { Spacer, Button, Title, IButtonPopover, ExternalLink, Text, ContentCentered } from '../../../components';
+import { Spacer, Button, Title, IButtonPopover, Text, ContentCentered } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';
 import { useTokenPrices, useHorizontalScroll } from '../../../hooks';
 import { calculatePpblzApy, calculatePpblzEthLpApy, correctChainIsLoaded } from '../../../utils';
@@ -11,10 +11,6 @@ import { sendTransaction } from '../../../pepemon/utils';
 
 const StakeCard: React.FC<any> = () => {
     //TODO: implement proper state / context management
-	const [popoverOpen, setPopoverOpen] = useState(false);
-	const [popoverOpen2, setPopoverOpen2] = useState(false);
-	const toggle = () => setPopoverOpen(!popoverOpen);
-	const toggle2 = () => setPopoverOpen2(!popoverOpen2);
     const [ppblzStakeAmount, setPpblzStakeAmount] = useState(null)
     const [ppblzStakedAmount, setPpblzStakedAmount] = useState(0)
     const [uniV2PpblzStakeAmount, setUniV2PpblzStakeAmount] = useState(null)
@@ -463,10 +459,10 @@ const StakeCard: React.FC<any> = () => {
 						</StakeGridAreaHeaderTitle>
 						<StakeGridAreaHeaderMeta>
 							<span>{ppblzApy.toFixed(0)}% APY</span>
-							<IButtonPopover toggle={toggle} cursor={'help'} isOpen={popoverOpen} heading="APY staking PPBLZ"
+							<IButtonPopover cursor={'help'} heading="APY staking PPBLZ"
 								apy={ppblzApy}
 								ppdexPrice={ppdexPrice}
-								button={<ExternalLink size={.75} href="https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8">Buy PPBLZ</ExternalLink>}/>
+								button={{ href:"https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8", text: 'Buy PPBLZ' }}/>
 						</StakeGridAreaHeaderMeta>
 					</StakeGridAreaHeader>
 					<StakeGridAreaBody>
@@ -554,10 +550,10 @@ const StakeCard: React.FC<any> = () => {
 						</StakeGridAreaHeaderTitle>
 						<StakeGridAreaHeaderMeta>
 							<span>{ppblzEthLpApy.toFixed(0)}% APY</span>
-							<IButtonPopover toggle={toggle2} cursor={'help'} isOpen={popoverOpen2} heading="APY staking PPBLZ-ETH"
+							<IButtonPopover cursor={'help'} heading="APY staking PPBLZ-ETH"
 								apy={ppblzEthLpApy}
 								ppdexPrice={ppdexPrice}
-								button={<ExternalLink size={.75} href="https://app.uniswap.org/#/add/0x4D2eE5DAe46C86DA2FF521F7657dad98834f97b8/ETH">Provide PPBLZ-ETH LP liquidity</ExternalLink>}/>
+								button={{ href: "https://app.uniswap.org/#/add/0x4D2eE5DAe46C86DA2FF521F7657dad98834f97b8/ETH", text: 'Provide PPBLZ-ETH LP liquidity' }}/>
 						</StakeGridAreaHeaderMeta>
 					</StakeGridAreaHeader>
 					<StakeGridAreaBody>

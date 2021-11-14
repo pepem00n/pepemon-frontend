@@ -21,56 +21,46 @@ const StoreWithAuth = withConnectedWallet(Store, {metas: metas.storeMeta});
 const App: React.FC = () => {
 	return (
 		<Providers>
-			<Router>
-				<TopBar/>
-				<Page>
-					<Suspense fallback={<LoadingPage/>}>
-						<Switch>
-							<Route path="/" exact>
-								<Home/>
-							</Route>
-							<Route path="/staking">
-								<StakingWithAuth/>
-							</Route>
-							<Route path="/subscription">
-								<SubscriptionWithAuth/>
-							</Route>
-							<Route path="/store/:storeState?">
-								<StoreWithAuth/>
-							</Route>
-							<Route path='/terms-of-service' component={TermsOfService} />
-							<Route path='/privacy-policy' component={PrivacyPolicy} />
-							<Route path={["/events", "/my-collection"]}>
-								<Error404 title='This page will be available soon👀'/>
-							</Route>
-							<Route component={Error404} />
-						</Switch>
-					</Suspense>
-				</Page>
-			</Router>
+			<TopBar/>
+			<Page>
+				<Suspense fallback={<LoadingPage/>}>
+					<Switch>
+						<Route path="/" exact>
+							<Home/>
+						</Route>
+						<Route path="/staking">
+							<StakingWithAuth/>
+						</Route>
+						<Route path="/subscription">
+							<SubscriptionWithAuth/>
+						</Route>
+						<Route path="/store/:storeState?">
+							<StoreWithAuth/>
+						</Route>
+						<Route path='/terms-of-service' component={TermsOfService} />
+						<Route path='/privacy-policy' component={PrivacyPolicy} />
+						<Route path={["/events", "/my-collection"]}>
+							<Error404 title='This page will be available soon👀'/>
+						</Route>
+						<Route component={Error404} />
+					</Switch>
+				</Suspense>
+			</Page>
 			<ScrollToTop/>
 		</Providers>
 	)
 }
 
 const Providers: React.FC<any> = ({children}) => {
-  // const getConnectorRpcUrl = () => {
-  //   switch (ethChainId) {
-  //     case 1: return 'https://mainnet.eth.aragon.network/' // MAIN
-  //     case 4: return 'https://api.infura.io/v1/jsonrpc/rinkeby' // RINKEBY
-  //     case 56: return 'https://bsc-dataseed.binance.org/' // BSC
-  //     case 137: return 'https://rpc-mainnet.matic.network'
-  //       //'https://rpc-mainnet.maticvigil.com/v1/7bb3aa1bee5774caa7c9eab73c97fa27ca388d95' // MATIC
-  //   }
-  // }
-
 	return (
 		<ThemeProvider theme={theme}>
-			<ModalsProvider>
+			<Router>
 				<PepemonProvider>
-					{children}
+					<ModalsProvider>
+						{children}
+					</ModalsProvider>
 				</PepemonProvider>
-			</ModalsProvider>
+			</Router>
 		</ThemeProvider>
 	)
 }

@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import { theme } from '../../../theme';
 
 export const StyledStoreWrapper = styled.div<{width?: string, itemSelected?: any}>`
-    display: 'flex'};
-    flex-direction: column;
     color: ${props => props.theme.color.black};
 
 	@media (min-width: ${theme.breakpoints.tabletL}) {
 		max-width: ${props => props.width && props.width};
+	}
+
+	@media (min-width: 575px) and (max-width: ${theme.breakpoints.tabletL}) {
+		min-height: 1000px;
 	}
 
 	${props => props.itemSelected && `
@@ -41,8 +43,6 @@ export const StyledStoreWrapper = styled.div<{width?: string, itemSelected?: any
 		@media (min-width: ${theme.breakpoints.tabletL}) {
 			left: 0;
 			margin-left: 1em;
-			width: unset;
-			max-width: unset;
 			position: relative;
 			transform: translateX(0);
 		}
@@ -68,7 +68,13 @@ export const StyledStoreBody = styled.div`
     border-bottom-right-radius: ${theme.borderRadius}px;
 `
 
-export const StyledStoreCardsWrapper = styled.div<{gridCols: number}>`
+export const StyledStoreCardsWrapper = styled.div`
+	@media (max-width: ${theme.breakpoints.mobile}) {
+		margin-top: 3em;
+	}
+`
+
+export const StyledStoreCardsInner = styled.div<{gridCols: number}>`
 	display: grid;
 	grid-column-gap: 1rem;
 	grid-row-gap: 2rem;

@@ -1,16 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { StyledStoreBody, StyledPepemonCardMeta, StyledPepemonCardPrice } from './index';
 import { Button, Title, Text, Spacer, StyledSpacer } from '../../../components';
 import { PepemonProviderContext } from '../../../contexts';
-import { StoreAside, StoreClaimModal } from '../components';
+import { StoreAside } from '../components';
 import { coin } from '../../../assets';
+import { useModal } from '../../../hooks';
 import { theme } from '../../../theme';
 
 const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
-	const [activeClaimModal, setActiveClaimModal] = useState(false);
 	const [pepemon] = useContext(PepemonProviderContext);
 	const { chainId } = pepemon;
+
+	const [handlePresent] = useModal({
+		title: 'Claim this deck',
+		modalActions: [
+			{
+				text: 'Not available (yet)',
+				buttonProps: {
+					disabled: true,
+					styling: 'purple',
+					width: '100%'
+				}
+			}
+		]
+	});
 
 	return (
 		<StoreAside close={() => setSelectedPack(null)} title="Selected Pack">
@@ -62,13 +76,7 @@ const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
 					<Progress percent={60}/>
 				</Container>
 				<Spacer size='md'/>
-				<Button disabled styling="purple" onClick={() => setActiveClaimModal(true) } width="100%">Not available (yet)</Button>
-				{ activeClaimModal &&
-					<StoreClaimModal
-						disabled
-						dismiss={() => setActiveClaimModal(false)}
-						claimButtonText="Claim Deck"/>
-				}
+				<Button disabled styling="purple" onClick={() => handlePresent() } width="100%">Not available (yet)</Button>
 			</StyledStoreBody>
 		</StoreAside>
 	)
