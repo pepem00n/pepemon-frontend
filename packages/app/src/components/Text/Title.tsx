@@ -63,6 +63,7 @@ export const StyledLinkTitle = styled.h2<{isInactive?: boolean}>`
 	font-weight: 500;
 	margin-bottom: 0;
 	margin-top: 0;
+	position: relative;
 
 	&:not(:last-child) {
 		margin-right: 1em;

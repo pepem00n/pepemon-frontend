@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Redirect, useParams } from "react-router-dom";
-import { StyledLinkTitle } from '../../../components';
+import { Badge, StyledLinkTitle } from '../../../components';
 import { StyledStoreWrapper, StyledStoreHeader, StyledStoreBody, StoreCardsCollection, StoreCardsAside, StorePacksAside, StorePacksCollection } from '../components';
 
 const StoreCard : React.FC<any> = () => {
@@ -29,6 +29,7 @@ const StoreCard : React.FC<any> = () => {
 						</StyledLinkTitle>
 						<StyledLinkTitle isInactive={routerParams.storeState !== "boosterpacks"}>
 							<Link to={`/store/boosterpacks`}>Boosterpacks</Link>
+							<Badge text='soon'/>
 						</StyledLinkTitle>
 					</div>
 				</StyledStoreHeader>

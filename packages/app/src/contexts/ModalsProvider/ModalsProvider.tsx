@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useState, useRef } from 'react';
-import styled, { keyframes } from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components';
 import { useOutsideClick } from '../../hooks';
 import { theme } from '../../theme';
 import { ActionClose } from '../../assets';

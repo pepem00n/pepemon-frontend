@@ -1,16 +1,23 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { StyledStoreBody, StyledPepemonCardMeta, StyledPepemonCardPrice } from './index';
-import { Button, Title, Text, Spacer, StyledSpacer } from '../../../components';
-import { PepemonProviderContext } from '../../../contexts';
+import React, {
+	// useContext
+} from "react";
+// import styled from "styled-components";
+import { StyledStoreBody,
+	// StyledPepemonCardMeta, StyledPepemonCardPrice
+} from './index';
+import { Button, Title, Text, Spacer,
+	// StyledSpacer
+} from '../../../components';
+// import { PepemonProviderContext } from '../../../contexts';
 import { StoreAside } from '../components';
-import { coin } from '../../../assets';
+// import { ProgressBar } from '../../../components';
+// import { coin } from '../../../assets';
 import { useModal } from '../../../hooks';
 import { theme } from '../../../theme';
 
 const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
-	const [pepemon] = useContext(PepemonProviderContext);
-	const { chainId } = pepemon;
+	// const [pepemon] = useContext(PepemonProviderContext);
+	// const { chainId } = pepemon;
 
 	const [handlePresent] = useModal({
 		title: 'Claim this deck',
@@ -35,76 +42,50 @@ const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
 				<Spacer size="sm"/>
 				<img loading="lazy" src={selectedPack.url} alt={selectedPack.name} style={{width: "100%"}}/>
 				<Spacer size='md'/>
-				<StyledPepemonCardMeta>
-					<dt>Rarity:</dt>
-					<dd>Epic</dd>
-				</StyledPepemonCardMeta>
-				<Spacer size='sm'/>
-				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
-				<StyledPepemonCardMeta>
-					<dt>Type:</dt>
-					<dd>Collectors edition</dd>
-				</StyledPepemonCardMeta>
-				<Spacer size='sm'/>
-				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
-				<StyledPepemonCardMeta>
-					<dt>Set:</dt>
-					<dd>New beginning</dd>
-				</StyledPepemonCardMeta>
-				<Spacer size='sm'/>
-				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
-				<StyledPepemonCardMeta>
-					<dt>Artist:</dt>
-					<dd>Azucena N.A.</dd>
-				</StyledPepemonCardMeta>
-				<Spacer size='sm'/>
-				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
-				<StyledPepemonCardMeta>
-					<dt>Price:</dt>
-					<dd>
-						<StyledPepemonCardPrice styling="alt">
-							<img loading="lazy" src={coin} alt="coin"/>
-							{selectedPack.price} {chainId === 56 ? 'BNB' : 'PPDEX'}
-						</StyledPepemonCardPrice>
-					</dd>
-				</StyledPepemonCardMeta>
-				<Spacer size='md'/>
-				<Text as="p" font={theme.font.inter} size='xs' color={theme.color.gray[300]} spacing={1.2} txtTransform="uppercase">Chances of getting this card:</Text>
-				<Spacer size='sm'/>
-				<Container>
-					<Background />
-					<Progress percent={60}/>
-				</Container>
-				<Spacer size='md'/>
+				{/*
+					<StyledPepemonCardMeta>
+						<dt>Rarity:</dt>
+						<dd>Epic</dd>
+					</StyledPepemonCardMeta>
+					<Spacer size='sm'/>
+					<StyledSpacer bg={theme.color.gray[100]} size={2}/>
+					<StyledPepemonCardMeta>
+						<dt>Type:</dt>
+						<dd>Collectors edition</dd>
+					</StyledPepemonCardMeta>
+					<Spacer size='sm'/>
+					<StyledSpacer bg={theme.color.gray[100]} size={2}/>
+					<StyledPepemonCardMeta>
+						<dt>Set:</dt>
+						<dd>New beginning</dd>
+					</StyledPepemonCardMeta>
+					<Spacer size='sm'/>
+					<StyledSpacer bg={theme.color.gray[100]} size={2}/>
+					<StyledPepemonCardMeta>
+						<dt>Artist:</dt>
+						<dd>Azucena N.A.</dd>
+					</StyledPepemonCardMeta>
+					<Spacer size='sm'/>
+					<StyledSpacer bg={theme.color.gray[100]} size={2}/>
+					<StyledPepemonCardMeta>
+						<dt>Price:</dt>
+						<dd>
+							<StyledPepemonCardPrice styling="alt">
+								<img loading="lazy" src={coin} alt="coin"/>
+								{selectedPack.price} {chainId === 56 ? 'BNB' : 'PPDEX'}
+							</StyledPepemonCardPrice>
+						</dd>
+					</StyledPepemonCardMeta>
+					<Spacer size='md'/>
+					<Text as="p" font={theme.font.inter} size='xs' color={theme.color.gray[300]} spacing={1.2} txtTransform="uppercase">Chances of getting this card:</Text>
+					<Spacer size='sm'/>
+					<ProgressBar percent={60}/>
+					<Spacer size='md'/>
+				*/}
 				<Button disabled styling="purple" onClick={() => handlePresent() } width="100%">Not available (yet)</Button>
 			</StyledStoreBody>
 		</StoreAside>
 	)
 }
-
-const Container = styled.div`
-  height: 8px;
-  width: 100%;
-  position: relative;
-`;
-
-const BaseBox = styled.div`
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 2px;
-  transition: width 10s ease-in-out;
-`;
-
-const Background = styled(BaseBox)`
-  background: ${props => props.theme.color.gray[100]};
-  width: 100%;
-`;
-
-const Progress = styled(BaseBox)<{percent: number}>`
-	background: ${props => props.theme.color.green[200]};
-	width: ${({ percent }) => percent}%;
-`;
 
 export default StorePacksAside;

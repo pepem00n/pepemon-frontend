@@ -2,6 +2,7 @@ export { default as Accordion, AccordionGroup, AccordionWrapper, AccordionHeader
 export { default as AnimatedImg } from './AnimatedImg';
 export { default as Button, ButtonLink } from './Button';
 export type { ButtonProps } from './Button';
+export { default as Badge } from './Badge';
 export { default as Card } from './Card';
 export { default as CardContent } from './CardContent';
 export { default as CardIcon } from './CardIcon';
@@ -33,6 +34,7 @@ export { default as NotSupportedModal } from './NotSupportedModal';
 export { default as Page, StyledPageWrapper, StyledPageWrapperMain, StyledPageWrapperMainInner } from './Page';
 export { DefaultPage, PlainText } from './Pages';
 export { default as PepemonCard, StyledPepemonCardImage, StyledPepemonCardMeta, StyledPepemonCardPrice } from './PepemonCard';
+export { default as ProgressBar } from './ProgressBar';
 export { default as ScrollToTop } from './ScrollToTop';
 export { default as SocialBoxes } from './SocialBoxes';
 export { default as Spacer, StyledSpacer } from './Spacer';

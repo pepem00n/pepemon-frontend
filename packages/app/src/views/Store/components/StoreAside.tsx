@@ -32,8 +32,12 @@ const StyledStoreAsideInner = styled.div`
 		padding-bottom: 1em;
 	}
 
-	@media (min-width: ${theme.breakpoints.desktop}) {
+	@media (min-width: ${theme.breakpoints.tabletL}) {
 		position: sticky;
+		top: calc(${theme.topBarSize}px + 1em);
+	}
+
+	@media (min-width: ${theme.breakpoints.desktop}) {
 		top: 1em;
 	}
 `

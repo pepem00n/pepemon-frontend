@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { coin } from "../../../assets";
-import { Title, Spacer, StyledSpacer } from "../../../components";
-import { StyledPepemonCardMeta, StyledPepemonCardPrice } from "../components";
+// import { coin } from "../../../assets";
+import { Title,
+	// Spacer,
+	// StyledSpacer
+} from "../../../components";
+import {
+	// StyledPepemonCardMeta,
+	StyledPepemonCardPrice } from "../components";
 import { theme } from "../../../theme";
 
 const PackSingle : React.FC<any> = ({packId, selectedPack, selectPack, chainId, packMeta}) => {
@@ -10,14 +15,15 @@ const PackSingle : React.FC<any> = ({packId, selectedPack, selectPack, chainId, 
 	return (
 		<StyledPepemonCard>
 			<StyledPepemonCardPrice>
-				<img loading="lazy" src={coin} alt="coin"/>
-				{packMeta.price} {chainId === 56 ? 'BNB' : 'PPDEX'}
+				{/*<img loading="lazy" src={coin} alt="coin"/>
+				{packMeta.price} {chainId === 56 ? 'BNB' : 'PPDEX'}*/}
+				coming soon
 			</StyledPepemonCardPrice>
 			<div>
 				<StyledPepemonCardImage loading="lazy" active={packMeta === selectedPack} src={packMeta.url} alt={packMeta.name}
 					onClick={() => selectPack(packMeta)}/>
 				<Title as="h4" font={theme.font.neometric}>{packMeta.name}</Title>
-				<StyledSpacer bg={theme.color.gray[100]} size={2}/>
+				{/*<StyledSpacer bg={theme.color.gray[100]} size={2}/>
 				<Spacer size="sm"/>
 				<StyledPepemonCardMeta>
 					<dt>Minted</dt>
@@ -26,7 +32,7 @@ const PackSingle : React.FC<any> = ({packId, selectedPack, selectPack, chainId, 
 				<StyledPepemonCardMeta>
 					<dt>Time</dt>
 					<dd>{packMeta.time}</dd>
-				</StyledPepemonCardMeta>
+				</StyledPepemonCardMeta>*/}
 			</div>
 		</StyledPepemonCard>
 	)
