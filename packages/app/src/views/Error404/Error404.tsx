@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonLink, ContentCentered, Head, Text, Title, ModalActions, Spacer } from "../../components";
+import { ButtonLink, ContentCentered, Head, Text, Title, Spacer } from "../../components";
 import { LoadingPage } from "../../views";
 import { theme } from "../../theme";
 
@@ -18,11 +18,9 @@ const Error404: React.FC<Error404Props> = ({title, text}) => {
 				<Title as="h1" size='l'>{ title ? title : 'Error 404: Page not found' }</Title>
 				<Text>{ text ? text : 'Stay tuned for the latest news and subscribe to the our newsletter!' }</Text>
 				<Spacer size="md"/>
-				<ModalActions>
-					<ButtonLink to='/#newsletter'>Subscribe to the Newsletter</ButtonLink>
-					<ButtonLink to="/" light='true'>Return home</ButtonLink>
-	            </ModalActions>
+				<ButtonLink to='/#newsletter'>Subscribe to the Newsletter</ButtonLink>
 				<Spacer size="md"/>
+				<ButtonLink to="/" light='true'>Return home</ButtonLink>
 			</ContentCentered>
 		</LoadingPage>
 	)

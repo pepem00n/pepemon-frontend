@@ -34,7 +34,7 @@ const App: React.FC = () => {
 						<Route path="/subscription">
 							<SubscriptionWithAuth/>
 						</Route>
-						<Route path="/store/:storeState?">
+						<Route path="/store/:storeState(cards|boosterpacks)?">
 							<StoreWithAuth/>
 						</Route>
 						<Route path='/terms-of-service' component={TermsOfService} />
