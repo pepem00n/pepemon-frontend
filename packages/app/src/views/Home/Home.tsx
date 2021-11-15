@@ -39,7 +39,7 @@ const Home: React.FC<any> = () => {
 						<Text as="p" font={theme.font.spaceMace} underline>Scarcity meets pixel perfect art</Text>
 						<Spacer size="md"/>
 						<Text as="p" font={theme.font.inter}>
-							Use PPDEX to mint unique Pepemon NFT cards. All the cards are created by upcoming artists all over the world.
+							Use PPDEX to mint unique Pepemon NFT cards. All the cards are created by upcoming artists all over the metaverse.
 							<br/><br/>
 							Once you have minted your cards, you can become the very best by dueling with your NFTs in a Trading Card Game on blockchain!
 							<br/><br/>
@@ -52,7 +52,7 @@ const Home: React.FC<any> = () => {
 								<Spacer size="md"/>
 							</>
 						}
-						<ButtonLink to="/store/cards">Mint your card</ButtonLink>
+						<ButtonLink to="/store/cards">Mint your cards</ButtonLink>
 					</ContentColumn>
 				</ContentColumns>
 			</StyledSection>
@@ -66,8 +66,7 @@ const Home: React.FC<any> = () => {
 					<Text as="p" font={theme.font.spaceMace} align='left' color='inherit' underline>NO VCs. No pre-sale.</Text>
 					<Spacer size="md"/>
 					<Text as="p" font={theme.font.inter} color='inherit'>
-					Pepemon tokens were 100% airdropped. No VCs and no presale was held, just 300 people getting PPBLZ airdropped to their wallet.
-					Since then on average more than 80% of those tokens were staked to generate PPDEX and mint NFT Cards.
+						Pepemon tokens were 100% airdropped. No VCs and No token Sale was held, just 300 people getting PPBLZ airdropped to their wallets. Since then on average more than 80% of those tokens were staked to generate PPDEX and mint NFT Cards.
 					</Text>
 					<Spacer size="md"/>
 
@@ -91,7 +90,7 @@ const Home: React.FC<any> = () => {
 							Evolve your awesome Pepemon cards to mint exclusive cards and crush your enemies in blockchain battles.
 						</Text>
 						<Text as="p" font={theme.font.inter}>
-							Don't forget to use special NFT Event items to save your monsters when evolving!
+							Don't forget to use the NFT Evolution Qubes to save your monsters when evolving!
 						</Text>
 					</ContentColumn>
 				</ContentColumns>

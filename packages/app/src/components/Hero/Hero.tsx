@@ -7,12 +7,12 @@ const Hero: React.FC<any> = ({apy}) => {
 	return (
 		<ContentColumns mobileStyle={{ marginBottom: '7em' }}>
 			<ContentColumn width="40%" style={{paddingTop: "3.75em"}}>
-				<Title as="h1" font={theme.font.spaceMace} size='xxxl'>Gotta claim ‘em all!</Title>
+				<Title as="h1" font={theme.font.spaceMace} size='xxxl'>Pepemon! Gotta claim ‘em all!</Title>
 				<ContentColumns mobileStyle={{ flexDirection: 'row' }}>
 					<ContentColumn
 						desktopStyle={{ paddingTop: "3.75em", maxWidth: '65%' }}>
 						<Text as="p" font={theme.font.inter} size='l'>
-							Digital collectible card games on blockchain owned by the players. 100% airdropped. Play2Earn games powered by DeFi and NFTs in-game assets.
+							Digital Collectible Card Games in Metaverse, Owned by the Players. Airdropped 100%. Play2Earn powered by DeFi and NFTs in-game assets.
 						</Text>
 					</ContentColumn>
 					<ContentColumn mobileStyle={{ marginLeft: '1em', flex: '1 0 35%' }} tabletLStyle={{ display: 'none' }}>
@@ -26,7 +26,7 @@ const Hero: React.FC<any> = ({apy}) => {
 						<ContentBox shadow>
 							<ContentBoxNumber><span>1</span></ContentBoxNumber>
 							<Text as="p" align="center">
-								Start your journey by getting $PPBLZ
+								Start your journey by getting PPBLZ
 							</Text>
 							<Spacer size="md"/>
 							<ExternalLink href="https://app.uniswap.org/#/swap?outputCurrency=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8" styling='button'>
@@ -38,23 +38,23 @@ const Hero: React.FC<any> = ({apy}) => {
 						<ContentBox shadow>
 							<ContentBoxNumber><span>2</span></ContentBoxNumber>
 							<Text as="p" align="center">
-								Stake your $PPBLZ with
+								Stake your PPBLZ with
 							</Text>
 							<Text as="p" size='xl' font={theme.font.neometric} weight={900} align="center">
 								{apy && apy}
 							</Text>
 							<Spacer size="md"/>
-							<ButtonLink light="true" to="/staking">Start staking</ButtonLink>
+							<ButtonLink light="true" to="/staking">Start earning</ButtonLink>
 						</ContentBox>
 					</ContentColumn>
 					<ContentColumn width="calc(1/3 * 100%)" space="1.25em"  style={{transform: "translateY(60%)"}}>
 						<ContentBox shadow>
 							<ContentBoxNumber><span>3</span></ContentBoxNumber>
 							<Text as="p" align="center">
-								Buy or earn $PPDEX and get NFT Boosterpacks!
+								Use PPDEX to mint NFT Cards
 							</Text>
 							<Spacer size="md"/>
-							<ButtonLink light="true" to="/store/boosterpacks">Get your Boosterpacks</ButtonLink>
+							<ButtonLink light="true" to="/store/boosterpacks">Get your Booster Packs</ButtonLink>
 						</ContentBox>
 					</ContentColumn>
 				</ContentColumns>
