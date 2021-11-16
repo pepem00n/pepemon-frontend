@@ -32,7 +32,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepemander"
-							text="Having donated to Gitcoin Grants to receive this card"
+							text="Provide PPDEX liquidity to receive this card"
 							img={{url: pepemander1stanniversarycard, title: 'Pepemander anniversary'}}
 							tokenId={76}/>
 					</CardContentColumn>
@@ -46,7 +46,7 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 					<CardContentColumn width="25%" space="3.5em">
 						<CardToClaim
 							title="Pepesaur"
-							text="Provide PPDEX liquidity to receive this card"
+							text="Having donated to Gitcoin Grants to receive this card"
 							img={{url: pepesaur1stanniversarycard, title: 'Pepesaur anniversary'}}
 							tokenId={78}/>
 					</CardContentColumn>

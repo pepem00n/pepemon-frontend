@@ -30,7 +30,8 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 	);
 
 	// @dev for more info: https://etherscan.io/address/0x78a285dcd2AD742d8D4ACC33C3a279f44d842e13#writeContract
-	const { onClaimMerkle, isClaiming } = useClaimMerkle( response && response.index ? {
+	// const { onClaimMerkle, isClaiming } = useClaimMerkle( response && response.index ? {
+	const { isClaiming } = useClaimMerkle( response && response.index ? {
 		account,
 		index: response.index,
 		amount: parseInt(response.amount),
@@ -48,7 +49,7 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 			  <figcaption><Text as="p" size='s' lineHeight={1.125} align="center" color={theme.color.gray[300]}>{text}</Text></figcaption>
 			</StyledFigure>
 			<Spacer size="sm"/>
-			<Button width="100%" styling="purple" style={{marginTop: "auto"}} disabled={true}>Not available (yet)</Button>
+			<Button width="100%" styling="purple" style={{marginTop: "auto"}} disabled={isDisabled || isClaimed}>Not available (yet)</Button>
 			{/*<Button width="100%" styling="purple" style={{marginTop: "auto"}}
 			onClick={onClaimMerkle} disabled={isDisabled || isClaimed}
 			>{
