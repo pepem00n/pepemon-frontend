@@ -37,10 +37,10 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 		proof: response.proof,
 	} : null, merkleType, tokenId);
 
-	const isDisabled = !account || isFetching || isClaimed || !canClaim || isClaiming;
+	const isDisabled = !account || isFetching || !canClaim || isClaiming;
 
 	return (
-		<CardToClaimWrapper isDisabled={isDisabled}>
+		<CardToClaimWrapper>
 			<Title as="h3" size='xxs' weight={900} font={theme.font.neometric}>{title}</Title>
 			<Spacer size="sm"/>
 			<StyledFigure>
@@ -48,26 +48,23 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 			  <figcaption><Text as="p" size='s' lineHeight={1.125} align="center" color={theme.color.gray[300]}>{text}</Text></figcaption>
 			</StyledFigure>
 			<Spacer size="sm"/>
-			<Button width="100%" styling="purple" style={{marginTop: "auto"}}
-			onClick={onClaimMerkle} disabled={isDisabled}
+			<Button width="100%" styling="purple" style={{marginTop: "auto"}} disabled={true}>Not available (yet)</Button>
+			{/*<Button width="100%" styling="purple" style={{marginTop: "auto"}}
+			onClick={onClaimMerkle} disabled={isDisabled || isClaimed}
 			>{
 				isFetching ? 'Checking...'
 				: isClaimed ? 'Already claimed'
 				: isClaiming ? 'Claiming...'
 				: canClaim ? 'Claim' : "Can't claim"
-			}</Button>
+			}</Button>*/}
 		</CardToClaimWrapper>
 	)
 }
 
-const CardToClaimWrapper = styled.div<{isDisabled: boolean}>`
+const CardToClaimWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-
-	:not(button) {
-		opacity: ${props => props.isDisabled && '.5'};
-	}
 `
 
 const StyledFigure = styled.figure`
