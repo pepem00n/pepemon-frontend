@@ -28,7 +28,7 @@ const StoreCard : React.FC<any> = () => {
 							<Link to={`/store/cards`}>Cards</Link>
 						</StyledLinkTitle>
 						<StyledLinkTitle isInactive={routerParams.storeState !== "boosterpacks"}>
-							<Link to={`/store/boosterpacks`}>Boosterpacks</Link>
+							<Link to={`/store/boosterpacks`}>Booster Packs</Link>
 							<Badge text='soon'/>
 						</StyledLinkTitle>
 					</div>

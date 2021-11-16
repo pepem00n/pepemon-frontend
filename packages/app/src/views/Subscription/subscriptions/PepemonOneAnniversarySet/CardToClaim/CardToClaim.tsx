@@ -22,14 +22,14 @@ const CardToClaim: React.FC<CardToClaimProps> = ({title, text, tokenId, img}) =>
 	const { response, isFetching } = usePepemonApi(`/merkle/${tokenId}/${account}`);
 	const canClaim = response && response.index;
 
-	// @dev for more info: https://etherscan.io/address/0x3f739128c99B111901d011903309151A26a43b6F#readContract
+	// @dev for more info: https://etherscan.io/address/0x78a285dcd2AD742d8D4ACC33C3a279f44d842e13#readContract
 	const isClaimed = useIsClaimedMerkle( (response && response.index) &&
 		response.index,
 		merkleType,
 		tokenId,
 	);
 
-	// @dev for more info: https://etherscan.io/address/0x3f739128c99B111901d011903309151A26a43b6F#writeContract
+	// @dev for more info: https://etherscan.io/address/0x78a285dcd2AD742d8D4ACC33C3a279f44d842e13#writeContract
 	const { onClaimMerkle, isClaiming } = useClaimMerkle( response && response.index ? {
 		account,
 		index: response.index,

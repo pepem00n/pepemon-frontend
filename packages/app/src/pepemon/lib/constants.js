@@ -117,7 +117,7 @@ export const contractAddresses = {
     56: '0x5116f9c7d2caf010d1abba2dd1648c7e2d12919a',
   },
   merkleDistributor: {
-    1: '0x3f739128c99B111901d011903309151A26a43b6F',
+    1: '0x78a285dcd2AD742d8D4ACC33C3a279f44d842e13',
   }
 }
 

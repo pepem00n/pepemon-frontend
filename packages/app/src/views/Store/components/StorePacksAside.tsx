@@ -38,7 +38,7 @@ const StorePacksAside: React.FC<any> = ({setSelectedPack, selectedPack}) => {
 			<StyledStoreBody>
 				<Title as="h2" font={theme.font.neometric} size='m'>{selectedPack.name}</Title>
 				<Spacer size="sm"/>
-				<Text as="p" font={theme.font.inter} size='s' lineHeight={1.3} color={theme.color.gray[600]}>When claiming this boosterpack you will recieve {selectedPack.cardsPerPack} random cards.</Text>
+				<Text as="p" font={theme.font.inter} size='s' lineHeight={1.3} color={theme.color.gray[600]}>When claiming this booster pack you will recieve {selectedPack.cardsPerPack} random cards.</Text>
 				<Spacer size="sm"/>
 				<img loading="lazy" src={selectedPack.url} alt={selectedPack.name} style={{width: "100%"}}/>
 				<Spacer size='md'/>
