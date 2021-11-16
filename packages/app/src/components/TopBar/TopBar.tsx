@@ -91,9 +91,9 @@ const TopBar: React.FC<any> = () => {
 
 	const handleLogout = async () => {
 		await logoutOfWeb3Modal();
-	}
+	};
 
-	const [handlePresent] = useModal({
+	const [handlePresent,onDismiss] = useModal({
 		title: 'Your wallet',
 		content: <WalletModal account={account}
 				{...isMobile() && {
@@ -114,6 +114,10 @@ const TopBar: React.FC<any> = () => {
 			}
 		]
 	});
+
+	useEffect(() => {
+		if (!account) onDismiss()
+	}, [account, onDismiss]);
 
 	return (
 		<StyledTopBar {...((account && !isMobile()) && {border: true})}>
