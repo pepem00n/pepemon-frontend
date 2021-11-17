@@ -5,7 +5,7 @@ import { theme } from "../../theme";
 import { useModal } from "../../hooks";
 import { ExternalLink, Spacer, Text, Title } from "../../components";
 
-type ModalProps = {
+export type IButtonPopoverProps = {
 	apy: number;
 	heading: string;
 	cursor?: string,
@@ -30,28 +30,30 @@ const TableRow: React.FC<DataProps> = ({title, roi, ppdexPer1kUSD}) => {
 	)
 }
 
-const IButtonPopover: React.FC<ModalProps> = ({ apy, heading, cursor = 'pointer', button, ppdexPrice}) => {
+const IButtonPopover: React.FC<IButtonPopoverProps> = ({ apy, heading, cursor = 'pointer', button, ppdexPrice}) => {
 	// const ppdexPer1kUSD = 1000*roi_1d/ppdexPrice
+	const apyPercentage = apy/100;
+
 	const data = [
 		{
 			title: '1d',
 			roi: (apy/365).toFixed(2),
-			ppdexPer1kUSD: (1000*(apy/365)/ppdexPrice).toFixed(2),
+			ppdexPer1kUSD: (1000*(apyPercentage/365)/ppdexPrice).toFixed(2),
 		},
 		{
 			title: '7d',
 			roi: (apy/365*7).toFixed(2),
-			ppdexPer1kUSD: (1000*(apy/365*7)/ppdexPrice).toFixed(2),
+			ppdexPer1kUSD: (1000*(apyPercentage/365*7)/ppdexPrice).toFixed(2),
 		},
 		{
 			title: '30d',
 			roi: (apy/365*30).toFixed(2),
-			ppdexPer1kUSD: (1000*(apy/365*30)/ppdexPrice).toFixed(2),
+			ppdexPer1kUSD: (1000*(apyPercentage/365*30)/ppdexPrice).toFixed(2),
 		},
 		{
 			title: '365d(APY)',
 			roi: (apy).toFixed(2),
-			ppdexPer1kUSD: (1000*(apy)/ppdexPrice).toFixed(2),
+			ppdexPer1kUSD: (1000*(apyPercentage)/ppdexPrice).toFixed(2),
 		},
 	];
 
