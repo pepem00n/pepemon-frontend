@@ -66,7 +66,7 @@ const Home: React.FC<any> = () => {
 					<Text as="p" font={theme.font.spaceMace} align='left' color='inherit' underline>NO VCs. No pre-sale.</Text>
 					<Spacer size="md"/>
 					<Text as="p" font={theme.font.inter} color='inherit'>
-						Pepemon tokens were 100% airdropped. No VCs and No token Sale was held, just 300 people getting PPBLZ airdropped to their wallets. Since then on average more than 80% of those tokens were staked to generate PPDEX and mint NFT Cards.
+						Pepemon tokens were 100% airdropped. No VCs and No token Sale was held, just 300 people got PPBLZ airdropped to their wallets. Since then on average more than 80% of those tokens were staked to generate PPDEX and mint NFT Cards.
 					</Text>
 					<Spacer size="md"/>
 

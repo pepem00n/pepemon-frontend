@@ -18,6 +18,9 @@ const PepemonOneAnniversarySet: React.FC<any> = () => {
 						<Text as="p" size='s' lineHeight={1.125}>
 							Celebrating a full year of Pepemon with an awesome birthday set.
 						</Text>
+						<Text as="b" size='s' lineHeight={1.125} weight={900}>
+							To be eligible for these cards you must have qualified for each task before 14th October 2021.
+						</Text>
 					</ContentColumn>
 				</ContentColumns>
 				<Spacer size="lg"/>
