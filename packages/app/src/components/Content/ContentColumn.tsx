@@ -7,9 +7,16 @@ interface ContentColumnProps {
 	desktopStyle?: any;
 	tabletLStyle?: any;
 	mobileStyle?: any;
+  align?: "flex-start" | "center" | "flex-end";
 }
 
 const ContentColumn = styled.div<ContentColumnProps>`
+  ${({align}) => align && `
+    display: flex;
+    flex-direction: column;
+    justify-content: ${align};
+  `}
+
 	@media (max-width: ${theme.breakpoints.desktop}) {
 		${props => props.mobileStyle && props.mobileStyle}
 	}

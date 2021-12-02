@@ -21,7 +21,7 @@ export const ContentBoxNumber = styled.span`
 	font-size: 1.125rem;
 	font-weight: 700;
 	left: 50%;
-	margin-bottom: -1em;
+	margin-bottom: auto;
 	margin-top: 0;
 	position: relative;
 	text-align: center;

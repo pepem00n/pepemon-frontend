@@ -23,7 +23,7 @@ const Hero: React.FC<any> = ({apy}) => {
 				<Spacer size="lg"/>
 				<ContentColumns width='250%'>
 					<ContentColumn width="calc(1/3 * 100%)" space="1.25em">
-						<ContentBox shadow>
+						<ContentBox shadow style={{height: "auto"}}>
 							<ContentBoxNumber><span>1</span></ContentBoxNumber>
 							<Text as="p" align="center">
 								Start your journey by getting PPBLZ
@@ -35,7 +35,7 @@ const Hero: React.FC<any> = ({apy}) => {
 						</ContentBox>
 					</ContentColumn>
 					<ContentColumn width="calc(1/3 * 100%)" space="1.25em"  style={{transform: "translateY(30%)"}}>
-						<ContentBox shadow>
+						<ContentBox shadow style={{height: "auto"}}>
 							<ContentBoxNumber><span>2</span></ContentBoxNumber>
 							<Text as="p" align="center">
 								Stake your PPBLZ with
@@ -47,8 +47,8 @@ const Hero: React.FC<any> = ({apy}) => {
 							<ButtonLink light="true" to="/staking">Start earning</ButtonLink>
 						</ContentBox>
 					</ContentColumn>
-					<ContentColumn width="calc(1/3 * 100%)" space="1.25em"  style={{transform: "translateY(60%)"}}>
-						<ContentBox shadow>
+					<ContentColumn width="calc(1/3 * 100%)" space="1.25em"  style={{transform: "translateY(60%)"}} align="flex-end">
+						<ContentBox shadow style={{height: "auto"}}>
 							<ContentBoxNumber><span>3</span></ContentBoxNumber>
 							<Text as="p" align="center">
 								Use PPDEX to mint NFT Cards
