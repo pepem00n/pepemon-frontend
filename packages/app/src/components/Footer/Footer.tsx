@@ -52,7 +52,7 @@ const Footer = () => {
 								<Link to='/privacy-policy'>Privacy policy</Link>
 							</StyledFooterLegalLinks>
 							<div>
-								© 2021
+								© 2021-2022 Fantomstarter.io
 							</div>
 						</StyledFooterLegalInner>
 					</StyledFooterLegal>
