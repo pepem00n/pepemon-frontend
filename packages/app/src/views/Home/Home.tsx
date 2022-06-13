@@ -54,12 +54,12 @@ const Home: React.FC<any> = () => {
 					<ContentColumn width="60%" style={{paddingTop: "3.75em"}}>
 						<Title as="h2" font={theme.font.neometric} size='xxl' weight={900} lineHeight={1.15}>Collect unique Pepemon NFT cards</Title>
 						<Spacer size="md"/>
-						<Text as="p" font={theme.font.spaceMace} underline>Scarcity meets pixel perfect art</Text>
+						<Text as="p" font={theme.font.spaceMace} underline>Pepemon NFTs: scarcity meets pixel perfect art</Text>
 						<Spacer size="md"/>
 						<Text as="p" font={theme.font.inter}>
-							Use PPDEX to mint unique Pepemon NFT cards. All the cards are created by upcoming artists all over the metaverse.
+							Use PPDEX to mint unique Pepemon NFT cards. All the cards are created by upcoming artists all over the web3 & Metaverse.
 							<br/><br/>
-							Once you have minted your cards, you can become the very best by dueling with your NFTs in a Trading Card Game on blockchain!
+							Once you have minted your cards, you can evolve them to become the very best by dueling with your NFTs in a Trading Card Game on blockchain!
 							<br/><br/>
 							"Pepechu, I choose you!"
 						</Text>
@@ -70,7 +70,7 @@ const Home: React.FC<any> = () => {
 								<Spacer size="md"/>
 							</>
 						}
-						<ButtonLink to="/store/cards">Mint your card</ButtonLink>
+						<ButtonLink to="/store/cards">Mint your cards</ButtonLink>
 					</ContentColumn>
 				</ContentColumns>
 			</StyledSection>
