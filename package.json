@@ -21,6 +21,9 @@
       "packages/*"
     ]
   },
+  "resolutions": {
+    "babel-preset-react-app/@babel/preset-env": "^7.25.0"
+  },
   "devDependencies": {
     "@types/styled-components": "^5.1.7"
   },

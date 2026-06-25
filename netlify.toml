@@ -1,0 +1,8 @@
+[build.environment]
+  NODE_VERSION = "18.18.0"
+  DISABLE_ESLINT_PLUGIN = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

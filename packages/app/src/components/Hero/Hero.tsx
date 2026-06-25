@@ -52,15 +52,15 @@ const Hero: React.FC<any> = ({ apy }) => {
                 <span>1</span>
               </ContentBoxNumber>
               <Text as="p" align="center">
-                Own a piece of Pepemon.<br></br>Govern and farm with PPBLZ
+                Collect rare on-chain TCG cards.<br></br>Battle, trade &amp; own your Pepemon deck.
               </Text>
               <Spacer size="md" />
               <ExternalLink
                 shadow
-                href="https://swap.defillama.com/?chain=ethereum&from=0x0000000000000000000000000000000000000000&to=0x4d2ee5dae46c86da2ff521f7657dad98834f97b8"
+                href="https://opensea.io/collection/pepemonfactory"
                 styling="button"
               >
-                Join Pepemon DAO
+                Collect on OpenSea
               </ExternalLink>
             </ContentBox>
           </ContentColumn>

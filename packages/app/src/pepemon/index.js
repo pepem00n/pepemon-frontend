@@ -1,4 +1,4 @@
-import BigNumber from 'bignumber.js/bignumber'
+import BigNumber from 'bignumber.js'
 import Web3 from 'web3'
 
 BigNumber.config({

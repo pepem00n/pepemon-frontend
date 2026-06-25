@@ -1,4 +1,4 @@
-import BigNumber from 'bignumber.js/bignumber';
+import BigNumber from 'bignumber.js';
 import ERC20Abi from './abi/erc20.json';
 import PpdexAbi from './abi/ppdex.json';
 import PpblzAbi from './abi/ppblz.json';

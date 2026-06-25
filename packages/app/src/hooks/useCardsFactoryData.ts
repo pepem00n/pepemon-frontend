@@ -127,6 +127,7 @@ export const getCardFactoryData = async (tokenId: number, pepemon: any, transact
         const factoryContract = getPepemonFactoryContract(pepemon);
         return await fetchCardBalances(factoryContract);
     }
+    return [];
 }
 
 export default useCardsFactoryData

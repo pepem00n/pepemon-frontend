@@ -18,16 +18,16 @@ export interface CardMetadata {
 export const useCardsMetadata = (tokenIds: number[]) => {
 	const [cards, setCards] = useState<any[]>([]);
 	const apiUri = new Map([
-		[1, `https://pepemon.finance/api/cards/`],
-		[4, `https://dev.pepemon.finance/api/testCards/`],
-		[56, `https://dev.pepemon.finance/api/cards/bsc/`],
-		[137, `https://pepemon.finance/api/cards/matic/`],
+		[1, `/metadata/cards/`],
+		[4, `/metadata/cards/`],
+		[56, `/metadata/cards/bsc/`],
+		[137, `/metadata/cards/matic/`],
 	])
 	const pepemon = usePepemon();
 
 	useEffect(() => {
 		const fetchCardInfo = async (tokenId: number) => {
-			const { chainId } = await pepemon.provider.getNetwork();
+			const chainId = pepemon?.chainId || 1;
 			const response = await fetch(
 				`${apiUri.get(chainId)}${tokenId}`,
 				{ method: 'GET'},
@@ -35,10 +35,11 @@ export const useCardsMetadata = (tokenIds: number[]) => {
 			if (!response.ok) {
 				return {tokenId, status: 'failed'};
 			}
-			return {tokenId,  ...await response.json()};
+			const data = await response.json();
+			if (data.image) data.image = data.image.replace('https://pepemon.world/', '/');
+			return {tokenId, ...data};
 		}
 
-		tokenIds.map(tokenId => fetchCardInfo(tokenId));
 		Promise.all(tokenIds.map((tokenId) => fetchCardInfo(tokenId)))
 			.then((responses) => {
 				// @ts-ignore
@@ -46,21 +47,21 @@ export const useCardsMetadata = (tokenIds: number[]) => {
 					return response !== undefined
 				}));
 			})
-	}, [tokenIds, pepemon.provider, apiUri])
+	}, [tokenIds, pepemon.chainId])
 
 	return cards;
 }
 
 export const getCardMeta = async (tokenId: number, pepemon: any) => {
 	const apiUri = new Map([
-		[1, `https://pepemon.finance/api/cards/`],
-		[4, `https://dev.pepemon.finance/api/testCards/`],
-		[56, `https://dev.pepemon.finance/api/cards/bsc/`],
-		[137, `https://pepemon.finance/api/cards/matic/`],
+		[1, `/metadata/cards/`],
+		[4, `/metadata/cards/`],
+		[56, `/metadata/cards/bsc/`],
+		[137, `/metadata/cards/matic/`],
 	])
 
 	const fetchCardInfo = async (tokenId: number) => {
-		const { chainId } = await pepemon.provider.getNetwork();
+		const chainId = pepemon?.chainId || 1;
 		const response = await fetch(
 			`${apiUri.get(chainId)}${tokenId}`,
 			{ method: 'GET'},
@@ -68,7 +69,9 @@ export const getCardMeta = async (tokenId: number, pepemon: any) => {
 		if (!response.ok) {
 			return {tokenId, status: 'failed'};
 		}
-		return {tokenId,  ...await response.json()};
+		const data = await response.json();
+		if (data.image) data.image = data.image.replace('https://pepemon.world/', '/');
+		return {tokenId, ...data};
 	}
 
 	return await fetchCardInfo(tokenId);

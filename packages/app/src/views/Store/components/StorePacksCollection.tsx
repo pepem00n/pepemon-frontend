@@ -12,7 +12,8 @@ const StorePacksCollection : React.FC<any> = ({selectedPack, setSelectedPack}) =
 	const [activeSeries, setActiveSeries] = useState([]);
 
 	useEffect(() => {
-		setActiveSeries(packs.get(chainId));
+		const effectiveChainId = chainId || 1;
+		setActiveSeries(packs.get(effectiveChainId) || []);
 		// TODO: Handle url to switch actice cards to boosterpacks
 	},[chainId])
 

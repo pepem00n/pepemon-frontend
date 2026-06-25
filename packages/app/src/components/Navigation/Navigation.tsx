@@ -79,15 +79,13 @@ const Navigation = () => {
 							<span>Store</span>
 						</StyledLink>
 					</StyledMenuListItem>
-					<StyledMenuListItem
-						onClick={() => setIsOpen(false)}
-						isActive={pathname.startsWith('/bridge') && true}>
+					<StyledMenuListItem ended isActive={false}>
 						<StyledLink to='/bridge'>
 							<StyledLinkIcon loading='lazy' src={bridge} alt='bridge' />
 							<span>Portal</span>
 						</StyledLink>
 					</StyledMenuListItem>
-					<StyledMenuListItem onClick={() => setIsOpen(false)} isActive={false}>
+					{/* <StyledMenuListItem onClick={() => setIsOpen(false)} isActive={false}>
 						<ExternalStyledLink href='https://pepesea.pepemon.world/'>
 							<StyledLinkIcon
 								loading='lazy'
@@ -96,11 +94,11 @@ const Navigation = () => {
 							/>
 							<span>Marketplace</span>
 						</ExternalStyledLink>
-					</StyledMenuListItem>
+					</StyledMenuListItem> */}
 					<StyledMenuListItem soon isActive={false}>
 						<StyledLink to='/'>
 							<StyledLinkIcon loading='lazy' src={events} alt='events' />
-							<span>Events</span>
+							<span>Evolution Events</span>
 						</StyledLink>
 					</StyledMenuListItem>
 				</StyledMenuList>
@@ -168,6 +166,7 @@ const StyledMenuList = styled.ul<{ isOpen: boolean }>`
 interface StyledLinkProps {
 	isActive?: boolean;
 	soon?: boolean;
+	ended?: boolean;
 }
 
 const StyledLink = styled(Link)<StyledLinkProps>`
@@ -239,7 +238,7 @@ const StyledMenuListItem = styled.li<StyledLinkProps>`
 	${StyledLink},${ExternalStyledLink} {
 		color: ${(props) =>
 			props.isActive ? theme.color.layoutPrimary : theme.color.layoutOverlay};
-		pointer-events: ${(props) => props.soon && 'none'};
+		pointer-events: ${(props) => (props.soon || props.ended) && 'none'};
 
 		img {
 			opacity: ${(props) => (props.isActive ? 1 : 0.6)};
@@ -255,6 +254,23 @@ const StyledMenuListItem = styled.li<StyledLinkProps>`
 					padding: 3px 5px;
 					color: ${theme.color.white};
 					content: "soon";
+					font-family: "Inter";
+					font-size: .7rem;
+					opacity: 2;
+					position: absolute;
+					right: 2em;
+					top: -1.7em;
+				}
+			`}
+			${({ ended }) =>
+				ended &&
+				`
+				&::after {
+					background-image: linear-gradient(to bottom, #888888 -100%, #555555);
+					border-radius: 8px;
+					padding: 3px 5px;
+					color: ${theme.color.white};
+					content: "Ended";
 					font-family: "Inter";
 					font-size: .7rem;
 					opacity: 2;

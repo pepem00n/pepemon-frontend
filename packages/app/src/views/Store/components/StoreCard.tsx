@@ -9,7 +9,7 @@ const StoreCard : React.FC<any> = () => {
 
 	const routerParams : any = useParams();
 
-	if (!routerParams.storeState) return <Redirect to="/store/cards"/>
+	if (!routerParams.storeState) return <Redirect to="/store/boosterpacks"/>
 
 	const itemSelected = (selectedCard && routerParams.storeState === "cards") ||
 	(selectedPack && routerParams.storeState === "boosterpacks");

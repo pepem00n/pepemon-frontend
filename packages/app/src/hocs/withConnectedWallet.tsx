@@ -1,7 +1,6 @@
 import React from "react";
 import { usePepemon } from "../hooks";
-import { ContentCentered, Head, Spacer, Title } from "../components";
-import { LoadingPage } from "../views";
+import { Head } from "../components";
 
 function withConnectedWallet(WrappedComponent: React.FC, props) {
 	function WithConnectedWalletComponent(props) {
@@ -11,15 +10,7 @@ function withConnectedWallet(WrappedComponent: React.FC, props) {
 		return (
 			<>
 				<Head {...props.metas}/>
-				{ !account ?
-					<LoadingPage>
-						<ContentCentered>
-				      		<Title as="h1" size='xxxl' weight={700}>No wallet connected</Title>
-							<Spacer size="md"/>
-						</ContentCentered>
-			        </LoadingPage>
-					: <WrappedComponent {...props} />
-				}
+				<WrappedComponent {...props} />
 			</>
 		);
 	};

@@ -10,17 +10,19 @@ import { CardSingle, StyledStoreCardsWrapper, StyledStoreCardsInner, StoreSelect
 const StoreCardsCollection : React.FC<any> = ({selectedCard, setSelectedCard}) => {
 	const [pepemon] = useContext(PepemonProviderContext);
 	const { chainId } = pepemon;
+	const effectiveChainId = chainId || 1;
 	const [options, setOptions] = useState(null);
-	const [activeSeries, setActiveSeries] = useState<any>(cards.get(chainId).find(series => {
-																if (chainId === 56) {
+	const [activeSeries, setActiveSeries] = useState<any>(cards.get(effectiveChainId)?.find(series => {
+																if (effectiveChainId === 56) {
 																	return series.title_formatted === 'CARTOONIZED_SERIES'
 																}
 																return series.title_formatted === 'EVENT_ITEM_CARDS'
 															}));
 
 	useEffect(() => {
-		setActiveSeries( cards.get(chainId).find(series => {
-			if (chainId === 56) {
+		const cid = chainId || 1;
+		setActiveSeries(cards.get(cid)?.find(series => {
+			if (cid === 56) {
 				return series.title_formatted === 'CARTOONIZED_SERIES'
 			}
 			return series.title_formatted === 'EVENT_ITEM_CARDS'
@@ -32,7 +34,8 @@ const StoreCardsCollection : React.FC<any> = ({selectedCard, setSelectedCard}) =
 	},[setSelectedCard, chainId])
 
 	useEffect(() => {
-		setOptions( cards.get(chainId).map((series, key) => {
+		const cid = chainId || 1;
+		setOptions(cards.get(cid)?.map((series) => {
 			return {
 				title: series.title,
 				onClick: () => setActiveSeries(series)

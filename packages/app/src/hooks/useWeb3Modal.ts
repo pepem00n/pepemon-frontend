@@ -85,8 +85,8 @@ function useWeb3Modal(config = {}) {
 
         async function () {
 			const resetApp = async () => {
-				if (typeof provider.close === 'function') {
-					provider && await provider.close();
+				if (provider && typeof provider.close === 'function') {
+					await provider.close();
 				}
 
 				setProvider(null);

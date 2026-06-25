@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import BigNumber from 'bignumber.js';
 import { Accordion, AccordionBodyContent, Spacer, Button, Text, ContentColumns, ContentColumn, ExternalLink } from '../../../../components';
 import { PepemonProviderContext } from '../../../../contexts';
-import { getCardMeta, useTokenBalance, useApprove, useAllowance, useLotteryMinLPTokens, useLotteryRewardCard, useLotteryLPBalance, useLotteryIsStaking, useLotteryHasClaimed, useLotteryStakingDeadline, useLotteryStakingStartblock, useLotteryClaim, useLotteryWithdraw, useLotteryStake, useBlock } from '../../../../hooks';
+import { getCardMeta, useTokenBalance, useApprove, useAllowance, useLotteryMinLPTokens, useLotteryRewardCard, useLotteryLPBalance, useLotteryIsStaking, useLotteryHasClaimed, useLotteryStakingDeadline, useLotteryStakingStartblock, useLotteryClaim, useLotteryWithdraw, useLotteryStake, useBlock, useWeb3Modal } from '../../../../hooks';
 import { getPepemonLotteryContract, getPpdexAddress, getPpdexUniV2Contract, getUniV2PpdexAddress } from '../../../../pepemon/utils';
 import { getBalanceNumber } from '../../../../utils';
 import { cardback_normal } from '../../../../assets';
@@ -10,6 +10,8 @@ import { theme } from '../../../../theme';
 
 const PepemonOneSubscription: React.FC<any> = () => {
 	const [pepemon] = useContext(PepemonProviderContext);
+	const { account } = pepemon;
+	const [, loadWeb3Modal] = useWeb3Modal();
     const ppdexUniV2Balance = useTokenBalance(getUniV2PpdexAddress(pepemon));
     const [transaction, setTransaction] = useState(0);
     const { onApprove, isApproving } = useApprove(getPepemonLotteryContract(pepemon), getPpdexUniV2Contract(pepemon));
@@ -83,16 +85,16 @@ const PepemonOneSubscription: React.FC<any> = () => {
 							</>
 						}
 						{allowance.comparedTo(minLPTokens) === -1 ?
-							<Button disabled={isApproving} size="sm" styling="purple" onClick={onApprove}>
-								{isApproving ? 'Approving...' : 'Approve LP'}
+							<Button disabled={!account ? false : isApproving} size="sm" styling="purple" onClick={!account ? loadWeb3Modal : onApprove}>
+								{!account ? 'Connect wallet' : isApproving ? 'Approving...' : 'Approve LP'}
 							</Button>
 						: isStaking ?
 							<Button disabled={isWithdrawing || (lockedBlocks > 0)} size="sm" styling="purple" onClick={() => onLotteryWithdraw().then(() => setTransaction(transaction + 1))}>
 								{(lockedBlocks > 0) ? 'Locked' : isWithdrawing ? 'Unsubscribing...' : 'Unsubscribe'}
 							</Button>
 						:
-							<Button disabled={(minLPTokens && ppdexUniV2Balance.comparedTo(minLPTokens) === -1) || isJoining || isStaking} size="sm" styling="purple" onClick={() => onLotteryStake().then(() => setTransaction(transaction + 1))}>
-								{isStaking ? 'Active' : (minLPTokens && ppdexUniV2Balance.comparedTo(minLPTokens) === -1) ? 'Insufficient LP' : isJoining ? 'Staking...' : 'Subscribe & Stake LP'}
+							<Button disabled={!account ? false : (minLPTokens && ppdexUniV2Balance.comparedTo(minLPTokens) === -1) || isJoining || isStaking} size="sm" styling="purple" onClick={!account ? loadWeb3Modal : () => onLotteryStake().then(() => setTransaction(transaction + 1))}>
+								{!account ? 'Connect wallet' : isStaking ? 'Active' : (minLPTokens && ppdexUniV2Balance.comparedTo(minLPTokens) === -1) ? 'Insufficient LP' : isJoining ? 'Staking...' : 'Subscribe & Stake LP'}
 							</Button>
 						}
 					</div>
@@ -124,8 +126,8 @@ const PepemonOneSubscription: React.FC<any> = () => {
 							}
 						</>
 						:
-						<Button disabled styling="white_borderless" width="100%">
-							Subscribe to claim
+						<Button disabled={!account ? false : true} styling={!account ? "purple" : "white_borderless"} width="100%" onClick={!account ? loadWeb3Modal : undefined}>
+							{!account ? 'Connect wallet' : 'Subscribe to claim'}
 						</Button>
 					}
 				</div>

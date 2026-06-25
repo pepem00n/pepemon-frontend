@@ -1,4 +1,4 @@
-import BigNumber from "bignumber.js/bignumber";
+import BigNumber from "bignumber.js";
 
 export const SUBTRACT_GAS_LIMIT = 100000;
 
